@@ -44,25 +44,32 @@ Oracle Support Document 2138254.1 (Oracle Database Security Assessment Tool (DBS
 
 Once you have unzipped the tool you can see the commands available for dbsat discover a configuration file is needed. dbsat.config can be found in Discover/conf/ directory.
 
-- Please run:
+- From the Oracle Linux Desktop to the Workshop folder, Database Security Workshop, then DBSAT:
 
-        mkdir dbsat
-        unzip -d dbsat dbzip.zip
-        cd Discover/conf/
-        ll
-        
-    You should see the configuration file along with the sensitive pattern file:
+    ![](images/103.png)
 
-    ![](images/104.png)
+- Move to the dbsat directory
 
+    ![](images/102.png)
+
+- Unzip the dbsat.zip file
+
+        unzip dbsat.zip
+
+- It will look similar to this 
+
+    ![](images/106.png)    
+
+## Configuring and Executing the DBSAT Sensitive Data Discovery utility
 
 - Copy the provided sample_dbsat.config, make the copy writable and open it for editing
 
+        cd Discover/conf
         cp sample_dbsat.config dbsat.config
         chmod +w dbsat.config
         gedit dbsat.config &
         
-        
+
 - The configuration file includes comments that should be sufficient to understand what the various parameters do. In summary, this is where you can set up:
 
    - the Database connection details
@@ -70,7 +77,10 @@ Once you have unzipped the tool you can see the commands available for dbsat dis
    - the Discovery parameters
    - the Sensitive Categories and related risk level
  
- - Search for DB_SERVICE_NAME and assign it the pdb name, pdb1
+ -- Change the following variables to:
+
+        DB_HOSTNAME = dbsec.oracledemo.com
+        DB_SERVICE_NAME = pdb1
  
  - Save the file and go back to the shell.
 
@@ -82,9 +92,13 @@ Once you have unzipped the tool you can see the commands available for dbsat dis
 
         ./dbsat discover -c Discover/conf/dbsat.config pdb1_dbsat
         
-- Pass dbsat as the username and oracle as the password.
+- Pass **DBSAT_ADMIN** as the username and **Oracle123** as the password.
 
-- At the end of the process, you’ll be asked to provide a password twice (please use oracle).
+    ![](images/108.png)
+
+- At the end of the process, you’ll be asked to provide a password twice (please use Oracle123).
+
+    ![](images/111.png)
 
 - A file named pdb1_dbsat_report.zip is created in the directory (/home/oracle/dbsat/).
 
@@ -97,7 +111,6 @@ Once you have unzipped the tool you can see the commands available for dbsat dis
         nohup firefox pdb1_dbsat_discover.html &
         
 - Firefox opens with the **Database Sensitive Data Assessment** report as shown below:
-
 
 ## Analyze the generated Discoverer report - Summary
 
@@ -141,6 +154,80 @@ You can create your own pattern files.
 - Sensitive Data section
 
 - Schema View
+
+
+## Configuring and Executing the DBSAT Collection utility
+
+- Ensure you are in the directory for the dbsat script
+
+        cd /home/oracle/dbsat
+        
+- Execute the following command to see the options available at run-time
+
+        ./dbsat
+        
+- Run DBSAT in collect mode
+
+        ./dbsat collect dbsat_admin@pdb1 pdb1_collect
+        
+- When prompted, enter **Oracle123** as the password
+
+- DBSAT will perform a connection and setup
+
+    **Note:** It may take several minutes for the collection to complete.
+
+- When complete, DBSAT will prompt you to enter a password for the zip file
+
+    - Enter the password **Oracle123**
+    
+    ![](images/113.png)
+
+- You will see a zip file with the name we gave it during the collect process
+
+        ls -al pdb1_collect.zip
+        
+**Note:** The next step is the reporting utility. You can choose to execute this on the same host or run it on a different host. If you are running DBSAT as part of a security assessment you may want to collect the results but not execute the report.
+        
+## Executing the DBSAT Report utility
+
+- Using our newly-creaetd pdb1_collect.zip, run the reporting utility of DBSAT
+
+        ./dbsat report pdb1_collect
+        
+    **Note:** You do not need to include the .zip extension
+    
+    - Enter the password for pdb1_collect.zip, which should be **Oracle123**
+    
+    - Enter the password for the new pdb1_collect_report.zip file as **Oracle123**
+    
+- Your output should look similar to this screenshot:
+
+    ![](images/116.png)  
+
+- Unzip the report zip to view the html file
+
+    - The password should be **Oracle123**
+
+            unzip pdb1_collect_report.zip
+
+- View the HTML report in Firefox
+
+        nohup firefox pdb1_collect_report.html &
+        
+- You are now viewing the Database Security Assessment Report
+
+    ![](images/120.png)
+    
+
+
+
+
+
+
+
+
+        
+        
 
 
 

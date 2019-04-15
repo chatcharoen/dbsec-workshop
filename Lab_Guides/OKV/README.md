@@ -36,5 +36,9 @@ Oracle Key Vault enables you to quickly deploy encryption and other security sol
 
 ## Labs
 
-[LAB EXERCISE 100: TDE KEY ESCROW](100%2FREADME.md)
+[LAB EXERCISE 100: TDE KEY ESCROW](100/README.md)
+
+<font color="red"> NOT READY -- </font> [LAB EXERCISE 200: TDE ONLINE MASTER KEY](200/README.md)
+
+
 

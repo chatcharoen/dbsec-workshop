@@ -6,7 +6,7 @@
  - Define a default wallet for an endpoint.
  - Upload an existing wallet into Key Vault.
  - Reviewed the contents of the wallet and Key Vault. 
- 
+
 ### LAB EXERCISE 100: TDE KEY ESCROW
 
 - On the desktop, navigate to the Database_Security_Workshop folder, double-click and open the contents. 

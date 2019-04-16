@@ -77,7 +77,7 @@ Once you have unzipped the tool you can see the commands available for dbsat dis
    - the Discovery parameters
    - the Sensitive Categories and related risk level
  
- -- Change the following variables to:
+ - Change the following variables to:
 
         DB_HOSTNAME = dbsec.oracledemo.com
         DB_SERVICE_NAME = pdb1

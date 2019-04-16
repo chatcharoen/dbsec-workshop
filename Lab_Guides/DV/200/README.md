@@ -3,24 +3,19 @@
 
 ## Introduction
 
-This is the ***second*** of several labs which are part of **Oracle Database Security Workshop.** This workshop will walk you through the process configuring, validating and using all of Oracle's Database Security products
+This is one of several labs which are part of **Oracle Database Security Workshop.** This workshop will walk you through the process configuring, validating and using all of Oracle's Database Security products
 
 ### Oracle Database Vault Multi-Factor Authorization
 
-Oracle Database Vault Multi-Factor Authorization extends access controls beyond the traditional role based and even more sophisticated label based access control found in the Oracle Database. Using multi-factor authorization, access to databases can be restricted to a specific subnet or application server, creating a virtual trusted path for data access. Limiting data access to approved applications can be achieved using Oracle Database Vault factors in combination with Oracle Database Vault Realms or Command Rules. The Oracle Database, and Oracle Database Vault, provides a number of built-in Factors, such as IP address, that can be used individually or together in combination with other security rules to significantly raise the level security for an existing application. In addition to the built-in Factors provided by Database Vault, you can add custom factors to meet your own business requirements.
+Oracle Database Vault Multi-Factor Authorization extends access controls beyond the traditional role based and even more sophisticated label based access control found in the Oracle Database. Using multi-factor authorization, access to databases can be restricted to a specific subnet or application server, creating a virtual trusted path for data access. Limiting data access to approved applications can be achieved using Oracle Database Vault factors in combination with Oracle Database Vault Realms or Command Rules. 
+
+The Oracle Database, and Oracle Database Vault, provides a number of built-in Factors, such as IP address, that can be used individually or together in combination with other security rules to significantly raise the level security for an existing application. In addition to the built-in Factors provided by Database Vault, you can add custom factors to meet your own business requirements.
 
 
 # Getting Started
 
 ***To log issues***, click here to go to the [github oracle](https://github.com/kwazulu/dbsec-workshop/issues/new) repository issue submission form.
 
-## Required Artifacts
-
-- The following lab requires:
-  - Laptop (Windows, Mac or Linux)
-  - Internet Access
-  - Oracle VPN/SSL Array Connectivity
-  - VNC
 
 ##	Here is a summary of the users used in these labs.
   -	DBV_OWNER_PDB1 / Oracle123 – User with DVOWNER role to manage Database Vault security policies
@@ -50,13 +45,13 @@ Access the lab exercise folders to begin.  On the desktop, navigate to the Datab
 
 - Navigate and open the folder, DBV_Lab_Exercise_02.
 
-- In this lab, you will use EMPLOYEESEARCH and DBA\_DEBRA to demonstrate how rules can be established to control levels of access within Oracle Database Vault. Start by modifying the EMPLOYEESEARCH\_DATA realm.  Login to the Database Vault owner account ‘dbv\_owner\_pdb1’.  Click the Administration tab
+- In this lab, you will use EMPLOYEESEARCH and DBA_DEBRA to demonstrate how rules can be established to control levels of access within Oracle Database Vault. Start by modifying the EMPLOYEESEARCH_DATA realm.  Login to the Database Vault owner account ‘dbv_owner_pdb1’.  Click the Administration tab
 
 - On the Administration Home page and select Rules from the menu on the left.
 
-- In the Create Rule screen, provide the Name (TRUSTED\_APP\_PATH) and click OK 
+- In the Create Rule screen, provide the Name (TRUSTED_APP_PATH) and click OK 
 
-    ![](../images/202.png)
+    ![](images/202.png)
     
     You can copy and paste the following into the expression text area:
     
@@ -67,11 +62,11 @@ Access the lab exercise folders to begin.  On the desktop, navigate to the Datab
          
 - Click Rule Sets and Create a new Rule Set
 
-    ![](../images/210.png)
+    ![](images/210.png)
 
 - Click ***Next*** and you will notice you can configure error handling and auditing options
 
-    ![](../images/211.png)
+    ![](images/211.png)
     
 - Next, edit the Oracle Database Vault Realm we created in the previous lab
 
@@ -79,14 +74,14 @@ Access the lab exercise folders to begin.  On the desktop, navigate to the Datab
 
 - On Step 3, edit the Realm Authorized Grantee, EMPLOYEESEARCH, and add the PROTECT_EMPSEARCH Rule Set to EMPLOYEESEARCH.  This action further restricts how EMPLOYEESEARCH can be used. 
 
-    ![](../images/213.png)
+    ![](images/213.png)
     
 - Open a browser and navigate to the HR Application at http://dbsec.oracledemo.com:8080/hrapp
 
 - Login to the HR Application as hradmin/Oracle. 
     - Notice the user can successfully view the EMPLOYEE_SEARCH data still
 
-    ![](../images/216.png)
+    ![](images/216.png)
 
 - Next, launch SQL Developer and login as EMPLOYEESEARCH.
 
@@ -96,7 +91,7 @@ Access the lab exercise folders to begin.  On the desktop, navigate to the Datab
         
 - You should receive an error preventing you from using EMPLOYEESEARCH and querying it's own data.
 
-    ![](../images/218.png)
+    ![](images/218.png)
     
 #### Conclusion
 

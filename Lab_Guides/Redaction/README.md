@@ -13,10 +13,8 @@ Oracle Advanced Security comprises two security features to protect sensitive da
 
 - The following lab requires:
   - Laptop (Windows, Mac or Linux)
-    - If running  Windows: [Putty and PuttyGen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
   - VNC client
-  - Oracle 18c Database
-  - Enterprise Manager 13c
+
 
 ### PRIVILEGE ANALYSIS - PROTECTION OF SENSITIVE DATA IN APPLICATIONS USING ORACLE DATABASE DATA REDACTION 
 
@@ -172,4 +170,4 @@ In this lab exercise, you will accomplish the following:
 
 Transparent Data Encryption encrypts data at rest to stop database bypass attacks from accessing sensitive information in storage. Data Redaction reduces exposure of sensitive information in applications by redacting database query results on-the-fly, according to defined policies. Together these two controls form the foundation of a multi-layered, defense-in-depth approach, and further establish Oracle Database as the world’s most advanced database security solution.
 
-**This completes this Lab!**
+**This completes the Lab!**

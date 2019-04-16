@@ -11,8 +11,6 @@
 
 - On the desktop, navigate to the Database_Security_Workshop folder, double-click and open the contents. 
 
-  ![](images/200.png)
-
 - Select the folder, Oracle_Key_Vault.
 
   ![](images/201.png)
@@ -115,5 +113,4 @@
  - Matched the MKIDs of the local wallet with those now available in OKV
 
 
-
-**This completes this Lab!**
+**This completes the Lab!**

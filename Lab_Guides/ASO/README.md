@@ -13,10 +13,8 @@ Oracle Advanced Security comprises two security features to protect sensitive da
 
 - The following lab requires:
   - Laptop (Windows, Mac or Linux)
-    - If running  Windows: [Putty and PuttyGen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
   - VNC client
-  - Oracle 18c Database
-  - Enterprise Manager 13c
+
 
 
 ## Encrypting your data
@@ -43,4 +41,7 @@ Oracle Advanced Security comprises two security features to protect sensitive da
 
 - Please be patient as the infrastructure may take a little time to start.  Once the infrastructure has started, you are ready to move forward with the exercises.
 
+## Labs
+
+[Lab 100: ENCRYPTING A TABLESPACE](100%2FREADME.md)
 

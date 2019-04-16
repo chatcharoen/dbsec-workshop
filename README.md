@@ -4,13 +4,17 @@ Welcome to the **Oracle Database Security Workshop**
 
 As part of this workshop, you will complete labs helping you to better understand:
 
-- Database Security Assessment Tool (DBSAT)
-- Transparent Data Encryption (TDE)
-- Data Redaction 
-- Database Vault (DV)
-- Privilege Analysis (PA)
-- Audit Vault & Database Firewall (AVDF)
-- Data Masking (DMS)
+- [Database Security Assessment Tool (DBSAT)](Lab_Guides%2FDBSAT%2FREADME.md)
+- [Transparent Data Encryption (TDE)](Lab_Guides/ASO/README.md)
+- [Key Vault (OKV)](Lab_Guides/OKV/README.md)
+- [Data Redaction](Lab_Guides/Redaction/README.md)
+
+- [Database Vault (DV)](Lab_Guides/DV/README.md)
+- [Privilege Analysis (PA)](Lab_Guides/PA/README.md)
+- [Audit Vault & Database Firewall (AVDF)](Lab_Guides/AVDF/README.md)
+- [Data Masking (DMS)](Lab_Guides/DMS/README.md)
+
+
 
 
 

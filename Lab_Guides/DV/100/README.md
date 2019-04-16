@@ -4,29 +4,6 @@
 
 ***To log issues***, click here to go to the [github oracle](https://github.com/kwazulu/dbsec-workshop/issues/new) repository issue submission form.
 
-## Required Artifacts
-
-- The following lab requires:
-  - Laptop (Windows, Mac or Linux)
-  - Internet Access
-  - Oracle VPN/SSL Array Connectivity
-  - VNC
-
-##	Here is a summary of the users used in these labs.
-  -	DBV_OWNER_PDB1 / Oracle123 – User with DVOWNER role to manage Database Vault security policies
-  -	SYS / Oracle123     – User with DBA Rights
-  - DBA_DEBRA / Oracle123 – Sr. Database Administrator
-  - DBA_NICOLE  / Oracle123 – Jr. Database Administrator
-  - EMPLOYEESEARCH / Oracle123 - Application Owner
-
-###	OS Accounts and Passwords
-  -	oracle / Oracle123
-  - root / Oracle123
-
-###	If accessing via VNC
- - :2 (5702) - oracle / Oracle123
- - :1 (5701) - root / Oracle123
-
 
 ## LAB EXERCISE 01 – PROTECTING SENSITIVE DATA FROM PRIVILEGED USER ACCESS USING ORACLE DATABASE VAULT REALMS
 

@@ -16,7 +16,7 @@ Oracle Advanced Security comprises two security features to protect sensitive da
   - VNC client
 
 
-### PRIVILEGE ANALYSIS - PROTECTION OF SENSITIVE DATA IN APPLICATIONS USING ORACLE DATABASE DATA REDACTION 
+### PROTECTION OF SENSITIVE DATA IN APPLICATIONS USING ORACLE DATABASE DATA REDACTION 
 
 Oracle Data Redaction enables you to move redaction capabilities out of applications and into the database. It provides an easy way to protect sensitive information that is displayed in applications by replacing it on-the-fly with valid redacted data, while keeping the applications running. Sensitive information is concealed according to flexible polices that provide conditional redaction and that are managed directly within the database. For maximum transparency, redaction preserves the type and formatting of column data returned to applications, and it does not alter the underlying database blocks on disk or in cache. Oracle Data Redaction is designed to be fast so that it can run on production systems. In addition, it is embedded in the database, so no separate installation is required.
 

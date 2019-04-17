@@ -11,26 +11,27 @@
   - Configure the PDB1 database with Secure Configuration ‘Best Practice’ Audit Policy
   - Execute an automated workload generation SQL Script to test the audit policies and confirm that the audit data is being collected by Audit Vault.
 
+## **Step 1:**
     
-- After the Start_OAS_Infrastructure.sh script finishes (see the steps at the end of the section B), open the Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
+- After the Start_Infrastructure.sh script finishes, open the Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
 
-  ![](images/007.png)
+  ![](images/001.png)
 
 - Open the ‘AVDF_–_Section_1_Native_Database_Audit_Collection’ folder.
 
-  ![](images/008.png)
+  ![](images/002.png)
 
 - Open the ‘Audit_–_Lab_Exercise_01’ Folder 
 
-  ![](images/009.png)
+  ![](images/003.png)
 
 - You will now step through a simple example of native Oracle database auditing.  To start the audit test, click the icon ‘Step_1_–_Demonstrate_Native_Database_Auditing.sh’. 
 
-  ![](images/010.png)
+  ![](images/004.png)
 
 - Click the icon, Step_1_–_Demonstrate_Native_Database_Auditing.out and view the output of the script executed.
 
-  ![](images/011.png)
+  ![](images/005.png)
 
 - You first queried the sys.aud$ table to show the number of audit records in the database audit table before you started your test. Your numbers will be different, but will set a baseline.
 
@@ -121,9 +122,11 @@
 
 - Click the Icon ‘Step_2_–_Display_Current_Audit_Settings.sh’.  This script will login to CDB and show audit trail and sys operations parameter, and audit destination parameter.  In Oracle Database , these settings are at the Container Database level.
 
-- Click the icon, Step_2_–_Display_Current_Audit_Settings.out.  In the output you can verify that the initialization parameter AUDIT_TRAIL is set to the value DB, EXTENDED and that AUDIT_SYS_OPERATIONS is set to TRUE.
+   ![](images/006.png)
 
-- Note that the script checks the parameters for audit_file_dest, audit_sys_operations, audit_syslog_level and audit_trail.
+ Click the icon, Step_2_–_Display_Current_Audit_Settings.out.  In the output you can verify that the initialization parameter AUDIT_TRAIL is set to the value DB, EXTENDED and that AUDIT_SYS_OPERATIONS is set to TRUE.
+
+ Note that the script checks the parameters for audit_file_dest, audit_sys_operations, audit_syslog_level and audit_trail.
 
       sys@CDB> show parameter audit;
 
@@ -148,6 +151,8 @@
 
 - Double click the icon, ‘Step_3_–_Review_the_Oracle_DB_Audit_Best_Practice’
 
+  ![](images/007.png)
+
  This SQL file was derived from the Oracle 11g Database Security Best practice that is implemented by default when you create a new DB with 11g using DBCA.  The SQL file contains Oracle Database Audit Policies that are considered to be the best practice for monitoring system activity.  For your implementation you can use this Audit Policy as a starting place, and then tailor the policies to meet your specific business requirements.  The policy does not contain any audit policies for monitoring specific objects.
 
       -- DEFAULT Oracle Database AUDIT Settings
@@ -166,7 +171,7 @@
 
 - Double click the icon labeled ‘Step_4_–_Set_Best_Practice_Audit_Policies.sh‘.  As the name implies, you will set these audit policies.  You will also set sample audit policies to be used later in this lab.
 
-  (insert screenshot here)
+  ![](images/008.png)
 
 - Click the icon, Step_4_–_Set_Best_Practice_Audit_Policies.out to review the output.
 
@@ -199,16 +204,29 @@
 
 - Login to Audit Vault to review the audit policies for pdb1.  Click the icon ‘Step_5_–_Review_Audit Policies_in_Audit_Vault’.  This will bring up a browser in your image that opens up the administrative console on your Audit Vault Server.
 
+  ![](images/009.png)
+
 - Login as the AV Auditor using the username/password of: avauditor/Oracle123+.  Click the Login button to continue.
 
+  ![](images/011.png)
 
 - Click the Policy Tab.
 
+  ![](images/012.png)
+
 - Click the checkbox to select the DBSec Audit Source, ensure the interface is set to Audit Settings and click the Retrieve button.  This action will retrieve the Audit Policy from the selected database (pdb1).  
+
+  ![](images/013.png)
+
+  You can view the status of the collection by clicking on the Jobs page in the left navigation
+
+  ![](images/014.png)
 
 - Refresh the page by clicking on the Audit Settings tab, and then click the link labeled DBSec.  After a few moments you will see some audit settings appear in the summary.
  
- You can drill down on these policies.
+  You can drill down on these policies.
+
+  ![](images/015.png)
 
 - Review the detail for the audit policy by clicking on each Audit Type link.
  
@@ -216,11 +234,17 @@
 
 - Retrieve the User Entitlement data from pdb1.  First, select the Secured Targets tab, be sure Targets is selected and then click DBSec.
 
+  ![](images/016.png)
+
 - Expand the User Entitlements section, then click Retrieve button:
+
+  ![](images/017.png)
 
  You will see another message letting you know the user entitlement data is being collected. During the next lab exercise, you can examine the data that is collected.
 
 - As the last step of this lab, return back to the AV_–_Lab_Exercise_01 folder and double click the icon, ‘Step_6_–_Generate_Audit_Workload’ icon.  The script generates a workload that triggers audit records to be generated.  You may see some errors when this script is run, however these can be ignored.  The errors in the script are used to demonstrate how Oracle DB auditing can capture both successful and unsuccessful transactions.  In the next lab, you will be reviewing the audit records this script generates in the Audit Vault Reporting console.
+
+  ![](images/018.png)
 
  Click the icon, Step_6_–_Generate_Audit_Workload.out to review the output of this script.  
 
@@ -258,9 +282,14 @@
       User altered.
 
 
-
-
  #### Conclusion
+
+- In this lab exercise, you have: 
+  - Demonstrated native Oracle database auditing and the audit settings configured for this environment.
+   - Created a table, configured auditing on that table and then confirmed that the audit records are being generated successfully
+ - Reviewed the Oracle Database Secure Configuration ‘Best Practice’ audit policies 
+ - Configured the PDB1 database with Secure Configuration ‘Best Practice’ Audit Policy
+ - Executed an automated workload generation SQL Script to test the audit policies and confirm that the audit data is being collected by Audit Vault.
 
 
 **This completes the lab!**

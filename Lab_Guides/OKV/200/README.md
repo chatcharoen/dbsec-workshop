@@ -101,3 +101,6 @@ This lab has demonstrated migrating the Transparent Data Encryption wallet from 
 
 
     
+**This completes the Lab!**
+
+- [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)

@@ -1,127 +1,205 @@
-# Oracle Advanced Security - Transparent Data Encryption
+# Oracle Audit Vault & Database Firewall: Database Firewall
 
 
-## Lab 100: ENCRYPTING A TABLESPACE
+## Lab 400: CONFIGURE ORACLE DATABASE FIREWALL TO MONITOR AND PROTECT DATABASES
 
 #### Overview
 
+The Oracle Database Firewall system secures and protects data in SQL databases. It blocks attempted attacks, logs activity, and produces related warnings and provides tools to assess vulnerabilities. The Database Firewall system augments existing database security features, such as encryption and user authentication, and brings significant advantages over traditional database firewall systems.  Traditional systems usually test the syntax of statements passed to the database, recognizing predefined expressions. Creating a set of rules using this technique requires a hand-crafted approach and can be very time-consuming and complex, even for someone very knowledgeable about the database. Even if significant resources create satisfactory protection for known threats, little protection may be offered for unknown threats. The Database Firewall addresses these challenges.
+
+The Oracle Database Firewall system works by analyzing the meaning of the SQL statements that database clients send to the database. This provides a much higher degree of protection than traditional database firewalls, because it does not depend on the source of an attack or on recognizing the syntax of known security threats. The database firewall can block previously unseen attacks (known as "zero-day" attacks), including those targeted individually against your organization. Zero-day attacks are becoming more widespread, and there is great need to protect databases against such attacks.
+
+
 - In this lab exercise, you will accomplish the following:
-     - Validate the status of the encryption keys using Oracle Enterprise    Manager  Cloud Control
-     - OFFLINE the EMPLOYEESEARCH_DATA tablespace
-     - Migrate the tablespace to an encrypted tablespace 
-     - Verify that encryption has taken place
+  - Generate simulated database activity on expected authorized traffic
+  - Monitor Oracle Database traffic in the Database Firewall Management console
+  - Prepare to train the Database Firewall with acceptable and expected behavior
+
     
-- After the Start_OAS_Infrastructure.sh script finishes (see the steps at the end of the section B), open the Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
+- After the Start_Infrastructure.sh script finishes (see the steps at the end of the section B), open the Labs folder on the Oracle Linux Desktop, and navigate to the Audit_Vault_and_Database_Firewall folder.
 
-  ![](images/007.png)
+  ![](images/001.png)
 
-- Open Oracle_Advanced_Security_Lab_Exercise_01 folder.
+- Select the folder, AVDF_-_Section_2_Firewall_Network_Capture
 
-  ![](images/008.png)
+  ![](images/001.png)
 
-- Open the 01_Encrypt_Sensitive_Information browser shortcut.
+- Open the FW-_Lab_Exercise_01 folder
 
-  ![](images/009.png)
+  ![](images/001.png)
 
-- Click the bookmark for Enterprise Manager.
+- In your lab folder, click the ‘Step 01 – Set up Firewall Proxy’ icon.
 
-  ![](images/010.png)
+  ![](images/001.png)
 
-- Log in with the credentials SYSMAN/Oracle123 and navigate to the PDB Database home page by selecting the Databases menu item from the 'Targets' drop down menu as shown below.
+- Log in to your Firewall as fwadmin/Oracle123+ 
 
-  ![](images/011.png)
+- This firewall will be used as a Traffic Proxy.  
 
-  ![](images/012.png)
+  There are several flexible ways to deploy the Database Firewall depending on your requirements and network topology.  You have the option to deploy inline as a bridge, out of band (e.g., using a span port from your network switch), or configured as a proxy.   In this lab, you will configure and deploy the Database Firewall as a proxy.
 
-- Expand the tree structures and click the pluggable database 'cdb_PDB1' as shown.  There may be additional targets, but cdb_PDB1 will appear in the Pluggable Databases tree.
+  Depending on your network configuration, when using Oracle Database Firewall in DPE mode, you may prefer to configure a traffic proxy in Oracle Database Firewall instead of a bridge in line with network traffic. You can then associate the proxy with an Enforcement Point. 
 
-  ![](images/014.png)
+  You can also specify multiple ports for a proxy in order to use them for different Enforcement Points.  The proxy port has already been configured for the lab environment. All of the database traffic will be directed to the Firewall on Port 15212.  
 
-  This opens the PDB1 home page.  Review the status of your environment by selecting Security → Transparent Data Encryption. 
+  To view this, click the ‘System’ tab, then on the ‘Network’ link in the ‘System’ section, as shown below.
 
-  ![](images/015.png)
+  Take a look at the Management Interface, by clicking on Network under SYSTEM.  These settings were captured during the installation.  This is the screen you would use if changes were necessary.  
 
-  If the Database Login page appears, then log in as an administrative user, such as SYS. User SYS must log in with the SYSDBA role selected.  For convenience, select from one of the saved Named Credentials for PDB1, then click Login.
+  ![](images/001.png)
 
-  ![](images/016.png)
+  This is an example of configuring a Firewall with a single network interface.  Other configurations are possible.  For example, one network interface may act as a proxy, while another might monitor traffic from a SPAN port while yet another sits inline and monitors traffic directed right at the database listener on port 1521.
 
-- Expand on the Keystore and Master Keys section in the lower left hand corner and review the information provided in the Oracle Advanced Security – Transparent Data Encryption screen.  Notice that the Keystore Status is OPEN and you have one Master Key in use—pdb1.   You can now encrypt data within the database. 
+  ![](images/001.png)
 
-  ![](images/017.png)
+- Next, you need to be aware of an important configuration option of the Oracle Database Firewall.  Navigate to the System > Public Keys section by clicking on the Public Keys menu option in the left navigation.
 
-- Scroll down to Encrypted Objects and see what we have
+  This Public Key is to be used if you have enabled Oracle Advanced Security to encrypt network traffic to prevent interception and exposure.  In order for to decrypt database traffic using database interrogation, you must provide the Database Firewall public key to the Oracle Database that is using Oracle Native Network Encryption.
 
-  ![](images/018.png)
+  To use this key, an entry in the sqlnet.ora file would make a reference to a file on the server containing a copy of the key data.  
 
-- Within Encrypted Tablespaces, Click Offline Operations and choose Offline
+  ![](images/001.png)
 
-  ![](images/019.png)
+- Navigate back to the Audit Vault Server ui
 
-- Click the magnifying glass icon to search for a tablespace to put offline
+ ![](images/001.png)
 
-  ![](images/020.png)
+- Once the Oracle Audit Vault Server login page loads, login as the AV Administrator using the username/password of: avadmin/Oracle123+.  Click the Login button to continue.
 
-- Choose EMPLOYEESEARCH_DATA as the tablespace, and click OK
+ ![](images/001.png)
 
-  ![](images/021.png)
+- If you look in the lower right hand section of the Home page you'll find information about Firewalls that are registered with this AVFW server:
 
-- Ensure Run Immediate is selected, then Click ok
+   ![](images/001.png)
 
-  ![](images/023.png)
+  The DBSecOracle Secured Target has already been registered.  We will now check the Enforcement Point. An Enforcement Point is the Oracle Database Firewall object that is responsible for monitoring and logging SQL statements passed to the database. Multiple enforcement points can be used to monitor traffic to different databases or at different locations in the network.
 
-  ![](images/024.png)
+  You will be monitoring the Oracle database, pdb1.  The DBFW server will monitor and block activity to the database based on policies that you will select in the next lab.   
 
-- Scroll back down to Encrypted Tablespaces, Click Offline Operation, and click Encrypt
+- Navigate to the Secured Targets page and click the Enforcement Points menu item.
 
-  ![](images/025.png)
+  ![](images/001.png)
 
-- Click the search icon 
+- Select the DBSecOracle_EP enforcement point
 
-  ![](images/026.png) 
+  ![](images/001.png)
 
-- Choose EMPLOYEESEARCH_DATA as the offline tablespace to convert, click OK
+- Take a few minutes to review the settings of this enforcement point. Notice that proxy port 15212 is selected for use
 
-  ![](images/027.png)
+  ![](images/001.png)
 
-- Ensure Run Immediate is selected, then click ok
+- Before testing the enforcement point, lets change the policy to Log All
 
-   ![](images/028.png) 
+- Logout as avadmin and login as avauditor/Oracle123+
 
-   ![](images/029.png)
+  ![](images/001.png) logout
 
-- Under Encrypted Objects, click Refresh on Encrypted Tablespaces. Within a few seconds you should see EMPLOYEESEARCH_DATA back ONLINE with AES128 encryption
+  ![](images/001.png) login
 
-  ![](images/030.png)
+- Select the Secured Targets tab
 
-- Back in the Oracle_Advanced_Security desktop folder, click 03_Search_Strings_Encrypted.sh and verify that the data has been encrypted.  It will look similar to this screenshot
+  ![](images/001.png)
 
-  ![](images/031.png)
+- Select the DBSecOracle Secured Target
 
-  ![](images/032.png)
+  ![](images/001.png)
 
-- Finally, return to the Security -> Transparent Data Encryption Section.
+- Expand the Firewall Policy section, click Change, select Log All policy, click Save
 
-  Review in the Encrypted Objects section that the tablespace, EMPLOYEESEARCH_DATA is encrypted with the default Encryption Algorithm.
+  ![](images/001.png)
+
+- Navigate to the Lab_Exercise_01 folder and run Step_03_-_Test_traffic_through_firewall.sh
+
+  View the Step_03 output file
+
+      idle> conn system/Oracle123@pdb1.proxy;
+      Connected.
+
+      GLOBAL_NAME
+      ----------------------------------------------------------------------------------------------------
+      system@PDB1
+
+      system@PDB1> 
+      system@PDB1> select name,dbid,cdb,con_id,con_dbid from v$database;
+
+      NAME            DBID CDB     CON_ID   CON_DBID
+      --------- ---------- --- ---------- ----------
+      CDB       2116305556 YES          0  110739284
+
+      system@PDB1> 
+      system@PDB1> SELECT NAME,OPEN_MODE FROM GV$PDBS;
+
+      NAME
+      ----------------------------------------------------------------------------------------------------
+      OPEN_MODE
+      ----------
+      PDB1
+      READ WRITE
+
+- You have now connected to the database via the Database Firewall proxy port
+  
+  Database traffic is being directed to port 15212 on fw.oracle.com and then being returned to pdb1 via the Enforcement Point.  This short test confirms that You are able to complete SQL statements.  You will see that the SQL returns ‘PDB1’.
+
+- Back in the browser, navigate to the Reports tab and view the available Database Firewall reports.
+
+  Open the report Database traffic analysis by client IP detail by clicking on the highlighted icon below. 
+
+  ![](images/001.png)
+
+  Note that the Firewall updates the Audit Vault Server every five minutes.  You may need to wait a little while to see Report data.
+
+  Find your select statement and drill down to view the details of the query.
+
+   ![](images/001.png)
+
+- You will now simulate some application traffic for the DBFW to train what is considered to be normal and authorized traffic for your White List policy.  Again, White List policies are simply the set of approved SQL commands that the firewall expects to see.  For this simulation you will be using a tool called Swingbench.  It runs SQL statements that simulate an order entry application.  It performs different DML statement using SQL bind variables to query and change customer and order information.  Click the ‘Step 05 – Start Swingbench’ icon in your lab folder, as shown below.
+
+   ![](images/001.png)
+
+  Swingbench is a java application that will open after a few moments.  Notice that the ‘Connection String’ is pre-configured to connect to your Oracle Database via the proxy port on the Firewall.  Click the ‘Start’ green arrow icon, as shown below.  This will start the simulated application load.  You will run roughly 10 minutes of application traffic.
+
+   ![](images/001.png)
+
+  Navigate to the ‘Events’ tab in Swingbench.  
+
+   ![](images/001.png)
+
+  After a few moments you will see the transactions per minute (TPM) graph show an increase in transactions.
+
+   ![](images/001.png)
+
+- Navigate to the browser tab you were using for Database Firewall and login using fwadmin/Oracle123+
+
+    ![](images/001.png)
+
+- Navigate to System / Network Traffic / Live Capture.  Select Packet Content for the Level of Detail.  Click the Show Traffic button.
+
+  Notice that since the network traffic is unencrypted, you can actually see some SQL statements.  As you learned earlier, Database Firewall can be configured to read network traffic encrypted by Oracle Network Encryption.
+
+    ![](images/001.png)
 
 
 
-You have now demonstrated encryption of datafiles by the database, completely transparently to any application.  
-For additional information, see also:
-- "Checking Encrypted Tablespaces in the Current Database Instance" to query the database for existing encrypted tablespaces
-http://docs.oracle.com/cd/E16655_01/server.121/e17609/tdpsg_encryption.htm#CHDECIDD
-- Oracle Database Advanced Security Administrator's Guide for detailed information about tablespace encryption
-http://docs.oracle.com/cd/E16655_01/network.121/e17729/toc.htm
-- Oracle Database SQL Language Reference for more information about the CREATE TABLESPACE statement
-http://docs.oracle.com/cd/E16655_01/server.121/e17209/statements_7003.htm#SQLRF01403
+
+
+
+
+
+
+
+  
+
+
+
+
+
 
 
 
 
  #### Conclusion
 
- As data exposed in applications continues to rapidly expand, enterprises must have strong controls in place to protect data no matter what devices or applications are used. Oracle Database helps organizations keep their sensitive information safe in this increasingly complex environment by delivering preventive, detective and administrative controls that enforce data security in the database. Oracle Advanced Security with Oracle Database provides two critical preventive controls.
 
-Transparent Data Encryption encrypts data at rest to stop database bypass attacks from accessing sensitive information in storage. Data Redaction reduces exposure of sensitive information in applications by redacting database query results on-the-fly, according to defined policies. Together these two controls form the foundation of a multi-layered, defense-in-depth approach, and further establish Oracle Database as the world’s most advanced database security solution.
 
 **This completes the lab!**
 

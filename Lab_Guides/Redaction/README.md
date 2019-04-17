@@ -117,8 +117,7 @@ In this lab exercise, you will accomplish the following:
 
 - After adding the NINO column to the Data Redaction Policy, click the Add button to add SSN, SIN, and CORPORATE_CARD with the parameters you see below.  
     
-     ![](images/123.png)
-    
+    ![](images/123.png)    
      ![](images/124.png)
     
      ![](images/121.png)
@@ -148,7 +147,7 @@ In this lab exercise, you will accomplish the following:
 
 - On the Expression screen, add the following expression to make JDBC connections exempt from the policy (HR Application uses JDBC to connect to the database)
 
-        SYS_CONTEXT('USERENV','MODULE') = 'JDBC Thin Client'
+        SYS_CONTEXT('USERENV','MODULE') != 'JDBC Thin Client'
         OR SYS_CONTEXT('USERENV','MODULE') is null
 
   ![](images/131.png)

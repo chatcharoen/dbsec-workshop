@@ -22,17 +22,19 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
 - Select the folder, AVDF_-_Section_2_Firewall_Network_Capture
 
-  ![](images/001.png)
+  ![](images/002.png)
 
 - Open the FW-_Lab_Exercise_01 folder
 
-  ![](images/001.png)
+  ![](images/003.png)
 
 - In your lab folder, click the ‘Step 01 – Set up Firewall Proxy’ icon.
 
-  ![](images/001.png)
+  ![](images/004.png)
 
 - Log in to your Firewall as fwadmin/Oracle123+ 
+
+  ![](images/005.png)
 
 - This firewall will be used as a Traffic Proxy.  
 
@@ -46,11 +48,11 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
   Take a look at the Management Interface, by clicking on Network under SYSTEM.  These settings were captured during the installation.  This is the screen you would use if changes were necessary.  
 
-  ![](images/001.png)
+  ![](images/006.png)
 
   This is an example of configuring a Firewall with a single network interface.  Other configurations are possible.  For example, one network interface may act as a proxy, while another might monitor traffic from a SPAN port while yet another sits inline and monitors traffic directed right at the database listener on port 1521.
 
-  ![](images/001.png)
+  ![](images/007.png)
 
 - Next, you need to be aware of an important configuration option of the Oracle Database Firewall.  Navigate to the System > Public Keys section by clicking on the Public Keys menu option in the left navigation.
 
@@ -58,56 +60,58 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
   To use this key, an entry in the sqlnet.ora file would make a reference to a file on the server containing a copy of the key data.  
 
-  ![](images/001.png)
+  ![](images/008.png)
 
 - Navigate back to the Audit Vault Server ui
 
- ![](images/001.png)
+ ![](images/009.png)
 
 - Once the Oracle Audit Vault Server login page loads, login as the AV Administrator using the username/password of: avadmin/Oracle123+.  Click the Login button to continue.
 
- ![](images/001.png)
+ ![](images/010.png)
 
 - If you look in the lower right hand section of the Home page you'll find information about Firewalls that are registered with this AVFW server:
 
-   ![](images/001.png)
+   ![](images/011.png)
 
-  The DBSecOracle Secured Target has already been registered.  We will now check the Enforcement Point. An Enforcement Point is the Oracle Database Firewall object that is responsible for monitoring and logging SQL statements passed to the database. Multiple enforcement points can be used to monitor traffic to different databases or at different locations in the network.
+- The DBSecOracle Secured Target has already been registered.  We will now check the Enforcement Point. An Enforcement Point is the Oracle Database Firewall object that is responsible for monitoring and logging SQL statements passed to the database. Multiple enforcement points can be used to monitor traffic to different databases or at different locations in the network.
 
   You will be monitoring the Oracle database, pdb1.  The DBFW server will monitor and block activity to the database based on policies that you will select in the next lab.   
 
 - Navigate to the Secured Targets page and click the Enforcement Points menu item.
 
-  ![](images/001.png)
+  ![](images/012.png)
 
 - Select the DBSecOracle_EP enforcement point
 
-  ![](images/001.png)
+  ![](images/013.png)
 
 - Take a few minutes to review the settings of this enforcement point. Notice that proxy port 15212 is selected for use
 
-  ![](images/001.png)
+  ![](images/014.png)
 
-- Before testing the enforcement point, lets change the policy to Log All
+  ![](images/015.png)
 
-- Logout as avadmin and login as avauditor/Oracle123+
+- Before testing the enforcement point, lets change the policy to Log All. Logout as avadmin and login as avauditor/Oracle123+
 
-  ![](images/001.png) logout
+  ![](images/016.png) logout
 
-  ![](images/001.png) login
+  ![](images/017.png) login
 
 - Select the Secured Targets tab
 
-  ![](images/001.png)
+  ![](images/018.png)
 
 - Select the DBSecOracle Secured Target
 
-  ![](images/001.png)
+  ![](images/019.png)
 
 - Expand the Firewall Policy section, click Change, select Log All policy, click Save
 
-  ![](images/001.png)
-
+  ![](images/020.png)
+  
+  ![](images/021.png)
+  
 - Navigate to the Lab_Exercise_01 folder and run Step_03_-_Test_traffic_through_firewall.sh
 
   View the Step_03 output file

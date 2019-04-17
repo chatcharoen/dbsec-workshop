@@ -116,13 +116,38 @@ In this lab exercise, you will accomplish the following:
      ![](images/119.png) 
 
 - After adding the NINO column to the Data Redaction Policy, click the Add button to add SSN, SIN, and CORPORATE_CARD with the parameters you see below.  
+
+        Sensitive Column Type: SOCIAL_INSURANCE_NUMBER
+        Expression Name: Default Expression
+        Redaction Format: Canadian Social Insurance Numbers - Formatted
+    
+     **Note:** The **Redaction Format** input will be automatically filled out as **PARTIAL**  
     
     ![](images/123.png)    
-     ![](images/124.png)
+
+- Add the SSN column 
+
+        Sensitive Column Type: SOCIAL_SECURITY_NUMBER
+        Expression Name: Default Expression
+        Redaction Format: U.S. Social Security Numbers - Formatted
+       
+     **Note:** The **Redaction Format** input will be automatically filled out as **PARTIAL**  
+     
+    ![](images/124.png)
     
-     ![](images/121.png)
-    
-     ![](images/122.png) 
+- Add the CORPORATE_CARD column   
+
+        Sensitive Column Type: CREDIT_CARD_NUMBER
+        Expression Name: Default Expression
+        Redaction Format: Credit Card Numbers - Pratially Redacted
+       
+     **Note:** The **Redaction Format** input will be automatically filled out as **PARTIAL** and you do not need to complete the **Functional Attributes**
+     
+    ![](images/121.png)
+
+- You should see the following 4 object columns
+
+    ![](images/122.png)
 
 - Navigate back to the HR Application in your browser and look at a few of the employee records and notice how they are being redacted. They should look something like the screenshots below. If they do not look like this, you may have an error in your Redaction config.
 

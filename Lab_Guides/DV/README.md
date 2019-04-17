@@ -63,3 +63,8 @@ The proliferation of regulations and privacy laws around the globe requires flex
 ](200%2FREADME.md)
 
 
+**This completes the Lab!**
+
+- [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
+
+

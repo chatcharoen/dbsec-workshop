@@ -95,5 +95,9 @@
         sqlplus system/Oracle123@pdb1
         select count(*) from employeesearch.demo_hr_users;
         
-    
+## Conclusion
+
+This lab has demonstrated migrating the Transparent Data Encryption wallet from a local file on the database server to Oracle Key Vault, using **Online Master Key**.
+
+
     

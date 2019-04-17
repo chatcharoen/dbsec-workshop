@@ -23,18 +23,22 @@
 - Login to cdb as SYS
 
 - Click the Security Tab then click Transparent Data Encryption
-- Under **Keystore and Master Keys** click **More** and choose **Migrate**
-- Click **OKV Integration Setup**
+- Under **Keystore and Master Keys** click **More** and choose **OKV Integration Setup**
 - Choose **OS_ORACLE** as the Host Credentials
 - Set the **OKV Library Path** to
 
         /app/oracle/dbsec/product/okvutil/bin
         
-- Set the **OKV Wallet Group** to **cdb**
-- Set the **OKV Endpoint Password** to **Oracle123**
+- Set the **OKV Wallet Group** to 
+ 
+       cdb
 
+- Set the **OKV Endpoint Password** to 
+ 
+       Oracle123
+
+- Your screen will look like this
    ![](images/210.png)
-
 
 - Test the Integration
 
@@ -44,30 +48,33 @@
     
 - If necessary, select OS_ORACLE as your Named Credential
 
-            /app/oracle/dbsec/product/18.0.0/dbhome_1/network/admin
-            
 - Set your migrate keystore variables to look like this
+
+       Configuration File: /app/oracle/dbsec/product/18.0.0/dbhome_1/network/admin
+       Wallet Location: /app/oracle/dbsec/admin/cdb/wallet
+       Wallet Password: Oracle123
+       Password or Connect String: null 
+       Local Library Location: /opt/oracle/extapi/64/hsm/oracle/1.0.0
 
     ![](images/218.png)       
     ![](images/220.png)
-    
-        Configuration File: /app/oracle/product/18.0.0/dbhome_1/network/admin
-        Wallet Location: /app/oracle/dbsec/admin/cdb/wallet
-        Wallet Password: Oracle123
-        Password or Connect String: null 
-        Local Library Location: /opt/oracle/extapi/64/hsm/oracle/1.0.0
-        
+ 
 - If you are prompted to login, login as *SYS*
+- If the browser moves you to **pdb1** navigate back to **cdb**
+- You should see the Keystore say:
+
+        OKV - OKV
 
 - Perform a key rotation by clicking *Rekey*
 
+        Password or Connect String: null
+        Key Description: Test rekey
+            
     ![](images/224.png)
     
-            Password or Connect String: null
-            Key Description: Test rekey
-            
-- Confirm you want to perform the key rotation
 
+- Confirm you want to perform the key rotation
+    - Select on **All Containers**
 
 ## Remove the local wallet files
 

@@ -282,9 +282,14 @@
       User altered.
 
 
-
-
  #### Conclusion
+
+- In this lab exercise, you have: 
+  - Demonstrated native Oracle database auditing and the audit settings configured for this environment.
+   - Created a table, configured auditing on that table and then confirmed that the audit records are being generated successfully
+ - Reviewed the Oracle Database Secure Configuration ‘Best Practice’ audit policies 
+ - Configured the PDB1 database with Secure Configuration ‘Best Practice’ Audit Policy
+ - Executed an automated workload generation SQL Script to test the audit policies and confirm that the audit data is being collected by Audit Vault.
 
 
 **This completes the lab!**

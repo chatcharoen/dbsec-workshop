@@ -1,39 +1,44 @@
-# Oracle Advanced Security - Transparent Data Encryption
+# Oracle Audit Vault & Database Firewall: Managing an Audit Policy
 
 
-## Lab 100: ENCRYPTING A TABLESPACE
+## Lab 100: MANAGING AN AUDIT POLICY
 
 #### Overview
 
-- In this lab exercise, you will accomplish the following:
-     - Validate the status of the encryption keys using Oracle Enterprise    Manager  Cloud Control
-     - OFFLINE the EMPLOYEESEARCH_DATA tablespace
-     - Migrate the tablespace to an encrypted tablespace 
-     - Verify that encryption has taken place
+- Demonstrate traditional native Oracle database auditing and the audit settings configured for this environment.
+  - Create a table, configure auditing on that table then confirm that the audit records are being generated successfully
+  - Review the Oracle Database Secure Configuration ‘Best Practice’ audit policies 
+  - Configure the PDB1 database with Secure Configuration ‘Best Practice’ Audit Policy
+  - Execute an automated workload generation SQL Script to test the audit policies and confirm that the audit data is being collected by Audit Vault.
+
     
 - After the Start_OAS_Infrastructure.sh script finishes (see the steps at the end of the section B), open the Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
 
   ![](images/007.png)
 
-- Open Oracle_Advanced_Security_Lab_Exercise_01 folder.
+- Open the ‘AVDF_–_Section_1_Native_Database_Audit_Collection’ folder.
 
   ![](images/008.png)
 
-- Open the 01_Encrypt_Sensitive_Information browser shortcut.
+- Open the ‘Audit_–_Lab_Exercise_01’ Folder 
 
   ![](images/009.png)
 
-- Click the bookmark for Enterprise Manager.
+- You will now step through a simple example of native Oracle database auditing.  To start the audit test, click the icon ‘Step_1_–_Demonstrate_Native_Database_Auditing.sh’. 
 
   ![](images/010.png)
 
-- Log in with the credentials SYSMAN/Oracle123 and navigate to the PDB Database home page by selecting the Databases menu item from the 'Targets' drop down menu as shown below.
+- Click the icon, Step_1_–_Demonstrate_Native_Database_Auditing.out and view the output of the script executed.
 
   ![](images/011.png)
 
-  ![](images/012.png)
+- You first queried the sys.aud$ table to show the number of audit records in the database audit table before you started your test. Your numbers will be different, but will set a baseline.
 
-- Expand the tree structures and click the pluggable database 'cdb_PDB1' as shown.  There may be additional targets, but cdb_PDB1 will appear in the Pluggable Databases tree.
+      system@PDB1> select count(*) from sys.aud$;
+
+      COUNT(*)
+      ----------
+      7
 
   ![](images/014.png)
 

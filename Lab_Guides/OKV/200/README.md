@@ -15,7 +15,7 @@
 
 - Login to EM as SYSMAN / Oracle123
 - Navigate to the database cdb - container database
-<<<<<<< HEAD
+
 - You may be prompted to set the identifier
 
     ![](images/208.png)

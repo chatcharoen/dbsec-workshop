@@ -148,13 +148,15 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
   Open the report Database traffic analysis by client IP detail by clicking on the highlighted icon below. 
 
-  ![](images/001.png)
+  ![](images/022.png)
 
   Note that the Firewall updates the Audit Vault Server every five minutes.  You may need to wait a little while to see Report data.
 
   Find your select statement and drill down to view the details of the query.
 
-   ![](images/001.png)
+   ![](images/023.png)
+
+   ![](images/024.png)
 
 - You will now simulate some application traffic for the DBFW to train what is considered to be normal and authorized traffic for your White List policy.  Again, White List policies are simply the set of approved SQL commands that the firewall expects to see.  For this simulation you will be using a tool called Swingbench.  It runs SQL statements that simulate an order entry application.  It performs different DML statement using SQL bind variables to query and change customer and order information.  Click the ‘Step 05 – Start Swingbench’ icon in your lab folder, as shown below.
 

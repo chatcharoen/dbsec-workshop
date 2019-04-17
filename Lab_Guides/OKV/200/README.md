@@ -15,7 +15,12 @@
 
 - Login to EM as SYSMAN / Oracle123
 - Navigate to the database cdb - container database
-- Login to cdb as SYS or C##KEYMASTER
+- You may be prompted to set the identifier
+
+    ![](images/208.png)
+
+- Login to cdb as SYS
+- 
 - Click the Security Tab then click Transparent Data Encryption
 - Under **Keystore and Master Keys** click **More** and choose **Migrate**
 - Click **OKV Integration Setup**
@@ -25,6 +30,42 @@
             /app/oracle/dbsec/product/okvutil/bin
 - Set the **OKV Wallet Group** to **cdb**
 - Set the **OKV Endpoint Password** to **Oracle123**
+
+   ![](images/210.png)
+
+
 - Test the Integration
 
+- Click Migrate
 
+    ![](images/214.png)
+    
+- If necessary, select OS_ORACLE as your Named Credential
+
+            /app/oracle/dbsec/product/18.0.0/dbhome_1/network/admin
+            
+- Set your migrate keystore variables to look like this
+
+    ![](images/218.png)       
+    ![](images/220.png)
+    
+        Configuration File: /app/oracle/product/18.0.0/dbhome_1/network/admin
+        Wallet Location: /app/oracle/dbsec/admin/cdb/wallet
+        Wallet Password: Oracle123
+        Password or Connect String: null 
+        Local Library Location: /opt/oracle/extapi/64/hsm/oracle/1.0.0
+        
+- If you are prompted to login, login as *SYS*
+
+- Perform a key rotation by clicking *Rekey*
+
+    ![](images/224.png)
+    
+            Password or Connect String: null
+            Key Description: Test rekey
+            
+- Confirm you want to perform the key rotation
+
+
+    
+    

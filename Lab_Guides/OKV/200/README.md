@@ -15,7 +15,7 @@
 
 - Login to EM as SYSMAN / Oracle123
 - Navigate to the database cdb - container database
-- Login to cdb as SYS or C##KEYMASTER
+- Login to cdb as SYS
 - Click the Security Tab then click Transparent Data Encryption
 - Under **Keystore and Master Keys** click **More** and choose **Migrate**
 - Click **OKV Integration Setup**

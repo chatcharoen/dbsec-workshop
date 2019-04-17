@@ -50,6 +50,10 @@ Once you have unzipped the tool you can see the commands available for dbsat dis
 
     ![](images/103.png)
 
+- Start the Oracle Container Database and Pluggable Database, pdb1, using this command from the terminal:
+
+    HOME/scripts/start_cdb.sh
+
 - Move to the dbsat directory
 
     ![](images/102.png)

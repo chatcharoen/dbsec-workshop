@@ -1,4 +1,4 @@
-# Oracle Advanced Security - Transparent Data Encryption
+# Oracle Audit Vault and Database Firewall 
 
 
 ## Lab 200: REDUCE TIME TO COMPLIANCE USING ORACLE AUDIT VAULT REPORTING
@@ -6,10 +6,12 @@
 #### Overview
 
 - In this lab exercise, you will accomplish the following:
-     - Validate the status of the encryption keys using Oracle Enterprise    Manager  Cloud Control
-     - OFFLINE the EMPLOYEESEARCH_DATA tablespace
-     - Migrate the tablespace to an encrypted tablespace 
-     - Verify that encryption has taken place
+     - Generate a variety of reports available in Audit Vault including:
+          - Data Access Report
+          - Database Vault Audit Report 
+          - System Management 
+          - Entitlement Snapshot
+          - Compliance Reports
     
 - After the Start_OAS_Infrastructure.sh script finishes (see the steps at the end of the section B), open the Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
 

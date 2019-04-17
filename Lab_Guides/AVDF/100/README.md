@@ -11,26 +11,27 @@
   - Configure the PDB1 database with Secure Configuration ‘Best Practice’ Audit Policy
   - Execute an automated workload generation SQL Script to test the audit policies and confirm that the audit data is being collected by Audit Vault.
 
+## **Step 1:**
     
-- After the Start_OAS_Infrastructure.sh script finishes (see the steps at the end of the section B), open the Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
+- After the Start_Infrastructure.sh script finishes, open the Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
 
-  ![](images/007.png)
+  ![](images/001.png)
 
 - Open the ‘AVDF_–_Section_1_Native_Database_Audit_Collection’ folder.
 
-  ![](images/008.png)
+  ![](images/002.png)
 
 - Open the ‘Audit_–_Lab_Exercise_01’ Folder 
 
-  ![](images/009.png)
+  ![](images/003.png)
 
 - You will now step through a simple example of native Oracle database auditing.  To start the audit test, click the icon ‘Step_1_–_Demonstrate_Native_Database_Auditing.sh’. 
 
-  ![](images/010.png)
+  ![](images/004.png)
 
 - Click the icon, Step_1_–_Demonstrate_Native_Database_Auditing.out and view the output of the script executed.
 
-  ![](images/011.png)
+  ![](images/005.png)
 
 - You first queried the sys.aud$ table to show the number of audit records in the database audit table before you started your test. Your numbers will be different, but will set a baseline.
 
@@ -121,9 +122,11 @@
 
 - Click the Icon ‘Step_2_–_Display_Current_Audit_Settings.sh’.  This script will login to CDB and show audit trail and sys operations parameter, and audit destination parameter.  In Oracle Database , these settings are at the Container Database level.
 
-- Click the icon, Step_2_–_Display_Current_Audit_Settings.out.  In the output you can verify that the initialization parameter AUDIT_TRAIL is set to the value DB, EXTENDED and that AUDIT_SYS_OPERATIONS is set to TRUE.
+   ![](images/006.png)
 
-- Note that the script checks the parameters for audit_file_dest, audit_sys_operations, audit_syslog_level and audit_trail.
+ Click the icon, Step_2_–_Display_Current_Audit_Settings.out.  In the output you can verify that the initialization parameter AUDIT_TRAIL is set to the value DB, EXTENDED and that AUDIT_SYS_OPERATIONS is set to TRUE.
+
+ Note that the script checks the parameters for audit_file_dest, audit_sys_operations, audit_syslog_level and audit_trail.
 
       sys@CDB> show parameter audit;
 

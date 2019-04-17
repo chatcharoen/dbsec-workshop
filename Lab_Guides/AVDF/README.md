@@ -22,7 +22,7 @@ Oracle Audit Vault and Database Firewall provides a first line of defense for da
 
 - On the Oracle Linux Desktop, navigate to the Database_Security_Labs folder, double-click and open the contents. 
 
-    ![](images/001.png)
+  ![](images/001.png)
 
 - Select the folder, Audit_Vault_and_Database_Firewall.
 
@@ -30,7 +30,7 @@ Oracle Audit Vault and Database Firewall provides a first line of defense for da
 
 - Select the folder, AVDF_-_Getting_The_Environment_Ready.
 
-  ![](images/003png)
+  ![](images/003.png)
 
 - In the AVDF_-_Getting_The_Environment_Ready folder, select Start_Infrastructure.sh.  This script will start the entire necessary infrastructure used in these lab exercises. In these lab exercises, use the Display button to view the contents of the scripts before executing.  This will allow you to review the steps, commands and scripts used in these exercises.  When executing scripts, use the Run in Terminal button.
 

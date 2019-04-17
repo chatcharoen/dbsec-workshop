@@ -1,33 +1,45 @@
-# Creating OCI Images using Packer
+# Database Security Workshop: Oracle Key Vault
 
-Welcome to the **Oracle Cloud Infrastructure** Compute image building with Packer workshop. This workshop will walk you through the process of creating an custom infrastructure image to support a variety of DevOps and production use-cases.
+## Introduction
 
-As part of this workshop, you will complete labs helping you to better understand:
+This is one of several labs which are part of **Oracle Database Security Workshop.** This workshop will walk you through the process configuring, validating and using all of Oracle's Database Securtity products
 
-- Configuring OCI to support and Image
-- Launching and image and installing software (packer and git)
-- Using Packer and Git to build a custom OCI image which is configured to support a desktop login via VNC, firewall configuration and a custom environment (alias setup and variables)
+Oracle Key Vault enables you to quickly deploy encryption and other security solutions by centrally managing encryption keys, Oracle wallets, Java keystores (JKS), Java Cryptography Extension keystores (JCEKS), and credential files. Oracle Key Vault is optimized for managing Oracle Advanced Security Option/Transparent Data Encryption (TDE) master keys. 
 
-To learn more about this workshop please watch the video below.  
+The full-stack, security-hardened Oracle Key Vault software appliance uses Oracle Linux and Oracle Database technology for security, availability, and scalability. This centralized approach addresses challenges that are caused by the increased use of keys, wallets, and keystores, and prevents their accidental loss, while enabling long-term retention and restoration of encrypted data. In addition to supporting Oracle database and application servers, Oracle Key Vault follows the industry standard OASIS Key Management Interoperability Protocol (KMIP) for compatibility with KMIP-based clients.
 
-![](images/youtube.png)
-
-<a href="https://videohub.oracle.com/media/PackerA+Overview/1_i0algeik" target="video">Workshop Overview Video</a>
+***To log issues***, click here to go to the [github oracle](https://github.com/oracle/learning-library/issues/new) repository issue submission form.
 
 
-### **Step 1**: Acquire an Oracle Cloud Trial Account
+## Required Artifacts
 
-- Bookmark this page for future reference.
+- The following lab requires:
+  - Laptop (Windows, Mac or Linux)
+  - VNC client
 
-- Please click on the URL to create your <a class="trial-link" href="https://myservices.us.oraclecloud.com/mycloud/signup?language=en&sourceType=:ow:lp:2t::RC_NAMK190212P00041:PackerOCI_HOL&intcmp=:ow:lp:2t::RC_NAMK190212P00041:PackerOCI_HOL" target="trial">Free Account</a> and complete all the required steps. When you complete the registration process you'll receive a $300 credit that will enable you to complete the lab for free.  Additionally, you'll have 1000s of hours left over to continue to explore the Oracle Cloud.
 
-  - Soon after requesting your trial you will receive the following email.
+### LAB CONFIGURATION & DETAILS
 
-  ![](images/getstarted.png)
+- For these lab exercises, the following infrastructure components will be used.
+  - Database: Database (pdb1) 
+  - Key Vault 12..2 Server 
 
-### **Step 2**: Navigate to Lab 100
+- Here is a summary of the users used in these labs.
+    - KVAUDITOR / Oracle123+
+    - KVSUPER / Oracle123+
+    - KVADMIN / Oracle123+
+    - oracle / Oracle123
+    - root / Oracle123
 
-- [Click here to navigate to Lab 100](Lab100.md)
-- _You can see a list of Lab Guides_ by clicking on the **Menu Icon** hamburger in the upper left corner of the browser window. Then, **Select Lab 100: Cloud Infrastructure Configuration**.
+- If accessing via VNC
+  - :2 (5702) - oracle / Oracle123
 
-  ![](images/Introham.png)
+
+## Labs
+
+[LAB EXERCISE 100: TDE KEY ESCROW](100/README.md)
+
+<font color="red"> NOT READY -- </font> [LAB EXERCISE 200: TDE ONLINE MASTER KEY](200/README.md)
+
+
+

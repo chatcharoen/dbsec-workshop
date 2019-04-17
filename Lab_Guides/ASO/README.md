@@ -1,33 +1,47 @@
-# Creating OCI Images using Packer
+# Database Security Workshop: Advanced Security - Transparent Data Encryption
 
-Welcome to the **Oracle Cloud Infrastructure** Compute image building with Packer workshop. This workshop will walk you through the process of creating an custom infrastructure image to support a variety of DevOps and production use-cases.
+## Introduction
 
-As part of this workshop, you will complete labs helping you to better understand:
+This is the first of several labs which are part of **Oracle Database Security Workshop.** This workshop will walk you through the process configuring, validating and using all of Oracle's Database Securtity products
 
-- Configuring OCI to support and Image
-- Launching and image and installing software (packer and git)
-- Using Packer and Git to build a custom OCI image which is configured to support a desktop login via VNC, firewall configuration and a custom environment (alias setup and variables)
+Oracle Advanced Security comprises two security features to protect sensitive database data. The first feature is Transparent Data Encryption (TDE) which encrypts data "at rest." Encryption is done using a key that must be available to a database that either reads or writes encrypted data. The encryption is performed inside the data files that store the Oracle Database data. It remains encrypted until it is retrieved from disk for use in an application. This is true for any other use of the data files—exporting tables, backing up data files, and so on—the data included in the export file or on backup disks or tapes will remain encrypted until used in a database with a matching encryption key.
 
-To learn more about this workshop please watch the video below.  
-
-![](images/youtube.png)
-
-<a href="https://videohub.oracle.com/media/PackerA+Overview/1_i0algeik" target="video">Workshop Overview Video</a>
+***To log issues***, click here to go to the [github oracle](https://github.com/oracle/learning-library/issues/new) repository issue submission form.
 
 
-### **Step 1**: Acquire an Oracle Cloud Trial Account
+## Required Artifacts
 
-- Bookmark this page for future reference.
+- The following lab requires:
+  - Laptop (Windows, Mac or Linux)
+  - VNC client
 
-- Please click on the URL to create your <a class="trial-link" href="https://myservices.us.oraclecloud.com/mycloud/signup?language=en&sourceType=:ow:lp:2t::RC_NAMK190212P00041:PackerOCI_HOL&intcmp=:ow:lp:2t::RC_NAMK190212P00041:PackerOCI_HOL" target="trial">Free Account</a> and complete all the required steps. When you complete the registration process you'll receive a $300 credit that will enable you to complete the lab for free.  Additionally, you'll have 1000s of hours left over to continue to explore the Oracle Cloud.
 
-  - Soon after requesting your trial you will receive the following email.
 
-  ![](images/getstarted.png)
+## Encrypting your data
 
-### **Step 2**: Navigate to Lab 100
+### **STEP 1**: Getting the environment ready
 
-- [Click here to navigate to Lab 100](Lab100.md)
-- _You can see a list of Lab Guides_ by clicking on the **Menu Icon** hamburger in the upper left corner of the browser window. Then, **Select Lab 100: Cloud Infrastructure Configuration**.
+- On the Oracle Linux Desktop, navigate to the Database_Security_Labs folder, double-click and open the contents. 
 
-  ![](images/Introham.png)
+    ![](images/001.png)
+
+- Select the folder, Oracle_Advanced_Security.
+
+  ![](images/003.png)
+
+- Select the folder, OAS_-_Getting_The_Environment_Ready.
+
+  ![](images/004.png)
+
+- In the OAS_-_Getting_The_Environment_Ready folder, select Start_Infrastructure.sh.  This script will start the entire necessary infrastructure used in these lab exercises. In these lab exercises, use the Display button to view the contents of the scripts before executing.  This will allow you to review the steps, commands and scripts used in these exercises.  When executing scripts, use the Run in Terminal button.
+
+  ![](images/005.png)
+
+  ![](images/006.png)
+
+- Please be patient as the infrastructure may take a little time to start.  Once the infrastructure has started, you are ready to move forward with the exercises.
+
+## Labs
+
+[Lab 100: ENCRYPTING A TABLESPACE](100%2FREADME.md)
+

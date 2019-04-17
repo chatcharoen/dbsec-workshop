@@ -125,4 +125,4 @@ Transparent Data Encryption encrypts data at rest to stop database bypass attack
 
 **This completes the lab!**
 
-- [Database Security Workshop Landing Page](README.md)
+- [Database Security Workshop Landing Page](dbsec-workshop/blob/master/README.md)

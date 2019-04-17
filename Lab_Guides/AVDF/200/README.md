@@ -1,7 +1,7 @@
 # Oracle Advanced Security - Transparent Data Encryption
 
 
-## Lab 100: ENCRYPTING A TABLESPACE
+## Lab 200: REDUCE TIME TO COMPLIANCE USING ORACLE AUDIT VAULT REPORTING
 
 #### Overview
 

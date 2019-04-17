@@ -8,6 +8,8 @@ IP:2
 
 Password is **Oracle123**
 
+If you are not on the corporate network you will need VPN access.
+
 As part of this workshop, you will complete labs helping you to better understand:
 
 - [Database Security Assessment Tool (DBSAT)](Lab_Guides%2FDBSAT%2FREADME.md)

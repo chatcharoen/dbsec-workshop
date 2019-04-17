@@ -13,117 +13,184 @@
           - Entitlement Snapshot
           - Compliance Reports
     
-- After the Start_OAS_Infrastructure.sh script finishes (see the steps at the end of the section B), open the Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
+- Once you determine what you need to audit, you will have a better understanding of which reports are needed to demonstrate compliance to the various requirements.  In this exercise, you will see how to generate useful reports to these Database Audit Requirements.
 
   ![](images/avdflab200img001.png)
 
-- Open Oracle_Advanced_Security_Lab_Exercise_01 folder.
+- Open **Audit – Lab Exercise_02**  folder.
 
-  ![](images/008.png)
+- Double-click the **Step_1_–_Reduce_the_Cost_of_Compliance_Reporting** icon.  This will open up the browser.
 
-- Open the 01_Encrypt_Sensitive_Information browser shortcut.
+- Login as the AV Auditor using the username/password of: **avauditor/Oracle123+**.  Click the Login button to continue.
 
-  ![](images/009.png)
+  ![](images/avdflab200img002.png)
+  
+## Data Access Reports
 
-- Click the bookmark for Enterprise Manager.
+- Click the **Reports** tab and select the **Data Access** report within the **Activity Reports** section (expand that section).  View the report by clicking on the **Data Access** link and verify that you see audit records that were collected on today’s date.
 
-  ![](images/010.png)
+  ![](images/avdflab200img004.png)
 
-- Log in with the credentials SYSMAN/Oracle123 and navigate to the PDB Database home page by selecting the Databases menu item from the 'Targets' drop down menu as shown below.
+  ![](images/avdflab200img005.png)
 
-  ![](images/011.png)
+- Review the **Data Access Report**.  The Data Access Report displays audited data manipulation language (DML) activities (i.e. SELECT, INSERT, UPDATE or DROP SQL) statements.
 
-  ![](images/012.png)
+  ![](images/avdflab200img006.png)
 
-- Expand the tree structures and click the pluggable database 'cdb_PDB1' as shown.  There may be additional targets, but cdb_PDB1 will appear in the Pluggable Databases tree.
+- Return to the Reports page by clicking on the breadcrumb above the report
 
-  ![](images/014.png)
+  ![](images/avdflab200img007.png)
 
-  This opens the PDB1 home page.  Review the status of your environment by selecting Security → Transparent Data Encryption. 
+- Click the **Database Schema Changes** report.  All DML activity is captured here.  Here are some sample audit policies that will generate records here.
+     - AUDIT  DELETE;
+	- AUDIT  INSERT;
+	- AUDIT  SELECT;
+	- AUDIT  TRUNCATE TABLE;
+	- AUDIT  UPDATE;
+	- CREATE USER;
 
-  ![](images/015.png)
+  ![](images/avdflab200img008.png)
 
-  If the Database Login page appears, then log in as an administrative user, such as SYS. User SYS must log in with the SYSDBA role selected.  For convenience, select from one of the saved Named Credentials for PDB1, then click Login.
+## Secured target startup and shutdown report
 
-  ![](images/016.png)
+- Return to the **Audit Reports** page.  The **Secured Target Startup and Shutdown Report** displays audited system management activity.  It lists STARTUP and SHUTDOWN operations on a database.  Drill into one of these records: 
 
-- Expand on the Keystore and Master Keys section in the lower left hand corner and review the information provided in the Oracle Advanced Security – Transparent Data Encryption screen.  Notice that the Keystore Status is OPEN and you have one Master Key in use—pdb1.   You can now encrypt data within the database. 
+  ![](images/avdflab200img010.png)
 
-  ![](images/017.png)
+  ![](images/avdflab200img011.png)
+  
+## Entitlement snapshots & reports
 
-- Scroll down to Encrypted Objects and see what we have
+- Review the **Entitlement Changes**.  Navigate to the **Audit Reports** page.  This report shows all User Entitlement activity for a specific period of time:
 
-  ![](images/018.png)
+  ![](images/avdflab200img012.png)
 
-- Within Encrypted Tablespaces, Click Offline Operations and choose Offline
+- However, it will generally be more useful to report on what has CHANGED over a specific period of time.  Navigate to the **Audit Reports** page and then open the **Entitlement Reports** section:
 
-  ![](images/019.png)
+  ![](images/avdflab200img013.png)
 
-- Click the magnifying glass icon to search for a tablespace to put offline
+- Click the **User Accounts** report. The **User Accounts** Report displays the latest snapshot of Database users with their account profile and values for sources registered with Oracle Audit Vault.
 
-  ![](images/020.png)
+  ![](images/avdflab200img014.png)
 
-- Choose EMPLOYEESEARCH_DATA as the tablespace, and click OK
+- Initially you will not see any reporting data.  Click **Go** (next to the **Label** drop down).  This will bring back the latest Entitlement snapshot that you just retrieved from the source database.  You can take multiple snapshots of user entitlement data, this report lets you look at the data for any of these snapshots.  You can also compare different snapshots to see how the data has changed over time.
 
-  ![](images/021.png)
+  ![](images/avdflab200img015.png)
+  
+## Compliance Reports
 
-- Ensure Run Immediate is selected, then Click ok
+- Click the **Compliance Reports** tab.  The reports shown here are intended to help you meet your compliance reporting requirements as quickly as possible, across PCI, Sarbanes-Oxley, HIPAA (healthcare-related) and other areas.
 
-  ![](images/023.png)
+  ![](images/avdflab200img016.png)
 
-  ![](images/024.png)
+- Click the **Failed Logins** link under the **Payment Card Industry (PCI)** Reports section. This report lists all of the DB login failures across the audited sources.  
 
-- Scroll back down to Encrypted Tablespaces, Click Offline Operation, and click Encrypt
+  ![](images/avdflab200img017.png)
 
-  ![](images/025.png)
+- You are able to alter the scope of the report to a specific set of objects for the databases or objects they are covered by your regulatory requirement.  To do this, click **Actions**
 
-- Click the search icon 
+  ![](images/avdflab200img018.png)
 
-  ![](images/026.png) 
+- You are able to change the definition of the report. Click **Filter**.  Pick the Column **User Name**, the Operator **Contains** and then pick a specific user, like **FRED** or **APPS** 
 
-- Choose EMPLOYEESEARCH_DATA as the offline tablespace to convert, click OK
+  ![](images/avdflab200img019.png) 
 
-  ![](images/027.png)
+- In addition, by clicking on the **Actions Menu**, you can further customize your reports. You can: 
+     - Select more columns to display
+	- Filter the report
+	- Sort rows
+	- Highlight rows
+	- Generate a chart
+	- Save the report for future use
+	- Download the report to CSV or HTML
+     
+  ![](images/avdflab200img020.png) 
+  
+- After changing the definition, choose **Save Report**.  Assign a name, create your own category, and save it for later use.
 
-- Ensure Run Immediate is selected, then click ok
+  ![](images/avdflab200img021.png)
 
-   ![](images/028.png) 
+- Navigate back to the Compliance Reports tab.  
 
-   ![](images/029.png)
+- To generate compliance reports for a secured target, you must add it to a compliance report category. If you have not already done so, you can click the **Go** button for a compliance category. This allows you to add a secured target as a member of a compliance group in Oracle AVDF. 
 
-- Under Encrypted Objects, click Refresh on Encrypted Tablespaces. Within a few seconds you should see EMPLOYEESEARCH_DATA back ONLINE with AES128 encryption
+   ![](images/avdflab200img023.png) 
+   
+- Select the report **Database Schema Changes** in the PCI section, but this time schedule the report to create a PDF version that could then be sent to people who require it.
 
-  ![](images/030.png)
+   ![](images/avdflab200img024.png)
 
-- Back in the Oracle_Advanced_Security desktop folder, click 03_Search_Strings_Encrypted.sh and verify that the data has been encrypted.  It will look similar to this screenshot
+- After you click the Schedule (picture of calendar) icon, the **Create/Edit Scheduled Job** screen opens.  Select PDF or XLS as an output format.
 
-  ![](images/031.png)
+  ![](images/avdflab200img025.png)
 
-  ![](images/032.png)
+- You can schedule the report to be run immediately or on a schedule.  For this lab, set the schedule to weekly. To do this, select the radio button **Specify Schedule** option in the **Schedule** section. Then, in the **Repeat** section, select **Weekly** and select today’s date, leaving the remaining fields default, as shown below.
 
-- Finally, return to the Security -> Transparent Data Encryption Section.
+  ![](images/avdflab200img026.png)
+  
+- In the **Attestation** section select the **AVAUDITOR** and **PCISLEY** users and move the user to the right hand pane using the **>** button. 
 
-  Review in the Encrypted Objects section that the tablespace, EMPLOYEESEARCH_DATA is encrypted with the default Encryption Algorithm.
+  ![](images/avdflab200img027.png)
 
+- Finally, click the Schedule button at the top right hand side of the page.  
 
+  ![](images/avdflab200img028.png)
 
-You have now demonstrated encryption of datafiles by the database, completely transparently to any application.  
-For additional information, see also:
-- "Checking Encrypted Tablespaces in the Current Database Instance" to query the database for existing encrypted tablespaces
-http://docs.oracle.com/cd/E16655_01/server.121/e17609/tdpsg_encryption.htm#CHDECIDD
-- Oracle Database Advanced Security Administrator's Guide for detailed information about tablespace encryption
-http://docs.oracle.com/cd/E16655_01/network.121/e17729/toc.htm
-- Oracle Database SQL Language Reference for more information about the CREATE TABLESPACE statement
-http://docs.oracle.com/cd/E16655_01/server.121/e17209/statements_7003.htm#SQLRF01403
+- You will be re-directed to the **Report Schedules** where you will see that your report is now scheduled to run every week.
 
+  ![](images/avdflab200img029.png)
+  
+- You will now create a PDF report immediately to see the attestation process at work.  Select the report **Entitlements Changes** in the PCI section.
 
+- Click the **calendar** icon.
 
+  ![](images/avdflab200img030.png)
+  
+- You should see the **Create/Edit Scheduled Job** screen, which you used in previous steps. 
+
+  ![](images/avdflab200img031.png)
+  
+- In the **Attestation** section, move the **AVAUDITOR** user to the right hand pane.  
+
+  ![](images/avdflab200img032.png)
+  
+- Leave all other fields as default and click the **Schedule** button.  
+
+  ![](images/avdflab200img033.png)
+  
+- On the **Generated Reports** page, click the **Show Pending Reports** button to see your report in Progress.  Wait a few seconds, and return to the **Generated Reports** page.
+
+  ![](images/avdflab200img034.png)
+  
+- Click the **Details** button associated with the report.  Click the **View Report** button to review the PDF.  The PDF will download in your browser.
+
+  ![](images/avdflab200img035.png)
+
+- View PDF file
+
+  ![](images/avdflab200img036.png)
+
+- Return to the Report Details page add an attestation note such as, **I have reviewed and attest to the data in this Report** and click the **Save & Attest** button.
+
+  ![](images/avdflab200img037.png)
+  
+- After clicking on the **Save & Attest** button you will see that the attestation note is stored with the report, as shown below.
+
+  ![](images/avdflab200img038.png)
+  
+- Click **Done** once you have finished.
+
+## Additional Steps
+
+- Quickly review other reports and the audit data they collect. Take a look at some of the reports.  It is important to point out that these reports will eventually (after the next set of lab exercises) include data collected from all sources, including Database Auditing and Firewall.
 
  #### Conclusion
 
- As data exposed in applications continues to rapidly expand, enterprises must have strong controls in place to protect data no matter what devices or applications are used. Oracle Database helps organizations keep their sensitive information safe in this increasingly complex environment by delivering preventive, detective and administrative controls that enforce data security in the database. Oracle Advanced Security with Oracle Database provides two critical preventive controls.
-
-Transparent Data Encryption encrypts data at rest to stop database bypass attacks from accessing sensitive information in storage. Data Redaction reduces exposure of sensitive information in applications by redacting database query results on-the-fly, according to defined policies. Together these two controls form the foundation of a multi-layered, defense-in-depth approach, and further establish Oracle Database as the world’s most advanced database security solution.
+- Generated a variety of reports available in the Audit Vault Server.
+     - Data Access Reports
+     - System Startup and Shutdown
+     - Entitlement Reports
+     - Compliance Reports
 
 **This completes the lab!**
 

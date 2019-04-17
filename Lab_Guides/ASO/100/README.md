@@ -124,3 +124,5 @@ http://docs.oracle.com/cd/E16655_01/server.121/e17209/statements_7003.htm#SQLRF0
 Transparent Data Encryption encrypts data at rest to stop database bypass attacks from accessing sensitive information in storage. Data Redaction reduces exposure of sensitive information in applications by redacting database query results on-the-fly, according to defined policies. Together these two controls form the foundation of a multi-layered, defense-in-depth approach, and further establish Oracle Database as the world’s most advanced database security solution.
 
 **This completes the lab!**
+
+- [Database Security Workshop Landing Page](dbsec-workshop/README.md)

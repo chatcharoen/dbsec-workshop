@@ -21,17 +21,15 @@
     ![](images/208.png)
 
 - Login to cdb as SYS
-- 
-=======
-- Login to cdb as SYS
->>>>>>> 42d003743ba0fce28d694ba6d828147178b10c42
+
 - Click the Security Tab then click Transparent Data Encryption
 - Under **Keystore and Master Keys** click **More** and choose **Migrate**
 - Click **OKV Integration Setup**
 - Choose **OS_ORACLE** as the Host Credentials
 - Set the **OKV Library Path** to
 
-            /app/oracle/dbsec/product/okvutil/bin
+        /app/oracle/dbsec/product/okvutil/bin
+        
 - Set the **OKV Wallet Group** to **cdb**
 - Set the **OKV Endpoint Password** to **Oracle123**
 
@@ -71,5 +69,24 @@
 - Confirm you want to perform the key rotation
 
 
+## Remove the local wallet files
+
+- From the terminal, perform the following commands
+
+        cd $ORACLE_BASE/admin/cdb/wallet
+        mkdir old.wallets
+        mv * old.wallets
+
+- Restart the database
+
+        $HOME/scripts/stop_cdb.sh
+        
+        $HOME/scripts/start_cdb.sh
+        
+- Login to the database and issue the following queries
+
+        sqlplus system/Oracle123@pdb1
+        select count(*) from employeesearch.demo_hr_users;
+        
     
     

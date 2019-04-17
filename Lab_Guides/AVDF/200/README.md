@@ -15,7 +15,7 @@
     
 - After the Start_OAS_Infrastructure.sh script finishes (see the steps at the end of the section B), open the Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
 
-  ![](images/007.png)
+  ![](images/avdflab200img001.png)
 
 - Open Oracle_Advanced_Security_Lab_Exercise_01 folder.
 

@@ -42,6 +42,8 @@ You can use DBSAT to:
 
 Oracle Support Document 2138254.1 (Oracle Database Security Assessment Tool (DBSAT)) can be found at: https://support.oracle.com/epmos/faces/DocumentDisplay?id=2138254.1
 
+**Note:** DBSAT has already been downloaded and unzipped in our Database Security Workshop. 
+
 Once you have unzipped the tool you can see the commands available for dbsat discover a configuration file is needed. dbsat.config can be found in Discover/conf/ directory.
 
 - From the Oracle Linux Desktop to the Workshop folder, Database Security Workshop, then DBSAT:

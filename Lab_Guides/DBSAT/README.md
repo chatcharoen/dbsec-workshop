@@ -217,6 +217,8 @@ You can create your own pattern files.
 - You are now viewing the Database Security Assessment Report
 
     ![](images/120.png)
+
+- [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
     
 
 

@@ -2,6 +2,12 @@
 
 Welcome to the **Oracle Database Security Workshop** 
 
+You must connect to the environment using VNC
+
+IP:2
+
+Password is **Oracle123**
+
 As part of this workshop, you will complete labs helping you to better understand:
 
 - [Database Security Assessment Tool (DBSAT)](Lab_Guides%2FDBSAT%2FREADME.md)

@@ -13,7 +13,7 @@ hen a UAT environment is available, the Database Firewall policies can be left i
 2.	Add the new application user/IP address to the Exception policy
 3.	Change the Enforcement Point from DPE (policy enforcement) mode to DAM (activity monitoring).
 
-In this example, you will take the ‘2 – Block with DBA Exception’ policy and alter it to allow all activity by the new application user EMPLOYEESEARCH.  
+In this example, you will **implement** the pre-created policy '04-' and alter it to allow all activity by the new application user EMPLOYEESEARCH.  
 
 ###	LAB SCENARIOS AND OBJECTIVES
 

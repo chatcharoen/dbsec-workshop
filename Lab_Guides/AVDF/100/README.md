@@ -40,93 +40,228 @@
       ----------
       7
 
-  ![](images/014.png)
+- You then connected to the database, using DBA_DEBRA, and ran CREATE TABLE AS SELECT from the HR.EMPLOYEES table into the HR.EMPLOYEES_TWO table. Then you counted the audit records again.
 
-  This opens the PDB1 home page.  Review the status of your environment by selecting Security → Transparent Data Encryption. 
+      system@PDB1> conn dba_debra/Oracle123@pdb1;
+      Connected.
 
-  ![](images/015.png)
+      GLOBAL_NAME
+      ----------------------------------------------------------------------------------------------------
+      dba_debra@PDB1
 
-  If the Database Login page appears, then log in as an administrative user, such as SYS. User SYS must log in with the SYSDBA role selected.  For convenience, select from one of the saved Named Credentials for PDB1, then click Login.
+      dba_debra@PDB1> create table hr.employees_two as (select * from hr.employees);
 
-  ![](images/016.png)
+      Table created.
 
-- Expand on the Keystore and Master Keys section in the lower left hand corner and review the information provided in the Oracle Advanced Security – Transparent Data Encryption screen.  Notice that the Keystore Status is OPEN and you have one Master Key in use—pdb1.   You can now encrypt data within the database. 
+      dba_debra@PDB1> 
+      dba_debra@PDB1> conn system/Oracle123@pdb1;
+      Connected.
 
-  ![](images/017.png)
+      GLOBAL_NAME
+      -------------------------------------------------------------------------------------------------
+      system@PDB1
 
-- Scroll down to Encrypted Objects and see what we have
+      system@PDB1> select count(*) from sys.aud$;
 
-  ![](images/018.png)
+      COUNT(*)
+      ----------
+      9
 
-- Within Encrypted Tablespaces, Click Offline Operations and choose Offline
+- You checked the sys.aud$ table again.  Notice that the number of records increased—incrementing 1 for the create table, and another 1 for the select.  
 
-  ![](images/019.png)
-
-- Click the magnifying glass icon to search for a tablespace to put offline
-
-  ![](images/020.png)
-
-- Choose EMPLOYEESEARCH_DATA as the tablespace, and click OK
-
-  ![](images/021.png)
-
-- Ensure Run Immediate is selected, then Click ok
-
-  ![](images/023.png)
-
-  ![](images/024.png)
-
-- Scroll back down to Encrypted Tablespaces, Click Offline Operation, and click Encrypt
-
-  ![](images/025.png)
-
-- Click the search icon 
-
-  ![](images/026.png) 
-
-- Choose EMPLOYEESEARCH_DATA as the offline tablespace to convert, click OK
-
-  ![](images/027.png)
-
-- Ensure Run Immediate is selected, then click ok
-
-   ![](images/028.png) 
-
-   ![](images/029.png)
-
-- Under Encrypted Objects, click Refresh on Encrypted Tablespaces. Within a few seconds you should see EMPLOYEESEARCH_DATA back ONLINE with AES128 encryption
-
-  ![](images/030.png)
-
-- Back in the Oracle_Advanced_Security desktop folder, click 03_Search_Strings_Encrypted.sh and verify that the data has been encrypted.  It will look similar to this screenshot
-
-  ![](images/031.png)
-
-  ![](images/032.png)
-
-- Finally, return to the Security -> Transparent Data Encryption Section.
-
-  Review in the Encrypted Objects section that the tablespace, EMPLOYEESEARCH_DATA is encrypted with the default Encryption Algorithm.
+  You ran SELECT the COUNT() on the newly created HR.EMPLOYEE_TWO table to find its record count.
 
 
+      dba_debra@PDB1> select count(*) from hr.employees_two;
 
-You have now demonstrated encryption of datafiles by the database, completely transparently to any application.  
-For additional information, see also:
-- "Checking Encrypted Tablespaces in the Current Database Instance" to query the database for existing encrypted tablespaces
-http://docs.oracle.com/cd/E16655_01/server.121/e17609/tdpsg_encryption.htm#CHDECIDD
-- Oracle Database Advanced Security Administrator's Guide for detailed information about tablespace encryption
-http://docs.oracle.com/cd/E16655_01/network.121/e17729/toc.htm
-- Oracle Database SQL Language Reference for more information about the CREATE TABLESPACE statement
-http://docs.oracle.com/cd/E16655_01/server.121/e17209/statements_7003.htm#SQLRF01403
+      COUNT(*)
+      ----------
+      107
+
+- You checked the sys.aud$ table again Note that the number of records had not increased as you might have expected. The SELECT command was not being monitored.
+
+  You set the audit policy on the table to monitor SELECTS’s.
+
+      dba_debra@PDB1> conn system/Oracle123@pdb1;
+      Connected.
+
+      GLOBAL_NAME
+      ------------------------------------------------------------------------------------------------
+      system@PDB1
+
+      system@PDB1> select count(*) from sys.aud$;
+
+      COUNT(*)
+      ----------
+      9
+
+  You repeated the query to ‘SELECT’ from the hr.employees_two table and re-queried the sys.aud$ table.
+
+      dba_debra@PDB1> select count(*) from hr.employees_two;
+
+      COUNT(*)
+      ----------
+      107
+
+      dba_debra@PDB1> 
+      dba_debra@PDB1> conn system/Oracle123@pdb1;
+      Connected.
+
+      GLOBAL_NAME
+      -------------------------------------------------------------------------------------------------
+      system@PDB1
+
+      system@PDB1> select count(*) from sys.aud$;
+
+      COUNT(*)
+      ----------
+      10
+
+  The audit record count had increased by 1, because the SELECT statement was audited. Having completed this test, you turned off auditing of the HR.EMPLOYEES_TWO table and dropped the table. 
+
+- Click the Icon ‘Step_2_–_Display_Current_Audit_Settings.sh’.  This script will login to CDB and show audit trail and sys operations parameter, and audit destination parameter.  In Oracle Database , these settings are at the Container Database level.
+
+- Click the icon, Step_2_–_Display_Current_Audit_Settings.out.  In the output you can verify that the initialization parameter AUDIT_TRAIL is set to the value DB, EXTENDED and that AUDIT_SYS_OPERATIONS is set to TRUE.
+
+- Note that the script checks the parameters for audit_file_dest, audit_sys_operations, audit_syslog_level and audit_trail.
+
+      sys@CDB> show parameter audit;
+
+      NAME                                 TYPE        VALUE
+      ------------------------------------ ----------- ------------------------------
+      audit_file_dest                      string      /app/oracle/dbsec/admin/cdb/ad
+                                                      ump
+      audit_sys_operations                 boolean     TRUE
+      audit_syslog_level                   string
+      audit_trail                          string      DB
+      unified_audit_sga_queue_size         integer     1048576
+      unified_audit_systemlog              string
+      sys@CDB> exit;
+
+ The ‘audit_trail’ parameter can be set to one of several values – this controls where the DB writes audit records.  There are three basic options: OS, XML and DB.  When ‘audit_trail’ is set to either ‘OS’ or ‘XML’ audit records are written to the location specified in the ‘audit_file_dest’ parameter.  This is set to /app/oracle/dbsec/admin/cdb/adump for your  database.  
+
+ When the ‘audit_trail’ parameter is set to either ‘DB’ or ‘XML’ you can add the ‘EXTENDED’ parameter to capture SQL Text and SQL Bind variables.  This greatly enhances the information that is captured.  When the ‘audit_trail’ parameter is set to ‘DB’ audit records are written to the aud$ table.
+
+ Finally, the parameter ‘audit_sys_operations’ will monitor all activity performed by users logged in as either sysdba or sysoper.  These records will also be written to a file in the location specified by ‘audit_file_dest’.
+ 
+ Unified_audit_sga_queue_size is a new parameter for Oracle Database 12c and relates to the new Unified Audit Trail that is not covered in this lab.
+
+- Double click the icon, ‘Step_3_–_Review_the_Oracle_DB_Audit_Best_Practice’
+
+ This SQL file was derived from the Oracle 11g Database Security Best practice that is implemented by default when you create a new DB with 11g using DBCA.  The SQL file contains Oracle Database Audit Policies that are considered to be the best practice for monitoring system activity.  For your implementation you can use this Audit Policy as a starting place, and then tailor the policies to meet your specific business requirements.  The policy does not contain any audit policies for monitoring specific objects.
+
+      -- DEFAULT Oracle Database AUDIT Settings
+
+      Audit alter any table by access;
+      Audit create any table by access;
+      Audit drop any table by access;
+      Audit Create any procedure by access;
+      Audit Drop any procedure by access;
+      Audit Alter any procedure by access;
+      Audit Grant any privilege by access;
+      Audit grant any object privilege by access;
+      Audit grant any role by access;
+      Audit audit system by access;
+      Audit create external job by access;
+
+- Double click the icon labeled ‘Step_4_–_Set_Best_Practice_Audit_Policies.sh‘.  As the name implies, you will set these audit policies.  You will also set sample audit policies to be used later in this lab.
+
+  (insert screenshot here)
+
+- Click the icon, Step_4_–_Set_Best_Practice_Audit_Policies.out to review the output.
+
+      sys@CDB> 
+      sys@CDB> connect sys/Oracle123@pdb1 as sysdba
+      Connected.
+
+      GLOBAL_NAME
+      -------------------------------------------------------------------------------------------------
+      sys@PDB1
+
+      sys@PDB1> 
+      sys@PDB1> -- Turn on auditing options
+      sys@PDB1> 
+      sys@PDB1> Audit alter any table by access;
+
+      Audit succeeded.
+
+      sys@PDB1> 
+      sys@PDB1> Audit create any table by access;
+
+      Audit succeeded.
+
+      sys@PDB1> 
+      sys@PDB1> Audit drop any table by access;
+
+      Audit succeeded.
+
+      sys@PDB1>
+
+- Login to Audit Vault to review the audit policies for pdb1.  Click the icon ‘Step_5_–_Review_Audit Policies_in_Audit_Vault’.  This will bring up a browser in your image that opens up the administrative console on your Audit Vault Server.
+
+- Login as the AV Auditor using the username/password of: avauditor/Oracle123+.  Click the Login button to continue.
+
+
+- Click the Policy Tab.
+
+- Click the checkbox to select the DBSec Audit Source, ensure the interface is set to Audit Settings and click the Retrieve button.  This action will retrieve the Audit Policy from the selected database (pdb1).  
+
+- Refresh the page by clicking on the Audit Settings tab, and then click the link labeled DBSec.  After a few moments you will see some audit settings appear in the summary.
+ 
+ You can drill down on these policies.
+
+- Review the detail for the audit policy by clicking on each Audit Type link.
+ 
+ Note that all of the retrieved policies are marked as “Not Needed” by default.  You can do a thorough review of all Audit Policies from this console, mark settings that should be kept, and re-provision.  Any “Not Needed” policies will be removed, and any new policies will be added.  After the re-provisioning, the yellow caution signs would no longer be present.  They indicate “Problems”.  A “Problem” is a mismatch between the ‘In Use’ and ‘Needed’ columns.   
+
+- Retrieve the User Entitlement data from pdb1.  First, select the Secured Targets tab, be sure Targets is selected and then click DBSec.
+
+- Expand the User Entitlements section, then click Retrieve button:
+
+ You will see another message letting you know the user entitlement data is being collected. During the next lab exercise, you can examine the data that is collected.
+
+- As the last step of this lab, return back to the AV_–_Lab_Exercise_01 folder and double click the icon, ‘Step_6_–_Generate_Audit_Workload’ icon.  The script generates a workload that triggers audit records to be generated.  You may see some errors when this script is run, however these can be ignored.  The errors in the script are used to demonstrate how Oracle DB auditing can capture both successful and unsuccessful transactions.  In the next lab, you will be reviewing the audit records this script generates in the Audit Vault Reporting console.
+
+ Click the icon, Step_6_–_Generate_Audit_Workload.out to review the output of this script.  
+
+      sys@CDB> set echo on
+      sys@CDB> 
+      sys@CDB> connect sys/Oracle123@pdb1 as sysdba
+      Connected.
+
+      GLOBAL_NAME
+      ------------------------------------------------------------------------------------------------
+      sys@PDB1
+
+      sys@PDB1> alter user oe identified by oe account unlock;
+
+      User altered.
+
+      sys@PDB1> alter user sh identified by sh account unlock;
+
+      User altered.
+
+      sys@PDB1> alter user scott identified by tiger account unlock;
+
+      User altered.
+
+      sys@PDB1> alter user pm identified by pm account unlock;
+
+      User altered.
+
+      sys@PDB1> alter user hr identified by hr account unlock;
+
+      User altered.
+
+      sys@PDB1> alter user bi identified by bi account unlock;
+
+      User altered.
 
 
 
 
  #### Conclusion
 
- As data exposed in applications continues to rapidly expand, enterprises must have strong controls in place to protect data no matter what devices or applications are used. Oracle Database helps organizations keep their sensitive information safe in this increasingly complex environment by delivering preventive, detective and administrative controls that enforce data security in the database. Oracle Advanced Security with Oracle Database provides two critical preventive controls.
-
-Transparent Data Encryption encrypts data at rest to stop database bypass attacks from accessing sensitive information in storage. Data Redaction reduces exposure of sensitive information in applications by redacting database query results on-the-fly, according to defined policies. Together these two controls form the foundation of a multi-layered, defense-in-depth approach, and further establish Oracle Database as the world’s most advanced database security solution.
 
 **This completes the lab!**
 

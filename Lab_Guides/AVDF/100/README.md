@@ -224,7 +224,7 @@
 
 - Refresh the page by clicking on the Audit Settings tab, and then click the link labeled DBSec.  After a few moments you will see some audit settings appear in the summary.
  
- You can drill down on these policies.
+  You can drill down on these policies.
 
   ![](images/015.png)
 

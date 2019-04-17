@@ -155,5 +155,6 @@ In this lab, you used Oracle Data Masking and Subsetting to perform the followin
 
 
 
-
 **This completes this Lab!**
+
+- [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)

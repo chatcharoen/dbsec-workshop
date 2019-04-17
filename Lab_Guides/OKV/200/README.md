@@ -15,12 +15,16 @@
 
 - Login to EM as SYSMAN / Oracle123
 - Navigate to the database cdb - container database
+<<<<<<< HEAD
 - You may be prompted to set the identifier
 
     ![](images/208.png)
 
 - Login to cdb as SYS
 - 
+=======
+- Login to cdb as SYS
+>>>>>>> 42d003743ba0fce28d694ba6d828147178b10c42
 - Click the Security Tab then click Transparent Data Encryption
 - Under **Keystore and Master Keys** click **More** and choose **Migrate**
 - Click **OKV Integration Setup**

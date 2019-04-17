@@ -99,3 +99,5 @@ In this lab, you used Database Vault to extend the Realm by using Oracle Databas
 
 
 **This completes this Lab!**
+
+- [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)

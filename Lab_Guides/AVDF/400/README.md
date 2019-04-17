@@ -95,8 +95,6 @@
 
 - Back in the Oracle_Advanced_Security desktop folder, click 03_Search_Strings_Encrypted.sh and verify that the data has been encrypted.  It will look similar to this screenshot
 
-  **NOTE:** In this lab we did not use the 02_Encrypt_Tablespace.sh 
-
   ![](images/031.png)
 
   ![](images/032.png)

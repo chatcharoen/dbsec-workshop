@@ -1,45 +1,48 @@
-# Oracle Advanced Security - Transparent Data Encryption
+# Audit Vault and Database Firewall
 
 
-## Lab 100: ENCRYPTING A TABLESPACE
+## Lab 300: GAIN REAL-TIME DATABASE ACTIVITY MONITORING USING AUDIT VAULT AND DATABASE FIREWALL ALERTING 
 
 #### Overview
 
+Oracle Audit Vault and Database Firewall provides security personnel with the ability to detect and alert on activities that may indicate attempts to gain unauthorized access and/or abuse system privileges. Oracle Audit Vault can generate alerts for system defined and user defined audit events. Oracle Audit Vault continuously monitors the audit data collected, evaluating the activities against defined alert conditions. Alerts can be associated with any auditable database event including system events such as changes to application tables and creating privileged users. For instance, an alert could be generated when someone attempts to access sensitive business information. The Oracle Audit Vault interface provides graphical summaries of activities causing alerts. These include a summary of alert activity and top sources by number of alerts. Oracle Audit Vault users can click the summary graphs and drill down to a more detailed report. Alerts for the purpose of reporting are grouped by the sources with which they are associated. Alerts can also be grouped by the event category to which the event belongs, and by the severity level of the alert (warning or critical).
+
+- You should have already completed Lab Configuration 02 – REDUCE TIME TO COMPLIANCE USING ORACLE AUDIT VAULT REPORTING before using this lab
+
 - In this lab exercise, you will accomplish the following:
-     - Validate the status of the encryption keys using Oracle Enterprise    Manager  Cloud Control
-     - OFFLINE the EMPLOYEESEARCH_DATA tablespace
-     - Migrate the tablespace to an encrypted tablespace 
-     - Verify that encryption has taken place
+     - Modify the email template for Audit Vault Alerts
+	- Add a new Audit Vault Alert Status
+	- Create an Audit Vault Alert with the Web Interface
+	- Test that the alert is functioning
+	- View the near real-time nature of alert functionality
+     
+#### GAIN REAL-TIME DATABASE ACTIVITY MONITORING USING AUDIT VAULT ALERTING
     
-- After the Start_OAS_Infrastructure.sh script finishes (see the steps at the end of the section B), open the Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
+- Open the **Audit – Lab Exercise 03** Folder
 
-  ![](images/007.png)
+  ![](images/avdflab300img001.png)
 
-- Open Oracle_Advanced_Security_Lab_Exercise_01 folder.
+- Click the icon, **Step 01 – Create Alerts in Audit Vault UI** to open the browser.
 
-  ![](images/008.png)
+- Log into the Audit Vault console as **avauditor/Oracle123+**.
 
-- Open the 01_Encrypt_Sensitive_Information browser shortcut.
+  ![](images/avdflab300img003.png)
 
-  ![](images/009.png)
+- Navigate to the **Settings** tab:
 
-- Click the bookmark for Enterprise Manager.
+  ![](images/avdflab300img004.png)
 
-  ![](images/010.png)
+- Select the **Notifications / Email Templates** page.  From here will be able to manage the existing template definitions and create new ones.  Once at this page you will see the following:
 
-- Log in with the credentials SYSMAN/Oracle123 and navigate to the PDB Database home page by selecting the Databases menu item from the 'Targets' drop down menu as shown below.
+  ![](images/avdflab300img005.png)
 
-  ![](images/011.png)
+- Edit the **Alert Notification Template**, which is the default template for sending emails.  You could create a new template, but to simplify this lab, just edit the existing one.  Click the **Alert Notification Template** link on the left hand side of the page.
 
-  ![](images/012.png)
+  ![](images/avdflab300img006.png)
 
-- Expand the tree structures and click the pluggable database 'cdb_PDB1' as shown.  There may be additional targets, but cdb_PDB1 will appear in the Pluggable Databases tree.
+- Add the **#AlertStatus#** field into the email subject, as shown in the screen below.  Click the Save button once completed. 
 
-  ![](images/014.png)
-
-  This opens the PDB1 home page.  Review the status of your environment by selecting Security → Transparent Data Encryption. 
-
-  ![](images/015.png)
+  ![](images/avdflab300img007.png)
 
   If the Database Login page appears, then log in as an administrative user, such as SYS. User SYS must log in with the SYSDBA role selected.  For convenience, select from one of the saved Named Credentials for PDB1, then click Login.
 

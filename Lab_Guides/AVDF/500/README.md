@@ -22,28 +22,44 @@ Developing a policy consists of these main steps:
 ### Overview
 
 - In this lab exercise, you will accomplish the following:
-     - Validate the status of the encryption keys using Oracle Enterprise    Manager  Cloud Control
-     - OFFLINE the EMPLOYEESEARCH_DATA tablespace
-     - Migrate the tablespace to an encrypted tablespace 
-     - Verify that encryption has taken place
+     - Complete an iterative development cycle of the baseline
+     - Develop and deploy a Firewall policy
+     - Modify and re-deploy the Firewall policy
+     - Verify that policy is enforced and ensure that unseen traffic is blocked
+### Setup and Preparation
+
+- Completion of **LAB EXERCISE 01 – ORACLE DATABASE FIREWALL SECURED TARGETS TO MONITOR AND PROTECT DATABASES**
+
+### Create and Test a Firewall Policy
+ 
+The Oracle Database Firewall system must understand the normal way that client applications use the database. This is accomplished by logging traffic (such as via a test suite or by recording normal application traffic before you start developing a new Policy.  You have just been through that exercise with Swingbench.  Now you will move on to creating a Policy that will substitute an innocuous SQL statement in the place of any statement that the Firewall has not seen before.
+
+- Begin by opening the folder labeled **FW – Lab Exercise 2**.  
     
-- After the Start_OAS_Infrastructure.sh script finishes (see the steps at the end of the section B), open the Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
+  ![](images/avdflab500img001.png)
 
-  ![](images/007.png)
+- Click the icon **Step 1 – Create the Firewall Policy**.
 
-- Open Oracle_Advanced_Security_Lab_Exercise_01 folder.
+  ![](images/avdflab500img002.png)
 
-  ![](images/008.png)
+- Log into the Audit Vault Server as **avauditor/Oracle123+**.
 
-- Open the 01_Encrypt_Sensitive_Information browser shortcut.
+  ![](images/avdflab500img003.png)
 
-  ![](images/009.png)
+- Navigate to the Policy page and select **Policy / Firewall Policy**.  Then click the **Create Policy** button:
 
-- Click the bookmark for Enterprise Manager.
+  ![](images/avdflab500img004.png)
 
-  ![](images/010.png)
+- In the screen that appears, fill in the appropriate information, and then click the **Create** button.
 
-- Log in with the credentials SYSMAN/Oracle123 and navigate to the PDB Database home page by selecting the Databases menu item from the 'Targets' drop down menu as shown below.
+```
+	Database Type:      Oracle Database
+	Policy Name:        1 – Block Unseen Statements
+	Description:        This will block any statements not previously seen by the Firewall.
+```
+
+  ![](images/avdflab500img005.png)
+
 
   ![](images/011.png)
 

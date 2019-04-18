@@ -1,4 +1,4 @@
-﻿# Database Security Workshop: Database Vault
+﻿# Database Security Workshop: Privilege Analysis
 
 ## Introduction
 

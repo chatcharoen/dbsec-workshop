@@ -40,7 +40,7 @@ In this lab exercise you will accomplish the following:
 
 You will notice the error, ‘Error while connecting to server!  Contact your administrator’.  Since you have an active policy in enforcement from your previous lab exercise, all of the application traffic and attempts for the application user to connect to the database is considered ‘Unseen’ traffic—thus, it is being blocked as expected. 
 
-    ![](images/002.png)
+  ![](images/002.png)
 
 - You will now refine your policy to make an exception allowing SQL traffic from the HR application—the EMPLOYEESEARCH user.  Log in to the Audit Vault Server as avauditor/Oracle123+.  Click the Policy tab and then Firewall Policy.
 

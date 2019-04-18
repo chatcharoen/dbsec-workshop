@@ -160,52 +160,35 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
 - You will now simulate some application traffic for the DBFW to train what is considered to be normal and authorized traffic for your White List policy.  Again, White List policies are simply the set of approved SQL commands that the firewall expects to see.  For this simulation you will be using a tool called Swingbench.  It runs SQL statements that simulate an order entry application.  It performs different DML statement using SQL bind variables to query and change customer and order information.  Click the ‘Step 05 – Start Swingbench’ icon in your lab folder, as shown below.
 
-   ![](images/001.png)
+   ![](images/025.png)
 
   Swingbench is a java application that will open after a few moments.  Notice that the ‘Connection String’ is pre-configured to connect to your Oracle Database via the proxy port on the Firewall.  Click the ‘Start’ green arrow icon, as shown below.  This will start the simulated application load.  You will run roughly 10 minutes of application traffic.
 
-   ![](images/001.png)
+   ![](images/026.png)
 
   Navigate to the ‘Events’ tab in Swingbench.  
 
-   ![](images/001.png)
+   ![](images/027.png)
 
   After a few moments you will see the transactions per minute (TPM) graph show an increase in transactions.
 
-   ![](images/001.png)
+   ![](images/028.png)
 
 - Navigate to the browser tab you were using for Database Firewall and login using fwadmin/Oracle123+
 
-    ![](images/001.png)
+    ![](images/029.png)
 
 - Navigate to System / Network Traffic / Live Capture.  Select Packet Content for the Level of Detail.  Click the Show Traffic button.
 
   Notice that since the network traffic is unencrypted, you can actually see some SQL statements.  As you learned earlier, Database Firewall can be configured to read network traffic encrypted by Oracle Network Encryption.
 
-    ![](images/001.png)
+    ![](images/030.png)
 
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
+  If you turn to the Firewall reports (in the Audit Vault Server as avauditor) that you were viewing earlier, you will also see many new statements captured.  
 
  #### Conclusion
 
-
+- In this lab exercise you reviewed the proxy port configuration of the Database Firewall. You also chcked the Enforcement Point configuration, tested a database connection via the proxy port, changed the Firewall policy being enforced for the Secured Target and finally you ran some sample application traffic which will be used in the whitelist for the following labs.
 
 **This completes the lab!**
 

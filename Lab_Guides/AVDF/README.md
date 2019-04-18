@@ -4,7 +4,7 @@
 
 Oracle Audit Vault and Database Firewall provides a first line of defense for databases and consolidates audit data from databases, operating systems, and directories.  A highly accurate SQL grammar-based engine monitors and blocks unauthorized SQL traffic before it reaches the database.  Database activity data from the network is combined with detailed audit data for easy compliance reporting and alerting.  With Oracle Audit Vault and Database Firewall, auditing and monitoring controls can be easily tailored to meet enterprise security requirements.
 
-    ![](images/avdf-overview.png)
+  ![](images/avdf-overview.png)
 
 ***To log issues***, click here to go to the [github oracle](https://github.com/oracle/learning-library/issues/new) repository issue submission form.
 

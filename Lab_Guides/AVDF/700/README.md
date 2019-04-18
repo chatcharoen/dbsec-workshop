@@ -159,7 +159,7 @@ This demonstrates how Oracle Database Firewall can protect against SQL injection
 
 One thing to note is that in this lab exercise, you performed just a few typical operations in the application. You will find that “normal” activity that you have not performed before the whitelist was created may be blocked.  In a “real” deployment, the whitelist would be developed by performing a full suite of regression testing.
 
-### SUMMARY
+### CONCLUSION
 
 - You accomplished the following in this lab exercise:
   - Used exceptions to classify new traffic patterns.

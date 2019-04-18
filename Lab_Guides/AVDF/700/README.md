@@ -26,7 +26,7 @@ In this lab exercise you will accomplish the following:
 
 1.	Completion of Firewall LAB EXERCISE 01 – CONFIGURE ORACLE DATABASE FIREWALL TO MONITOR AND PROTECT DATABASES
 2.	Completion of Firewall LAB EXERCISE 02 – USE ORACLE DATABASE FIREWALL TO CONFIGURE POLICIES AND BLOCK UNAUTHORIZED TRAFFIC
-C.	USING WHITELISTS TO PREVENT SQL INJECTION ATTACKS
+
 
 **Note:** The steps in this lab are based on the assumption that you already know your way around the environment.  You will be using the browser to access an application and your Audit Vault Server.  First, open your browser and click the HR Application bookmark:
 
@@ -36,9 +36,15 @@ C.	USING WHITELISTS TO PREVENT SQL INJECTION ATTACKS
     - Username: hradmin
 	- Password: Oracle123
 
-You will notice the error, ‘Error while connecting to server!  Contact your administrator’.  Since you have an active policy in enforcement from your previous lab exercise, all of the application traffic and attempts for the application user to connect to the database is considered ‘Unseen’ traffic—thus, it is being blocked as expected.  
+      ![](images/001.png)
 
-- You will now refine your policy to make an exception allowing SQL traffic from the HR application—the EMPLOYEESEARCH user.  Log in to the Audit Vault Server as avauditor/Oracle123+.  Click the Policy tab and then Firewall Policy.  
+You will notice the error, ‘Error while connecting to server!  Contact your administrator’.  Since you have an active policy in enforcement from your previous lab exercise, all of the application traffic and attempts for the application user to connect to the database is considered ‘Unseen’ traffic—thus, it is being blocked as expected. 
+
+    ![](images/002.png)
+
+- You will now refine your policy to make an exception allowing SQL traffic from the HR application—the EMPLOYEESEARCH user.  Log in to the Audit Vault Server as avauditor/Oracle123+.  Click the Policy tab and then Firewall Policy.
+
+  Take a few minutes to review the differences between policy No.2 and policy No.3. Pay particular attention to the Exception rules and note the differences there.
 
 - Go to the ‘Secured Targets’ tab, select your Secured Target – DBSec.  In the ‘Firewall Policy’ section, switch to your newly revised Policy:
 
@@ -52,103 +58,77 @@ You will notice the error, ‘Error while connecting to server!  Contact your ad
     - Username:      hradmin
 	- Password:      Oracle123
 
-Notice that the change to your enforced policy now allows the application to work properly.  Now that the EMPLOYEESEARCH user can connect successfully to the database, the application can do its work.  You will see that you are logged into the application on the top right side of your screen.
+    Notice that the change to your enforced policy now allows the application to work properly.  Now that the EMPLOYEESEARCH user can connect successfully to the database, the application can do its work.  You will see that you are logged into the application on the top right side of your screen.
 
-Even if you type in the password incorrectly, you will see that there is a different error message generated this time.
+    Even if you type in the password incorrectly, you will see that there is a different error message generated this time.
 
 - Perform some “standard” activities in the HR application which you will then add to your existing whitelist of permitted activities. 
-
-
-	Login: hradmin
-	Password: Oracle123
 	
 - Click Search Employees link on the right under the Employees section.
 
-- Enter “%” in the Department field and click the Search button.  
+  ![](images/003.png)
 
-- Notice that ALL employees are returned, since you are logged in as hradmin.  
+- Enter “%” in the Department field and click the Search button. Notice that ALL employees are returned, since you are logged in as hradmin. 
+
+  ![](images/004.png)
 
 - Search for everyone in one department by entering ‘Engineering’ in the Department field and hit ‘Enter’.
 
-- Now log in as a different user, malfoy / Oracle123.
+  ![](images/005.png)
 
-- Repeat the navigation and enter “%” in the Department field.
+- Now log in as a different user, malfoy / Oracle123. Repeat the navigation and enter “%” in the Department field.
+
+  ![](images/006.png)
 
 - Notice that all records returned are for the Engineering department, since the application enforces row level security.
 
+  ![](images/007.png)
+
 - Click the full name hyperlink Borst, Hugo to see his full details.
-
-- Return to the Search page by clicking on the Search Employees link on the right.
-
-- Search for all employees named Frank by entering the name in the First Name field and hitting enter.
 
 - Click ‘Logout’ near the top left.
 
-You have now created traffic logs of “normal” and “expected” behavior in this application surrounding employee information searches.
+  You have now created traffic logs of “normal” and “expected” behavior in this application surrounding employee information searches.
 
-You will now update your whitelist.
+  These statements have already been added to the whitelist policy ‘4 – Block with Updated Whitelist’ for you
 
-- Create a new policy by adding the “normal” and “expected” SQL to your whitelist.  
+- Return to the Audit Vault Server, logging in as avauditor/Oracle123+ if needed
 
-- Return to the Audit Vault Server, logging in as
-    - avauditor/Oracle123+.  
-    
 - Navigate to Policy / Firewall Policy and select your current policy – ‘3 – Block with DBA and HR App Exception’. 
 
-- Make a copy called ‘4 – Block with Updated Whitelist’, as follows:
-	 
-- Remove the Exception for the ‘EMPLOYEESEARCH’ user as that is way too broad for the purposes of this lab.   
+  ![](images/008.png)
 
-- Click the ‘Allow HR Apps User’ Exception Rule:- 
-  	
-- Click ‘Delete’:
+- Review the differences between ‘3 – Block with DBA and HR App Exception’ and ‘4 – Block with Updated Whitelist’
   
-- You will be asked to confirm:
+  Note the HR App Exception has been removed from No.4 and that there are now more SQL Statements in the Analyzed SQL section. Click Default to rview the SQL statements. Finally, note the Default policy settings at the bottom of the policy page and how we have defined a Statement Substitution such that the Firewall can silently alert on this out of policy activity while maintaining session integrity
 
-- Click ‘OK’ and you will receive a confirmation notice- and be returned to the Policy Overview screen for- continued editing.  
-	
-- You will now refine your Whitelist.  Click the ‘Modify SQL’ button in the ‘Analyzed SQL’ section:
- 
-	
-- Next, select your Secured Target.  Click ‘Change’:
+  ![](images/009.png)
+	 
+- With policy ‘4 – Block with Updated Whitelist’ in place, the HR Application will continue to function as all the statndard activity we generated in previous steps is allowed by the policy. Any new statemens executed by the application will be permitted.
 
-- Then, select your Secured Target ‘DBSec’ and then ‘Apply’:
+- Before you implement this newly created policy based upon ‘expected’ traffic after the training process, first examine what you are hoping to prevent—unauthorized access to sensitive data using SQL Injection attacks. 
 
-- Filter out the statements that are already in your Whitelist, but filtering on the value ‘No’ for the ‘In Policy’ column.
+  As you did previously, to demonstrate that the malfoy user can view employee records in the Engineering department, click ‘Search Employees’ link, and search for all employees with the first name ‘Frank’.  Three employees will be listed.
 
-- Next, you will filter to show just the statements done by the application.  The USERNAME column should do the trick.  Filter for EMPLOYEESEARCH: 
+  Now you will demonstrate the vulnerability of this application against a SQL Injection attack.  Remember, many applications have been written (and not updated due to cost or effort) and continue to be written with the necessary coding standards to avoid (but not fully eliminate) these vulnerabilities.  
 
-- Select all of these statements:
+  In the Position field enter:
 
-- Once you have selected the relevant statements, click the ‘Set Policy’ button:
-
-- Set all of this simulated application traffic to be allowed to access the protected database.  Select the following:
-
-        Actions: 			Pass
-        Logging Level:		Unique
-        Threat Severity:	        Insignificant
-
-Now, return to the Policy Overview via the breadcrumbs and Publish the policy.
-
-Before you implement this newly created policy based upon ‘expected’ traffic after the training process, first examine what you are hoping to prevent—unauthorized access to sensitive data using SQL Injection attacks. 
-
-As you did previously, to demonstrate that the malfoy user can view employee records in the Engineering department, click ‘Search Employees’ link, and search for all employees with the first name ‘Frank’.  Three employees will be listed.
-
-Now you will demonstrate the vulnerability of this application against a SQL Injection attack.  Remember, many applications have been written (and not updated due to cost or effort) and continue to be written with the necessary coding standards to avoid (but not fully eliminate) these vulnerabilities.  
-
-In the Position field enter:
-
-    ' UNION SELECT '1', username,'','1','1','1','1','1','1',0,0,PAYMENT_ACCT_NO,TAXPAYER_ID,sysdate,sysdate,0,'1','1','1','1' from hr.supplemental_data--
+    ' UNION SELECT 1, username, 'test', '1', '1', '1', '1', '1', '1', 0, 0, PAYMENT_ACCT_NO, TAXPAYER_ID, sysdate, sysdate, '0', 1, '1', '1', 1 FROM hr.supplemental_data --
 
 **Note:** The 'tick' at the beginning and there is no space between the two dashes
 
 - Since you have broken the application security by injecting your own SQL text into the application, all employees are listed.  And look at the sensitive data that is revealed!
+
+    ![](images/010.png)
 
 - Log out of the HR Application.	
 
 - You will now implement your whitelist for the HR application to prevent this kind of attack—and the thousands of SQL Injection variations possible.  
 
 - Log in to the Audit Vault Server as avauditor/Oracle123+.  Navigate to your Secured Target’s Firewall Policy and change the Firewall Policy to ‘4 – Block with Updated Whitelist’.
+
+    ![](images/011.png)
 
 - Return to the HR Application, logging in as malfoy/Oracle123, 
 
@@ -157,13 +137,23 @@ In the Position field enter:
 - Attempt to execute the search which previously resulted in the exposure of all records in the employees table, by entering:
 
     
-        ' UNION SELECT '1', username,'','1','1','1','1','1','1',0,0,PAYMENT_ACCT_NO,TAXPAYER_ID,sysdate,sysdate,0,'1','1','1','1' from hr.supplemental_data--
+        ' UNION SELECT 1, username, 'test', '1', '1', '1', '1', '1', '1', 0, 0, PAYMENT_ACCT_NO, TAXPAYER_ID, sysdate, sysdate, '0', 1, '1', '1', 1 FROM hr.supplemental_data --
 
     **Note:** The 'tick' at the beginning and there is no space between the two dashes
 
-This text may be found in the SQL_Injection text file in your lab folder and can be copied and pasted into the Position field.
+  This text may be found in the SQL_Injection text file in your lab folder and can be copied and pasted into the Position field.
 
-Since this query is not part of your whitelist, the entire statement fails.
+  Since this query is not part of your whitelist, the entire statement fails.
+
+    ![](images/012.png)
+
+  Execute the statement a few times, then attempt some of the standard activity you generated earlier and note that this is still successful.
+
+  Navigate to the Home page of the Audit Vault Server UI, and observe the Database Firewall Alerts which have been generated
+
+    ![](images/013.png)
+
+### SUMMARY
 
 This demonstrates how Oracle Database Firewall can protect against SQL injection attacks without tedious, time consuming application development, validation, changes and testing.
 
@@ -171,11 +161,10 @@ One thing to note is that in this lab exercise, you performed just a few typical
 
 ### SUMMARY
 
-You accomplished the following in this lab exercise:
-1.	Used exceptions to classify new traffic patterns.
-2.	Incrementally modified your baseline based on that traffic.
-3.	Updated your white list to prevent SQL Injection attacks.
-
+- You accomplished the following in this lab exercise:
+  - Used exceptions to classify new traffic patterns.
+  - Incrementally modified your baseline based on that traffic.
+  - Updated your white list to prevent SQL Injection attacks.
 
 **This completes the lab!**
 

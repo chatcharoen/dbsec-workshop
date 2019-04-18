@@ -84,13 +84,13 @@ Access the lab exercise folders to begin.  On the desktop, navigate to the Datab
 
 - Re-execute the tuning operations as DBA_NICOLE to ensure she has the necessary privileges to perform her job.  Click the icon Step_8_Execute_Explain_Plan_as_DBA_NICOLE_with_Minimum_Privileges_Necessary.sh
 
-- Click Step_\8_Execute_Explain_Plan_as_DBA_NICOLE_with_Minimum_Privileges_Necessary.out to view the output of the scripts.
+- Click Step_8_Execute_Explain_Plan_as_DBA_NICOLE_with_Minimum_Privileges_Necessary.out to view the output of the scripts.
 
 
 
 #### Conclusion
 
-In this lab, you used Database Vault to extend the Realm by using Oracle Database Vault Rules and Rule Sets. 
+In this lab, you have used privilege analysis to identify used and unused privileges. 
 
 
 **This completes this Lab!**

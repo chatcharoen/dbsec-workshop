@@ -64,15 +64,15 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
 - Navigate back to the Audit Vault Server ui
 
- ![](images/009.png)
+  ![](images/009.png)
 
 - Once the Oracle Audit Vault Server login page loads, login as the AV Administrator using the username/password of: avadmin/Oracle123+.  Click the Login button to continue.
 
- ![](images/010.png)
+  ![](images/010.png)
 
 - If you look in the lower right hand section of the Home page you'll find information about Firewalls that are registered with this AVFW server:
 
-   ![](images/011.png)
+  ![](images/011.png)
 
 - The DBSecOracle Secured Target has already been registered.  We will now check the Enforcement Point. An Enforcement Point is the Oracle Database Firewall object that is responsible for monitoring and logging SQL statements passed to the database. Multiple enforcement points can be used to monitor traffic to different databases or at different locations in the network.
 

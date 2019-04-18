@@ -16,7 +16,7 @@ Oracle Advanced Security comprises two security features to protect sensitive da
   - VNC client
 
 
-### PRIVILEGE ANALYSIS - PROTECTION OF SENSITIVE DATA IN APPLICATIONS USING ORACLE DATABASE DATA REDACTION 
+### PROTECTION OF SENSITIVE DATA IN APPLICATIONS USING ORACLE DATABASE DATA REDACTION 
 
 Oracle Data Redaction enables you to move redaction capabilities out of applications and into the database. It provides an easy way to protect sensitive information that is displayed in applications by replacing it on-the-fly with valid redacted data, while keeping the applications running. Sensitive information is concealed according to flexible polices that provide conditional redaction and that are managed directly within the database. For maximum transparency, redaction preserves the type and formatting of column data returned to applications, and it does not alter the underlying database blocks on disk or in cache. Oracle Data Redaction is designed to be fast so that it can run on production systems. In addition, it is embedded in the database, so no separate installation is required.
 
@@ -85,55 +85,79 @@ In this lab exercise, you will accomplish the following:
 
 - Select the menu option Security then Data Redaction.
 
- ![](images/111.png) 
+     ![](images/111.png)    
 
 - You may be prompted for database login credentials.  Here you should connect using the Named Credential for SYS to connect to PDB1.
 
- ![](images/112.png) 
+     ![](images/112.png) 
 
 - You will be taken to the Data Redaction overview page where you can create a new Data Redaction policy.  Click the highlighted Create button. 
 
- ![](images/113.png) 
+     ![](images/113.png) 
 
 - In the Create Data Redaction Policy screen, click the magnifier glass icon to search for the EMPLOYEESEARCH schema.
 
- ![](images/114.png) 
+     ![](images/114.png) 
 
 - Choose DEMO_HR_EMPLOYEES as the table to Redact
 
- ![](images/115.png) 
+     ![](images/115.png) 
 
 - For the Policy Name field, enter REDACT_EMP_DATA. Review that the Policy Expression is ‘1=1’.  This Redaction Policy Expression defaults to 1=1 (TRUE), meaning to always redact.
 
- ![](images/116.png)
+     ![](images/116.png)
 
 - Now define the columns to be redacted.  Click the Add button. 
 
- ![](images/118.png)  
+     ![](images/118.png)  
 
 - In the Add column dialogue, choose the Column, NINO and set the Sensitive Column Type to NINO and Redaction Function (FULL) at their default values.  Click the OK button to continue.
 
- ![](images/119.png) 
+     ![](images/119.png) 
 
 - After adding the NINO column to the Data Redaction Policy, click the Add button to add SSN, SIN, and CORPORATE_CARD with the parameters you see below.  
 
- ![](images/123.png)
+        Sensitive Column Type: SOCIAL_INSURANCE_NUMBER
+        Expression Name: Default Expression
+        Redaction Format: Canadian Social Insurance Numbers - Formatted
+    
+     **Note:** The **Redaction Format** input will be automatically filled out as **PARTIAL**  
+    
+    ![](images/123.png)    
 
- ![](images/124.png)
+- Add the SSN column 
 
- ![](images/121.png)
+        Sensitive Column Type: SOCIAL_SECURITY_NUMBER
+        Expression Name: Default Expression
+        Redaction Format: U.S. Social Security Numbers - Formatted
+       
+     **Note:** The **Redaction Format** input will be automatically filled out as **PARTIAL**  
+     
+    ![](images/124.png)
+    
+- Add the CORPORATE_CARD column   
 
- ![](images/122.png) 
+        Sensitive Column Type: CREDIT_CARD_NUMBER
+        Expression Name: Default Expression
+        Redaction Format: Credit Card Numbers - Pratially Redacted
+       
+     **Note:** The **Redaction Format** input will be automatically filled out as **PARTIAL** and you do not need to complete the **Functional Attributes**
+     
+    ![](images/121.png)
+
+- You should see the following 4 object columns
+
+    ![](images/122.png)
 
 - Navigate back to the HR Application in your browser and look at a few of the employee records and notice how they are being redacted. They should look something like the screenshots below. If they do not look like this, you may have an error in your Redaction config.
 
- ![](images/126.png)
-
- ![](images/127.png)
-
- ![](images/128.png)
-
- ![](images/129.png) 
+     ![](images/126.png)
+    
+     ![](images/127.png)
+    
+     ![](images/128.png)
+    
+     ![](images/129.png) 
 
 - At the moment, this Redaction policy will be enforced globally, regardless of where the connection to the database originates from.
  Redaction policies are rarely enforced globally, however.  If data is being stored, someone needs to be able to see that data.  These policies are generally enforced based on job role, session information, or some other environmental condition.
@@ -148,6 +172,9 @@ In this lab exercise, you will accomplish the following:
 
 - On the Expression screen, add the following expression to make JDBC connections exempt from the policy (HR Application uses JDBC to connect to the database)
 
+        SYS_CONTEXT('USERENV','MODULE') != 'JDBC Thin Client'
+        OR SYS_CONTEXT('USERENV','MODULE') is null
+
   ![](images/131.png)
 
 - Click ok to save policy changes
@@ -159,6 +186,11 @@ In this lab exercise, you will accomplish the following:
   ![](images/135.png) 
 
 - Open a terminal window and connect to the database as employeesearch/Oracle and execute the query below. Notice that we are presented with Redacted data
+
+        sqlplus employeesearch/Oracle123@pdb1
+        column firstname format a20
+        column corporate_card format a20
+        select firstname, sin, ssn, nino, corporate_card from employeesearch.demo_hr_employees where rownum < 10;
 
   ![](images/134.png)
 

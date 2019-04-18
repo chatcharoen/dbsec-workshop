@@ -2,13 +2,7 @@
 
 Welcome to the **Oracle Database Security Workshop** 
 
-You must connect to the environment using VNC
-
-IP:2
-
-Password is **Oracle123**
-
-If you are not on the corporate network you will need VPN access.
+Please view the [Getting Started](Lab_Guides/Getting_Started/README.md) guide to configure your environment.
 
 As part of this workshop, you will complete labs helping you to better understand:
 

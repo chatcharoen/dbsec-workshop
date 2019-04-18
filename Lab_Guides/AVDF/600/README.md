@@ -1,127 +1,70 @@
-# Oracle Advanced Security - Transparent Data Encryption
+# Audit Vault and Database Firewall
 
+## Lab 600: ORACLE DATABASE FIREWALL – GAIN VISIBILITY AND SATISFY REQUIREMENTS THROUGH REPORTING
 
-## Lab 100: ENCRYPTING A TABLESPACE
+You have already been through Reporting in some detail.  Take a few minutes and see what capturing activity via the Firewall has added to the mix
 
-#### Overview
+### Overview
 
-- In this lab exercise, you will accomplish the following:
-     - Validate the status of the encryption keys using Oracle Enterprise    Manager  Cloud Control
-     - OFFLINE the EMPLOYEESEARCH_DATA tablespace
-     - Migrate the tablespace to an encrypted tablespace 
-     - Verify that encryption has taken place
-    
-- After the Start_OAS_Infrastructure.sh script finishes (see the steps at the end of the section B), open the Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
+- In this lab exercise you will accomplish the following:
+     - Review Reports that contain only data captured by the Firewall
+     - Review Reports that contain both native Audit data and network traffic
 
-  ![](images/007.png)
+### Setup and Preparation 
 
-- Open Oracle_Advanced_Security_Lab_Exercise_01 folder.
+- Completion of AVDF **LAB EXERCISE 400 – CONFIGURE ORACLE DATABASE FIREWALL TO MONITOR AND PROTECT DATABASES**
 
-  ![](images/008.png)
+- Completion of AVDF **LAB EXERCISE 500 – USE ORACLE DATABASE FIREWALL TO CONFIGURE POLICIES AND BLOCK UNAUTHORIZED TRAFFIC**
 
-- Open the 01_Encrypt_Sensitive_Information browser shortcut.
+### GAIN VISIBILITY AND SATISFY REQUIREMENTS THROUGH REPORTING
 
-  ![](images/009.png)
+- Open up your browser and log in as **avauditor/Oracle123+**:
 
-- Click the bookmark for Enterprise Manager.
+  ![](images/avdflab600img001.png)
 
-  ![](images/010.png)
+- There are several reports that contain just Firewall data.  Navigate to **Reports / Specialized Reports**:
+---
+Database Firewall reports contain data that is collected if a secured target is monitored by the Database Firewall according to a firewall policy, as well as data gathered if Oracle AVDF is integrated with BIG-IP ASM Web application firewall (WAF) from F5 Networks, Inc.
 
-- Log in with the credentials SYSMAN/Oracle123 and navigate to the PDB Database home page by selecting the Databases menu item from the 'Targets' drop down menu as shown below.
+- Data collected by the Database Firewall includes:
+     - Database Firewall action and threat level
+	- Database user name
+	- OS user name
+	- Statement type (data definition, procedural, data manipulation, etc.)
+	- Client application name and IP address
+	- SQL request ID
+	- Database Firewall cluster ID
+	- Comparison data between F5's WAF policy and the Database Firewall policy
 
-  ![](images/011.png)
+Look through these reports.  Reports that are grouped by IP address and Target will not look that different to you, one from another, as you have been collecting data from a single source and generating traffic from a single IP address.  In the real world, these differences would become quickly apparent.  If you made typos during any of the Exercises you may see some entries in the Invalid SQL Report.
 
-  ![](images/012.png)
+---
 
-- Expand the tree structures and click the pluggable database 'cdb_PDB1' as shown.  There may be additional targets, but cdb_PDB1 will appear in the Pluggable Databases tree.
+- Go back to the **Activity and Compliance Reports**.  You will now see data generated both by native database auditing and by collecting data about SQL traffic passing over the network.  In many cases, the same event has been captured by Auditing and by Firewall Monitoring.  Identify some of these records, and compare the differences.
 
-  ![](images/014.png)
+- Go back to **Specialized Reports** and select **Database Traffic Analysis** by **OS User Detail**
 
-  This opens the PDB1 home page.  Review the status of your environment by selecting Security → Transparent Data Encryption. 
+  ![](images/avdflab600img002.png)
+  
+- You can customize your report by highlighting by using certain criteria.  Once you’ve selected which report you like to customize, click the **Actions** drop down and go to **Format**.  
+  
+  ![](images/avdflab600img003.png)
+  
+- Under **Format**, there are options such as sort, highlight and graph.  For instance, if you want to highlight a major threat, the criteria are:
 
-  ![](images/015.png)
+  ![](images/avdflab600img004.png)
+  
+- Once you click **Apply**, this is how your report would look
 
-  If the Database Login page appears, then log in as an administrative user, such as SYS. User SYS must log in with the SYSDBA role selected.  For convenience, select from one of the saved Named Credentials for PDB1, then click Login.
+  ![](images/avdflab600img005.png)
+  
+### Conclusion
 
-  ![](images/016.png)
+- You accomplished the following in this lab exercise:
+1. Reviewed Reports that contain only data captured by the Firewall
+2. Reviewed Reports that contain both native Audit data and network traffic
+3. Customized reports to highlight certain actions
 
-- Expand on the Keystore and Master Keys section in the lower left hand corner and review the information provided in the Oracle Advanced Security – Transparent Data Encryption screen.  Notice that the Keystore Status is OPEN and you have one Master Key in use—pdb1.   You can now encrypt data within the database. 
-
-  ![](images/017.png)
-
-- Scroll down to Encrypted Objects and see what we have
-
-  ![](images/018.png)
-
-- Within Encrypted Tablespaces, Click Offline Operations and choose Offline
-
-  ![](images/019.png)
-
-- Click the magnifying glass icon to search for a tablespace to put offline
-
-  ![](images/020.png)
-
-- Choose EMPLOYEESEARCH_DATA as the tablespace, and click OK
-
-  ![](images/021.png)
-
-- Ensure Run Immediate is selected, then Click ok
-
-  ![](images/023.png)
-
-  ![](images/024.png)
-
-- Scroll back down to Encrypted Tablespaces, Click Offline Operation, and click Encrypt
-
-  ![](images/025.png)
-
-- Click the search icon 
-
-  ![](images/026.png) 
-
-- Choose EMPLOYEESEARCH_DATA as the offline tablespace to convert, click OK
-
-  ![](images/027.png)
-
-- Ensure Run Immediate is selected, then click ok
-
-   ![](images/028.png) 
-
-   ![](images/029.png)
-
-- Under Encrypted Objects, click Refresh on Encrypted Tablespaces. Within a few seconds you should see EMPLOYEESEARCH_DATA back ONLINE with AES128 encryption
-
-  ![](images/030.png)
-
-- Back in the Oracle_Advanced_Security desktop folder, click 03_Search_Strings_Encrypted.sh and verify that the data has been encrypted.  It will look similar to this screenshot
-
-  ![](images/031.png)
-
-  ![](images/032.png)
-
-- Finally, return to the Security -> Transparent Data Encryption Section.
-
-  Review in the Encrypted Objects section that the tablespace, EMPLOYEESEARCH_DATA is encrypted with the default Encryption Algorithm.
-
-
-
-You have now demonstrated encryption of datafiles by the database, completely transparently to any application.  
-For additional information, see also:
-- "Checking Encrypted Tablespaces in the Current Database Instance" to query the database for existing encrypted tablespaces
-http://docs.oracle.com/cd/E16655_01/server.121/e17609/tdpsg_encryption.htm#CHDECIDD
-- Oracle Database Advanced Security Administrator's Guide for detailed information about tablespace encryption
-http://docs.oracle.com/cd/E16655_01/network.121/e17729/toc.htm
-- Oracle Database SQL Language Reference for more information about the CREATE TABLESPACE statement
-http://docs.oracle.com/cd/E16655_01/server.121/e17209/statements_7003.htm#SQLRF01403
-
-
-
-
- #### Conclusion
-
- As data exposed in applications continues to rapidly expand, enterprises must have strong controls in place to protect data no matter what devices or applications are used. Oracle Database helps organizations keep their sensitive information safe in this increasingly complex environment by delivering preventive, detective and administrative controls that enforce data security in the database. Oracle Advanced Security with Oracle Database provides two critical preventive controls.
-
-Transparent Data Encryption encrypts data at rest to stop database bypass attacks from accessing sensitive information in storage. Data Redaction reduces exposure of sensitive information in applications by redacting database query results on-the-fly, according to defined policies. Together these two controls form the foundation of a multi-layered, defense-in-depth approach, and further establish Oracle Database as the world’s most advanced database security solution.
 
 **This completes the lab!**
 

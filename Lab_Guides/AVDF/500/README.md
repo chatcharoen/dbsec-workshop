@@ -1,127 +1,268 @@
-# Oracle Advanced Security - Transparent Data Encryption
+# Audit Vault and Database Firewall
+
+## Lab 500: USE ORACLE DATABASE FIREWALL TO CONFIGURE POLICIES AND BLOCK UNAUTHORIZED TRAFFIC
+
+#### White list, Black list, Exception list policies
+
+Oracle Database Firewall examines the grammar of the SQL statements being sent to the database, analyzes their meaning, and determines the appropriate security policy to apply. This highly accurate approach provides a significantly higher degree of protection than first-generation database monitoring technologies that relied on recognizing the "signature" of known security threats. By enforcing normal application behavior, Oracle Database Firewall helps organizations avoid the costly and disruptive false positives and false negatives common with other approaches. Oracle Database Firewall recognizes SQL injection attacks on compromised applications and blocks them before they reach the database.
+
+#### Iterative Policy Development Cycle 
+
+Successful deployment of a Database Firewall depends on an effective policy. The Database Firewall policy editor enables you to design policies quickly and efficiently. Policy rules can depend on any combination of the SQL statement type, name of the database user, IP address of the database client, operating system user name, client program name, or any exceptions you specify.
+
+Developing a policy is an iterative process that keeps refining and improving the policy with new data.
+
+Developing a policy consists of these main steps:
+1. Create a firewall policy in the Audit Vault Server. 
+2. Design your policy by setting policy actions and rules. 
+3. Publish the policy to make it available for applying to secured targets.
+4. Assign the policy to selected secured targets.  
 
 
-## Lab 100: ENCRYPTING A TABLESPACE
-
-#### Overview
+### Overview
 
 - In this lab exercise, you will accomplish the following:
-     - Validate the status of the encryption keys using Oracle Enterprise    Manager  Cloud Control
-     - OFFLINE the EMPLOYEESEARCH_DATA tablespace
-     - Migrate the tablespace to an encrypted tablespace 
-     - Verify that encryption has taken place
+     - Complete an iterative development cycle of the baseline
+     - Develop and deploy a Firewall policy
+     - Modify and re-deploy the Firewall policy
+     - Verify that policy is enforced and ensure that unseen traffic is blocked
+### Setup and Preparation
+
+- Completion of **LAB EXERCISE 01 – ORACLE DATABASE FIREWALL SECURED TARGETS TO MONITOR AND PROTECT DATABASES**
+
+### Create and Test a Firewall Policy
+ 
+The Oracle Database Firewall system must understand the normal way that client applications use the database. This is accomplished by logging traffic (such as via a test suite or by recording normal application traffic before you start developing a new Policy.  You have just been through that exercise with Swingbench.  Now you will move on to creating a Policy that will substitute an innocuous SQL statement in the place of any statement that the Firewall has not seen before.
+
+- Begin by opening the folder labeled **FW – Lab Exercise 2**.  
     
-- After the Start_OAS_Infrastructure.sh script finishes (see the steps at the end of the section B), open the Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
+  ![](images/avdflab500img001.png)
 
-  ![](images/007.png)
+- Click the icon **Step 1 – Create the Firewall Policy**.
 
-- Open Oracle_Advanced_Security_Lab_Exercise_01 folder.
+  ![](images/avdflab500img002.png)
 
-  ![](images/008.png)
+- Log into the Audit Vault Server as **avauditor/Oracle123+**.
 
-- Open the 01_Encrypt_Sensitive_Information browser shortcut.
+  ![](images/avdflab500img003.png)
 
-  ![](images/009.png)
+- Navigate to the Policy page and select **Policy / Firewall Policy**.  Then click the **Create Policy** button:
 
-- Click the bookmark for Enterprise Manager.
+  ![](images/avdflab500img004.png)
 
-  ![](images/010.png)
+- In the screen that appears, fill in the appropriate information, and then click the **Create** button.
 
-- Log in with the credentials SYSMAN/Oracle123 and navigate to the PDB Database home page by selecting the Databases menu item from the 'Targets' drop down menu as shown below.
+```
+	Database Type:      Oracle Database
+	Policy Name:        1 – Block Unseen Statements
+	Description:        This will block any statements not previously seen by the Firewall.
+```
 
-  ![](images/011.png)
+  ![](images/avdflab500img005.png)
 
-  ![](images/012.png)
+- For this first simple Policy, you are going to create two Policy Rules: one for the SQL you have already analyzed (your first SQL Statement and all the Swingbench activity) and one Default Rule for the statements not covered (all statements not previously seen by the Firewall). First, click the **Modify SQL** button:
 
-- Expand the tree structures and click the pluggable database 'cdb_PDB1' as shown.  There may be additional targets, but cdb_PDB1 will appear in the Pluggable Databases tree.
+  ![](images/avdflab500img006.png)
+  
+- Next, select your Secured Target.  Click **Change**:
 
-  ![](images/014.png)
+  ![](images/avdflab500img007.png)
+  
+- Then, select your Secured Target **DBSec** and then **Apply**:
 
-  This opens the PDB1 home page.  Review the status of your environment by selecting Security → Transparent Data Encryption. 
+  ![](images/avdflab500img008.png)
+  
+- As you can see, all the statements that have been logged have been grouped into **Clusters** or groups of statements that have the same semantic meaning or intent.  Click the checkbox at the top to select **ALL** of the Clusters:
 
-  ![](images/015.png)
+  ![](images/avdflab500img009.png)
+  
+- Click the **Set Policy** button at the upper right-hand corner of the page:
 
-  If the Database Login page appears, then log in as an administrative user, such as SYS. User SYS must log in with the SYSDBA role selected.  For convenience, select from one of the saved Named Credentials for PDB1, then click Login.
+  ![](images/avdflab500img010.png)
+  
+- You will set all of this simulated application traffic to be allowed to access the protected database.  Select the following:
+```
+	Actions: 		Pass
+	Logging Level:		Unique
+	Threat Severity:	Insignificant
+```
+  ![](images/avdflab500img011.png)
+  
+  
+- After clicking **Save**, you’ll notice that there is no button or other navigational element to return you to the Policy Overview.  Click **Firewall Policy** to return to the list of Policies:
 
-  ![](images/016.png)
+  ![](images/avdflab500img012.png)
+  
+- Then click your Policy to continue editing:
 
-- Expand on the Keystore and Master Keys section in the lower left hand corner and review the information provided in the Oracle Advanced Security – Transparent Data Encryption screen.  Notice that the Keystore Status is OPEN and you have one Master Key in use—pdb1.   You can now encrypt data within the database. 
+  ![](images/avdflab500img013.png)
+  
+- Implement the blocking policy for every statement that hasn’t yet passed through the Firewall.  In the **Default Rule** section toward the bottom of the page, click the **Default Rule** link.
 
-  ![](images/017.png)
+  ![](images/avdflab500img014.png)
+ 
+- Now block all unwanted traffic via a substitution.  Select the following:
+```
+	Actions: 		Block
+	Logging Level:		Always
+	Threat Severity:	Major
+	Substitution:		select 100 from dual
+```
+(This statement is harmless and does not return any values or affect performance.)
+ NOTE:  Do not use a semi-colon here!
+ 
+- Click **Apply Changes**.
+ 
+  ![](images/avdflab500img015.png)
+  
+- You are now ready to make your policy available for use by the Enforcement Point.  At the top right-hand corner of the page, click **Publish**:
 
-- Scroll down to Encrypted Objects and see what we have
+  ![](images/avdflab500img016.png)
 
-  ![](images/018.png)
+- You will see a message that your Policy has been published successfully.  Click **Firewall Policies** to return to the list of Policies.
 
-- Within Encrypted Tablespaces, Click Offline Operations and choose Offline
+- You can now test the new Policy. First, see what happens before you apply it.  Click the icon labeled **Step 02 – Run Statements Before Applying Policy.sh**.  
 
-  ![](images/019.png)
+  ![](images/avdflab500img017.png)
+  
+- Then open the output file **Statements Executed Before Policy.out**:
 
-- Click the magnifying glass icon to search for a tablespace to put offline
+  ![](images/avdflab500img018.png)
 
-  ![](images/020.png)
+- Notice that all of your statements executed normally:
 
-- Choose EMPLOYEESEARCH_DATA as the tablespace, and click OK
+  ![](images/avdflab500img019.png)
+  
+- Now assign your Policy to your Secured Target.  In the Audit Vault Server console, click the **Secured Targets** tab.  In the Targets page, click the name of the secured target you want – **DBSec**
 
-  ![](images/021.png)
+  ![](images/avdflab500img020.png)
+  
+- Expand the **Firewall Policy** section and click **Change**.
 
-- Ensure Run Immediate is selected, then Click ok
+  ![](images/avdflab500img021.png)
+  
+- Select your new Policy and click **Save**.
 
-  ![](images/023.png)
+  ![](images/avdflab500img022.png)
 
-  ![](images/024.png)
+- Be sure to click **Save**!  You are now ready to test your new Policy.
 
-- Scroll back down to Encrypted Tablespaces, Click Offline Operation, and click Encrypt
+  ![](images/avdflab500img023.png)
+  
+- Now go back to your Database image.  Click the icon labeled **Step 04 – Run Statements After Applying Policy 1 – Block Unseen.sh**.  
 
-  ![](images/025.png)
+  ![](images/avdflab500img024.png)
+  
+- Then open the output file **Statements Executed After Policy 1.out**
 
-- Click the search icon 
+  ![](images/avdflab500img025.png)
+  
+- Notice that most of the statements were blocked by your substitution and that your all but last statement, **SELECT NAME, OPEN_MODE FROM GV$PDBS**, is blocked, as that was one of the statements profiled in your whitelist policy.  
 
-  ![](images/026.png) 
+  ![](images/avdflab500img026.png)
+  
+- You will now refine the baseline policy to make an exception allowing SQL traffic from some administrator users.  Remember that you cannot edit a deployed Policy, so you must first copy the existing policy. Click **Step 05 – Modify the Firewall Policy** icon and log into the Audit Vault Server as **avauditor/Oracle123+**.  Alternatively, just return to your earlier session.  Open the Policy page and then Firewall Policy:
 
-- Choose EMPLOYEESEARCH_DATA as the offline tablespace to convert, click OK
+  ![](images/avdflab500img027.png)
 
-  ![](images/027.png)
+- Open the policy that you just tested:
 
-- Ensure Run Immediate is selected, then click ok
+  ![](images/avdflab500img028.png)
+  
+- Click the **Copy** button in the upper right-hand corner:
 
-   ![](images/028.png) 
+  ![](images/avdflab500img029.png)
+ 
+- This will bring up the Copy Policy dialog box.
+  
+  ![](images/avdflab500img030.png)
 
-   ![](images/029.png)
+- Enter the following information:
+```
+	Policy Name:  2 – Block with DBA Exception
+	Description:  This will block any statements not previously seen by the Firewall, but allow certain users to execute these statements normally.
+```
+- When you are done, click the **Copy** button. You will see a message that the Policy has been copied successfully and you will be presented with a new **Policy Overview** screen:
 
-- Under Encrypted Objects, click Refresh on Encrypted Tablespaces. Within a few seconds you should see EMPLOYEESEARCH_DATA back ONLINE with AES128 encryption
+  ![](images/avdflab500img031.png)
+  
+- You will now add the exception for certain of your DBAs.  In order to add such an exception, you must first construct a **Database User Set**.  Click the **Database User Set** button at the bottom of the page.
 
-  ![](images/030.png)
+  ![](images/avdflab500img032.png)
+  
+- This will bring up the following screen.
 
-- Back in the Oracle_Advanced_Security desktop folder, click 03_Search_Strings_Encrypted.sh and verify that the data has been encrypted.  It will look similar to this screenshot
+  ![](images/avdflab500img033.png)
 
-  ![](images/031.png)
+- Click the **Create New Set** button.
 
-  ![](images/032.png)
+  ![](images/avdflab500img034.png)
 
-- Finally, return to the Security -> Transparent Data Encryption Section.
+- Enter the following information:
+```
+	New Set Name:  DBAs
+	First Member:  sys
+```
+- Then, click the **Create Set** button.
 
-  Review in the Encrypted Objects section that the tablespace, EMPLOYEESEARCH_DATA is encrypted with the default Encryption Algorithm.
+  ![](images/avdflab500img035.png)
+  
+- Now you are going to add a couple of additional users.  Click the **Add DB User** button.  Do this twice, adding system and **DBA_DEBRA**.
 
+  ![](images/avdflab500img036.png)
+  
+- When you are done, your screen should look like this:
 
+  ![](images/avdflab500img037.png)
+  
+- This is another case where you get back to where you were by navigating to the **Policy** page and then back in to the **Policy Overview**.
 
-You have now demonstrated encryption of datafiles by the database, completely transparently to any application.  
-For additional information, see also:
-- "Checking Encrypted Tablespaces in the Current Database Instance" to query the database for existing encrypted tablespaces
-http://docs.oracle.com/cd/E16655_01/server.121/e17609/tdpsg_encryption.htm#CHDECIDD
-- Oracle Database Advanced Security Administrator's Guide for detailed information about tablespace encryption
-http://docs.oracle.com/cd/E16655_01/network.121/e17729/toc.htm
-- Oracle Database SQL Language Reference for more information about the CREATE TABLESPACE statement
-http://docs.oracle.com/cd/E16655_01/server.121/e17209/statements_7003.htm#SQLRF01403
+  ![](images/avdflab500img038.png)
+  
+- You can now proceed with adding your **Exception**.  From the **Policy Overview**, click the **Add Exception** button.
 
+  ![](images/avdflab500img039.png)
+  
+- Enter the following information:
+```
+	Exception Rule:  Allow DBAs
+	DBA User Set:  Include / DBAs
+	Policy Controls:
+		Action:  Pass
+		Logging Level:  Unique
+		Threat Severity:  Insignificant
+```
+- Then, click the **Create** button.
 
+ ![](images/avdflab500img040.png)
+ 
+- You are now ready to Publish your Policy.
 
+ ![](images/avdflab500img041.png)
+ 
+- Conclude this lab by testing your new Policy.  First change the Policy associated with the Secured Target.
 
- #### Conclusion
+ ![](images/avdflab500img042.png)
 
- As data exposed in applications continues to rapidly expand, enterprises must have strong controls in place to protect data no matter what devices or applications are used. Oracle Database helps organizations keep their sensitive information safe in this increasingly complex environment by delivering preventive, detective and administrative controls that enforce data security in the database. Oracle Advanced Security with Oracle Database provides two critical preventive controls.
+- Don’t forget to click the **Save** button.
 
-Transparent Data Encryption encrypts data at rest to stop database bypass attacks from accessing sensitive information in storage. Data Redaction reduces exposure of sensitive information in applications by redacting database query results on-the-fly, according to defined policies. Together these two controls form the foundation of a multi-layered, defense-in-depth approach, and further establish Oracle Database as the world’s most advanced database security solution.
+ ![](images/avdflab500img043.png)
+ 
+ ![](images/avdflab500img044.png)
+
+- And observe. Run the script and open the output file.  All statements have been executed successfully!
+
+ ![](images/avdflab500img045.png)
+ 
+#### Summary
+
+You accomplished the following in this lab exercise:
+
+1. Completed an iterative development cycle of a whitelist policy.
+2. Developed and deployed a Policy.
+3. Modified and re-deployed the Policy.
+4. Verified that policy is enforced and ensure that unseen traffic is blocked.
+
 
 **This completes the lab!**
 

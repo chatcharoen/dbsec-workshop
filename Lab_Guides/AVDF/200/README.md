@@ -37,7 +37,7 @@
 
   ![](images/avdflab200img006.png)
 
-- Return to the Reports page by clicking on the breadcrumb above the report
+- Return to the **Reports** page by clicking on the breadcrumb above the report
 
   ![](images/avdflab200img007.png)
 

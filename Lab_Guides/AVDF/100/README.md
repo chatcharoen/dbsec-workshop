@@ -153,7 +153,7 @@
 
   ![](images/007.png)
 
- This SQL file was derived from the Oracle 11g Database Security Best practice that is implemented by default when you create a new DB with 11g using DBCA.  The SQL file contains Oracle Database Audit Policies that are considered to be the best practice for monitoring system activity.  For your implementation you can use this Audit Policy as a starting place, and then tailor the policies to meet your specific business requirements.  The policy does not contain any audit policies for monitoring specific objects.
+ The SQL file contains Oracle Database Audit Policies that are considered to be the best practice for monitoring system activity.  For your implementation you can use this Audit Policy as a starting place, and then tailor the policies to meet your specific business requirements.  The policy does not contain any audit policies for monitoring specific objects.
 
       -- DEFAULT Oracle Database AUDIT Settings
 

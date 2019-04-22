@@ -66,6 +66,69 @@ Once you have unzipped the tool you can see the commands available for dbsat dis
 
     ![](images/106.png)    
 
+
+## Configuring and Executing the DBSAT Collection utility
+
+- Ensure you are in the directory for the dbsat script
+
+        cd /home/oracle/dbsat
+        
+- Execute the following command to see the options available at run-time
+
+        ./dbsat
+        
+- Run DBSAT in collect mode
+
+        ./dbsat collect dbsat_admin@pdb1 pdb1_collect
+        
+- When prompted, enter **Oracle123** as the password
+
+- DBSAT will perform a connection and setup
+
+    **Note:** It may take several minutes for the collection to complete.
+
+- When complete, DBSAT will prompt you to enter a password for the zip file
+
+    - Enter the password **Oracle123**
+    
+    ![](images/113.png)
+
+- You will see a zip file with the name we gave it during the collect process
+
+        ls -al pdb1_collect.zip
+        
+**Note:** The next step is the reporting utility. You can choose to execute this on the same host or run it on a different host. If you are running DBSAT as part of a security assessment you may want to collect the results but not execute the report.
+        
+## Executing the DBSAT Report utility
+
+- Using our newly-creaetd pdb1_collect.zip, run the reporting utility of DBSAT
+
+        ./dbsat report pdb1_collect
+        
+    **Note:** You do not need to include the .zip extension
+    
+    - Enter the password for pdb1_collect.zip, which should be **Oracle123**
+    
+    - Enter the password for the new pdb1_collect_report.zip file as **Oracle123**
+    
+- Your output should look similar to this screenshot:
+
+    ![](images/116.png)  
+
+- Unzip the report zip to view the html file
+
+    - The password should be **Oracle123**
+
+            unzip pdb1_collect_report.zip
+
+- View the HTML report in Firefox
+
+        nohup firefox pdb1_collect_report.html &
+        
+- You are now viewing the Database Security Assessment Report
+
+    ![](images/120.png)
+
 ## Configuring and Executing the DBSAT Sensitive Data Discovery utility
 
 - Copy the provided sample_dbsat.config, make the copy writable and open it for editing
@@ -161,70 +224,7 @@ You can create your own pattern files.
 
 - Schema View
 
-
-## Configuring and Executing the DBSAT Collection utility
-
-- Ensure you are in the directory for the dbsat script
-
-        cd /home/oracle/dbsat
-        
-- Execute the following command to see the options available at run-time
-
-        ./dbsat
-        
-- Run DBSAT in collect mode
-
-        ./dbsat collect dbsat_admin@pdb1 pdb1_collect
-        
-- When prompted, enter **Oracle123** as the password
-
-- DBSAT will perform a connection and setup
-
-    **Note:** It may take several minutes for the collection to complete.
-
-- When complete, DBSAT will prompt you to enter a password for the zip file
-
-    - Enter the password **Oracle123**
-    
-    ![](images/113.png)
-
-- You will see a zip file with the name we gave it during the collect process
-
-        ls -al pdb1_collect.zip
-        
-**Note:** The next step is the reporting utility. You can choose to execute this on the same host or run it on a different host. If you are running DBSAT as part of a security assessment you may want to collect the results but not execute the report.
-        
-## Executing the DBSAT Report utility
-
-- Using our newly-creaetd pdb1_collect.zip, run the reporting utility of DBSAT
-
-        ./dbsat report pdb1_collect
-        
-    **Note:** You do not need to include the .zip extension
-    
-    - Enter the password for pdb1_collect.zip, which should be **Oracle123**
-    
-    - Enter the password for the new pdb1_collect_report.zip file as **Oracle123**
-    
-- Your output should look similar to this screenshot:
-
-    ![](images/116.png)  
-
-- Unzip the report zip to view the html file
-
-    - The password should be **Oracle123**
-
-            unzip pdb1_collect_report.zip
-
-- View the HTML report in Firefox
-
-        nohup firefox pdb1_collect_report.html &
-        
-- You are now viewing the Database Security Assessment Report
-
-    ![](images/120.png)
-
-- [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
+# [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
     
 
 

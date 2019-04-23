@@ -15,8 +15,6 @@ Oracle Advanced Security comprises two security features to protect sensitive da
   - Laptop (Windows, Mac or Linux)
   - VNC client
 
-
-
 ## Encrypting your data
 
 ### **STEP 1**: Getting the environment ready

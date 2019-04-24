@@ -222,7 +222,7 @@
 
   ![](images/014.png)
 
-- Refresh the page by clicking on the Audit Settings tab, and then click the link labeled DBSec.  After a few moments you will see some audit settings appear in the summary.
+- Refresh the page by clicking on the Audit Settings tab under the Policy tab and then click the link labeled DBSec.  After a few moments you will see some audit settings appear in the summary.
  
   You can drill down on these policies.
 
@@ -232,7 +232,7 @@
  
  Note that all of the retrieved policies are marked as “Not Needed” by default.  You can do a thorough review of all Audit Policies from this console, mark settings that should be kept, and re-provision.  Any “Not Needed” policies will be removed, and any new policies will be added.  After the re-provisioning, the yellow caution signs would no longer be present.  They indicate “Problems”.  A “Problem” is a mismatch between the ‘In Use’ and ‘Needed’ columns.   
 
-- Retrieve the User Entitlement data from pdb1.  First, select the Secured Targets tab, be sure Targets is selected and then click DBSec.
+- Retrieve the User Entitlement data from pdb1.  First, select the Secured Targets tab, be sure Targets is selected and then click DBSecOracle.
 
   ![](images/016.png)
 

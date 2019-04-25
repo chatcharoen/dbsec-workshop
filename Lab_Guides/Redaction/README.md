@@ -37,11 +37,11 @@ In this lab exercise, you will accomplish the following:
 
 - Select the folder, Oracle_Advanced_Security.
 
- ![](images/101.png)
+  ![](images/101.png)
 
 - Select the folder, Oracle_Advanced_Security_Lab_Exercise_02.
 
- ![](images/102.png) 
+  ![](images/102.png) 
 
   Note: Oracle Advanced Security Lab_Exercise_01 contains Transparent Data Encryption exercises, covered in the first section of this workbook.
 
@@ -185,16 +185,16 @@ In this lab exercise, you will accomplish the following:
 
   ![](images/135.png) 
 
-- Open a terminal window and connect to the database as employeesearch/Oracle and execute the query below. Notice that we are presented with Redacted data
+- From the lab Folder, double-click the `Query_Redacted_Data.sh` to see the output
 
-        sqlplus employeesearch/Oracle123@pdb1
-        column firstname format a20
-        column corporate_card format a20
-        select firstname, sin, ssn, nino, corporate_card from employeesearch.demo_hr_employees where rownum < 10;
+    ![](images/138.png)
 
-  ![](images/134.png)
+- View the Script Output and identify the redacted data
 
-  ![](images/130.png) 
+    ![](images/139.png)
+
+- 
+
 
  #### Conclusion
 

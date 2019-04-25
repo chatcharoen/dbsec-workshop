@@ -19,7 +19,7 @@
 
   ![](images/008.png)
   
-- In the Oracle_Advanced_Security_Lab_Exersice_01 foler, click the 01_Search_Strings_Plain_Text.sh to verify if there is unencrypted data in the the datafile. It will look similar to the screenshot
+- In the Oracle_Advanced_Security_Lab_Exersice_01 foler, click the 01_Search_Strings_Plain_Text.sh to verify if there is unencrypted data in the the datafile. We are able to view the sensitive data in the datafile. It will look similar to the screenshot
 
 <img src="https://user-images.githubusercontent.com/40471909/56759206-7217d380-6766-11e9-8531-033e79dbdcc7.png" width="500">
 

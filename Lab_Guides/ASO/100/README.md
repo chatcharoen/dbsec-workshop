@@ -18,8 +18,14 @@
 - Open Oracle_Advanced_Security_Lab_Exercise_01 folder.
 
   ![](images/008.png)
+  
+- In the Oracle_Advanced_Security_Lab_Exersice_01 foler, click the 01_Search_Strings_Plain_Text.sh to verify if there is unencrypted data in the the datafile. We are able to view the sensitive data in the datafile. It will look similar to the screenshot
 
-- Open the 01_Encrypt_Sensitive_Information browser shortcut.
+<img src="https://user-images.githubusercontent.com/40471909/56759206-7217d380-6766-11e9-8531-033e79dbdcc7.png" width="500">
+
+<img src="https://user-images.githubusercontent.com/40471909/56759188-6b895c00-6766-11e9-8a7e-244e3842f83e.png" width="700">
+
+- Now open the 01_Encrypt_Sensitive_Information browser shortcut.
 
   ![](images/009.png)
 

@@ -27,7 +27,7 @@
   
 ## Data Access Reports
 
-- Click the **Reports** tab and select the **Data Access** report within the **Activity Reports** section (expand that section).  View the report by clicking on the **Data Access** link and verify that you see audit records that were collected on today’s date.
+- Click the **Reports** tab and select the **Data Access** report within the **Activity Reports** section (expand that section).  View the report by clicking on the **Data Access** link and verify that you see audit records that were collected on today’s date. (Uncheck **Event Time is in the Last 24 hours** to see further back)
 
   ![](images/avdflab200img004.png)
 
@@ -53,7 +53,7 @@
 
 ## Secured target startup and shutdown report
 
-- Return to the **Audit Reports** page.  The **Secured Target Startup and Shutdown Report** displays audited system management activity.  It lists STARTUP and SHUTDOWN operations on a database.  Drill into one of these records: 
+- Return to the **Activity Reports** page under the **Reports** tab.  Select **Startup and Shutdown** report.  It lists STARTUP and SHUTDOWN operations on a database.  Drill into one of these records: 
 
   ![](images/avdflab200img010.png)
 

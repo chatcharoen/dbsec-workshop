@@ -25,7 +25,7 @@
 
 <img src="https://user-images.githubusercontent.com/40471909/56759188-6b895c00-6766-11e9-8a7e-244e3842f83e.png" width="700">
 
-- Now the 01_Encrypt_Sensitive_Information browser shortcut.
+- Now open the 01_Encrypt_Sensitive_Information browser shortcut.
 
   ![](images/009.png)
 

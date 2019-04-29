@@ -79,9 +79,13 @@
   
 ## Compliance Reports
 
-- Click the **Compliance Reports** tab.  The reports shown here are intended to help you meet your compliance reporting requirements as quickly as possible, across PCI, Sarbanes-Oxley, HIPAA (healthcare-related) and other areas.
+- Click the **Compliance Reports** tab.  The reports shown here are intended to help you meet your compliance reporting requirements as quickly as possible, across PCI, Sarbanes-Oxley, HIPAA (healthcare-related) and other areas. We will look at the **Payment Card Industry (PCI) Reports**. To select the databases you are interested in generating reports for press **Go**
 
   ![](images/avdflab200img016.png)
+  
+- Make sure you select **DBSecLinux** and **DBSecOracle** targets and press **Add Members**. Also don't forget to save!
+
+  ![](images/avdflab200img016+1.png)
 
 - Click the **Login Failures** link under the **Payment Card Industry (PCI)Reports** section. This report lists all of the DB login failures across the audited sources.  
 

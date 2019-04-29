@@ -95,7 +95,7 @@
 
   ![](images/avdflab200img018.png)
 
-- You are able to change the definition of the report. Click **Filter**.  Pick the Column **User Name**, the Operator **Contains** and then pick a specific user, like **FRED** or **APPS** 
+- You are able to change the definition of the report. Click **Filter**.  Pick the Column **User Name**, the Operator **=** and then pick a specific user, like **FRED** or **APPS** 
 
   ![](images/avdflab200img019.png) 
 
@@ -110,25 +110,20 @@
      
   ![](images/avdflab200img020.png) 
   
-- After changing the definition, choose **Save Report**.  Assign a name, create your own category, and save it for later use.
+- After changing the definition, choose **Save Report**.  Assign a name, create your own description. 
 
   ![](images/avdflab200img021.png)
-
-- Navigate back to the Compliance Reports tab.  
-
-- To generate compliance reports for a secured target, you must add it to a compliance report category. If you have not already done so, you can click the **Go** button for a compliance category. This allows you to add a secured target as a member of a compliance group in Oracle AVDF. 
-
-   ![](images/avdflab200img023.png) 
    
-- Select the report **Database Schema Changes** in the PCI section, but this time schedule the report to create a PDF version that could then be sent to people who require it.
+## Scheculed Reports
+- Browse to **Compliance Reports** tab and select the report **Database Schema Changes** under the PCI section. We are going to time schedule the report and create a PDF version that could then be sent to people who require it. Click the **Calendar** icon.
 
-   ![](images/avdflab200img024.png)
+  ![](images/avdflab200img024.png)
 
-- After you click the Schedule (picture of calendar) icon, the **Create/Edit Scheduled Job** screen opens.  Select PDF or XLS as an output format.
+-  The **Create/Edit Scheduled Job** screen opens.  Select PDF or XLS as an output format.
 
-  ![](images/avdflab200img025.png)
+   ![](images/avdflab200img025.png)
 
-- You can schedule the report to be run immediately or on a schedule.  For this lab, set the schedule to weekly. To do this, select the radio button **Specify Schedule** option in the **Schedule** section. Then, in the **Repeat** section, select **Weekly** and select today’s date, leaving the remaining fields default, as shown below.
+- You can schedule the report to be run immediately or on a schedule.  For this lab, set the schedule to weekly. To do this, select the radio button **Specify Schedule** option in the **Schedule** section. Then, in the **Repeat** section, select **Weekly**. Mark **Start Date** and select today’s date, leaving the remaining fields default, as shown below.
 
   ![](images/avdflab200img026.png)
   
@@ -144,31 +139,26 @@
 
   ![](images/avdflab200img029.png)
   
-- You will now create a PDF report immediately to see the attestation process at work.  Select the report **Entitlements Changes** in the PCI section.
-
-- Click the **calendar** icon.
+- You will now create a PDF report immediately to see the attestation process at work.  Go back to the PCI section under **Compliance Reports** tab and select the report **Entitlements Changes**. Click the **calendar** icon.
 
   ![](images/avdflab200img030.png)
   
 - You should see the **Create/Edit Scheduled Job** screen, which you used in previous steps. 
-
-  ![](images/avdflab200img031.png)
-  
-- In the **Attestation** section, move the **AVAUDITOR** user to the right hand pane.  
-
-  ![](images/avdflab200img032.png)
-  
-- Leave all other fields as default and click the **Schedule** button.  
+In the **Attestation** section, move the **AVAUDITOR** user to the right hand pane.   
 
   ![](images/avdflab200img033.png)
-  
-- On the **Generated Reports** page, click the **Show Pending Reports** button to see your report in Progress.  Wait a few seconds, and return to the **Generated Reports** page.
+
+- Leave all other fields as default and click the **Schedule** button. 
 
   ![](images/avdflab200img034.png)
   
-- Click the **Details** button associated with the report.  Click the **View Report** button to review the PDF.  The PDF will download in your browser.
+- On the **Generated Reports** page, click the **Show Pending Reports** button to see your report in Progress.  Wait a few seconds, and return to the **Generated Reports** page.
 
   ![](images/avdflab200img035.png)
+  
+- Click the **Details** button associated with the report.  Click the **View Report** button to review the PDF.  The PDF will download in your browser.
+
+
 
 - View PDF file
 

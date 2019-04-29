@@ -155,18 +155,24 @@ In the **Attestation** section, move the **AVAUDITOR** user to the right hand pa
 - On the **Generated Reports** page, click the **Show Pending Reports** button to see your report in Progress.  Wait a few seconds, and return to the **Generated Reports** page.
 
   ![](images/avdflab200img035.png)
-  
-- Click the **Details** button associated with the report.  Click the **View Report** button to review the PDF.  The PDF will download in your browser.
+  ![](images/avdflab200img035+1.png)
 
+- Click the **Details** button associated with the report. 
+
+  ![](images/avdflab200img036.png)
+
+- Click the **View Report** button to review the PDF.  The PDF will download in your browser.
+
+  ![](images/avdflab200img036+1.png)
 
 
 - View PDF file
 
-  ![](images/avdflab200img036.png)
+  ![](images/avdflab200img037.png)
 
 - Return to the Report Details page add an attestation note such as, **I have reviewed and attest to the data in this Report** and click the **Save & Attest** button.
 
-  ![](images/avdflab200img037.png)
+
   
 - After clicking on the **Save & Attest** button you will see that the attestation note is stored with the report, as shown below.
 

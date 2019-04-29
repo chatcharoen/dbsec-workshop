@@ -61,11 +61,11 @@
   
 ## Entitlement snapshots & reports
 
-- Review the **Entitlement Changes**.  Navigate to the **Audit Reports** page.  This report shows all User Entitlement activity for a specific period of time:
+- Go back to the **Reports** tab and select **Entitlement Changes**.  This report shows all User Entitlement activity for a specific period of time:
 
   ![](images/avdflab200img012.png)
 
-- However, it will generally be more useful to report on what has CHANGED over a specific period of time.  Navigate to the **Audit Reports** page and then open the **Entitlement Reports** section:
+- However, it will generally be more useful to report on what has CHANGED over a specific period of time.  Navigate to the **Activity Reports** page and then open the **Entitlement Reports** section:
 
   ![](images/avdflab200img013.png)
 
@@ -83,7 +83,7 @@
 
   ![](images/avdflab200img016.png)
 
-- Click the **Failed Logins** link under the **Payment Card Industry (PCI)** Reports section. This report lists all of the DB login failures across the audited sources.  
+- Click the **Login Failures** link under the **Payment Card Industry (PCI)Reports** section. This report lists all of the DB login failures across the audited sources.  
 
   ![](images/avdflab200img017.png)
 

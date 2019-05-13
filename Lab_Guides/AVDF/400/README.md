@@ -62,7 +62,7 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
   ![](images/008.png)
 
-- Navigate back to the Audit Vault (Open a new tab to dbsec.oracle.com and select Audit Vault Server)
+- Navigate back to the Audit Vault (Open a new tab to dbsec.oracledemo.com and select Audit Vault Server)
 
   ![](images/009.png)
 
@@ -78,21 +78,21 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
   You will be monitoring the Oracle database, pdb1.  The DBFW server will monitor and block activity to the database based on policies that you will select in the next lab.   
 
-- Navigate to the Secured Targets page and click the Enforcement Points menu item.
+- Navigate to the **Secured Targets** page and click the **Enforcement Points** menu item.
 
   ![](images/012.png)
 
-- Select the DBSecOracle_EP enforcement point
+- Select the **DBSecOracle_EP** enforcement point
 
   ![](images/013.png)
 
-- Take a few minutes to review the settings of this enforcement point. Notice that proxy port 15212 is selected for use
+- Take a few minutes to review the settings of this enforcement point. Notice that proxy port **15212** is selected for use
 
   ![](images/014.png)
 
   ![](images/015.png)
 
-- Before testing the enforcement point, lets change the policy to Log All. Logout as avadmin and login as avauditor/Oracle123+
+- Before testing the enforcement point, lets change the policy to Log All. Logout as avadmin and login as **avauditor/Oracle123+**
 
   ![](images/016.png) logout
 
@@ -106,15 +106,15 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
   ![](images/019.png)
 
-- Expand the Firewall Policy section, click Change, select Log All policy, click Save
+- Expand the Firewall Policy section, click **Change**, select **Log All** policy, click Save
 
   ![](images/020.png)
   
   ![](images/021.png)
   
-- Navigate to the Lab_Exercise_01 folder and run Step_03_-_Test_traffic_through_firewall.sh
+- Navigate to the **FW-_Lab_Exercise_01** folder and run **Step_03_-_Test_traffic_through_firewall.sh**
 
-  View the Step_03 output file
+  View the **Step_03_-_Test_traffic_through_firewall.out** output file
 
       idle> conn system/Oracle123@pdb1.proxy;
       Connected.
@@ -144,9 +144,9 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
   
   Database traffic is being directed to port 15212 on fw.oracle.com and then being returned to pdb1 via the Enforcement Point.  This short test confirms that You are able to complete SQL statements.  You will see that the SQL returns ‘PDB1’.
 
-- Back in the browser, navigate to the Reports tab and view the available Database Firewall reports.
+- Back in the browser, navigate to the **Reports** tab and view the available **Database Firewall** reports.
 
-  Open the report Database traffic analysis by client IP detail by clicking on the highlighted icon below. 
+  Open the report **Database Traffic Analysis by Client IP** detail by clicking on the highlighted icon below. 
 
   ![](images/022.png)
 
@@ -158,15 +158,15 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
    ![](images/024.png)
 
-- You will now simulate some application traffic for the DBFW to train what is considered to be normal and authorized traffic for your White List policy.  Again, White List policies are simply the set of approved SQL commands that the firewall expects to see.  For this simulation you will be using a tool called Swingbench.  It runs SQL statements that simulate an order entry application.  It performs different DML statement using SQL bind variables to query and change customer and order information.  Click the ‘Step 05 – Start Swingbench’ icon in your lab folder, as shown below.
+- You will now simulate some application traffic for the DBFW to train what is considered to be normal and authorized traffic for your White List policy.  Again, White List policies are simply the set of approved SQL commands that the firewall expects to see.  For this simulation you will be using a tool called **Swingbench**.  It runs SQL statements that simulate an order entry application.  It performs different DML statement using SQL bind variables to query and change customer and order information.  Click the **Step 05 – Start Swingbench** icon in your lab folder, as shown below.
 
    ![](images/025.png)
 
-  Swingbench is a java application that will open after a few moments.  Notice that the ‘Connection String’ is pre-configured to connect to your Oracle Database via the proxy port on the Firewall.  Click the ‘Start’ green arrow icon, as shown below.  This will start the simulated application load.  You will run roughly 10 minutes of application traffic.
+  Swingbench is a java application that will open after a few moments.  Notice that the **Connection String** is pre-configured to connect to your Oracle Database via the proxy port on the Firewall.  Click the **Start** green arrow icon, as shown below.  This will start the simulated application load.  You will run roughly 10 minutes of application traffic.
 
    ![](images/026.png)
 
-  Navigate to the ‘Events’ tab in Swingbench.  
+  Navigate to the **Events** tab in Swingbench.  
 
    ![](images/027.png)
 
@@ -174,11 +174,13 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
    ![](images/028.png)
 
-- Navigate to the browser tab you were using for Database Firewall and login using fwadmin/Oracle123+
+- Navigate to the browser tab you were using for Database Firewall, or go to **FW-_Lab_Exercise_01** and login using **fwadmin/Oracle123+**
+
+- Navigate to **System > Network Traffic > Live Capture**.  Select **Packet Content* for the Level of Detail.  Click the **Show Traffic** button.
 
     ![](images/029.png)
 
-- Navigate to System / Network Traffic / Live Capture.  Select Packet Content for the Level of Detail.  Click the Show Traffic button.
+
 
   Notice that since the network traffic is unencrypted, you can actually see some SQL statements.  As you learned earlier, Database Firewall can be configured to read network traffic encrypted by Oracle Network Encryption.
 
@@ -193,3 +195,4 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 **This completes the lab!**
 
 - [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
+- [Continue to the Next Lab(500)](/../500)

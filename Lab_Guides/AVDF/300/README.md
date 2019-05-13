@@ -197,4 +197,4 @@ Oracle Audit Vault and Database Firewall provides security personnel with the ab
 
 - [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
 
-- [Next Lab](/../400)
+- [Continue to the Next Lab(400)](/../400)

@@ -294,5 +294,6 @@
 
 **This completes the lab!**
 
-- [Continue to AVDF Lab 200](../200)
+
 - [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
+- [Continue to Next Lab(200)](../200)

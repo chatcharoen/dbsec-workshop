@@ -16,7 +16,7 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
   - Prepare to train the Database Firewall with acceptable and expected behavior
 
     
-- After the Start_Infrastructure.sh script finishes (see the steps at the end of the section B), open the Labs folder on the Oracle Linux Desktop, and navigate to the Audit_Vault_and_Database_Firewall folder.
+- After the Start_Infrastructure.sh script finishes (Database_Security_Labs > AVDF_-_Getting_The_Environment_Ready > Start_Infrastructure.sh), open the Labs folder on the Oracle Linux Desktop, and navigate to the Audit_Vault_and_Database_Firewall folder.
 
   ![](images/001.png)
 
@@ -44,17 +44,17 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
   You can also specify multiple ports for a proxy in order to use them for different Enforcement Points.  The proxy port has already been configured for the lab environment. All of the database traffic will be directed to the Firewall on Port 15212.  
 
-  To view this, click the ‘System’ tab, then on the ‘Network’ link in the ‘System’ section, as shown below.
+- To view this, click the **System** tab, then on the **Network** link as shown below.
 
-  Take a look at the Management Interface, by clicking on Network under SYSTEM.  These settings were captured during the installation.  This is the screen you would use if changes were necessary.  
+- Take a look at the Management Interface.  These settings were captured during the installation.  This is the screen you would use if changes were necessary.  
 
   ![](images/006.png)
 
-  This is an example of configuring a Firewall with a single network interface.  Other configurations are possible.  For example, one network interface may act as a proxy, while another might monitor traffic from a SPAN port while yet another sits inline and monitors traffic directed right at the database listener on port 1521.
+- This is an example of configuring a Firewall with a single network interface.  Other configurations are possible.  For example, one network interface may act as a proxy, while another might monitor traffic from a SPAN port while yet another sits inline and monitors traffic directed right at the database listener on port 1521.
 
   ![](images/007.png)
 
-- Next, you need to be aware of an important configuration option of the Oracle Database Firewall.  Navigate to the System > Public Keys section by clicking on the Public Keys menu option in the left navigation.
+- Next, you need to be aware of an important configuration option of the Oracle Database Firewall.  Navigate to the **System > Public Keys** section by clicking on the Public Keys menu option in the left navigation.
 
   This Public Key is to be used if you have enabled Oracle Advanced Security to encrypt network traffic to prevent interception and exposure.  In order for to decrypt database traffic using database interrogation, you must provide the Database Firewall public key to the Oracle Database that is using Oracle Native Network Encryption.
 
@@ -62,11 +62,11 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
   ![](images/008.png)
 
-- Navigate back to the Audit Vault Server ui
+- Navigate back to the Audit Vault (Open a new tab to dbsec.oracle.com and select Audit Vault Server)
 
   ![](images/009.png)
 
-- Once the Oracle Audit Vault Server login page loads, login as the AV Administrator using the username/password of: avadmin/Oracle123+.  Click the Login button to continue.
+- Once the Oracle Audit Vault Server login page loads, login as the AV Administrator using the username/password: **avadmin/Oracle123+**.  Click the Login button to continue.
 
   ![](images/010.png)
 

@@ -18,11 +18,11 @@ Oracle Audit Vault and Database Firewall provides security personnel with the ab
      
 #### GAIN REAL-TIME DATABASE ACTIVITY MONITORING USING AUDIT VAULT ALERTING
     
-- Open the **Audit – Lab Exercise 03** Folder
+- We will out of the  **Audit – Lab Exercise 03** Folder
 
   ![](images/avdflab300img001.png)
 
-- Click the icon, **Step 01 – Create Alerts in Audit Vault UI** to open the browser.
+- However, open up **FireFox** from the desktop and go to the *Audit Vault Server (https://av.oracledemo.com)*
 
 - Log into the Audit Vault console as **avauditor/Oracle123+**.
 
@@ -32,7 +32,7 @@ Oracle Audit Vault and Database Firewall provides security personnel with the ab
 
   ![](images/avdflab300img004.png)
 
-- Select the **Notifications / Email Templates** page.  From here will be able to manage the existing template definitions and create new ones.  Once at this page you will see the following:
+- Select the **Email Templates** tab.  From here will be able to manage the existing template definitions and create new ones.  Once at this page you will see the following:
 
   ![](images/avdflab300img005.png)
 
@@ -40,28 +40,28 @@ Oracle Audit Vault and Database Firewall provides security personnel with the ab
 
   ![](images/avdflab300img006.png)
 
-- Add the **#AlertStatus#** field into the email subject, as shown in the screen below.  Click the Save button once completed. 
+- Add the **#AlertStatus#** field into the email subject, as shown in the screen below.  Click the **Save** button once completed. 
 
   ![](images/avdflab300img007.png)
   
-- Navigate to the **Policy** tab, then to the **Alert** page.  Click the **Manage Alert Status Values** button. 
+- Navigate to the **Policy** tab. Find and click the **Manage Alert Status Values** button. 
 
   ![](images/avdflab300img008.png)
   
-- You will see that there are two default Alert status values.  These values are used to maintain a status for each alert that is created in Audit Vault.  You can then manage alerts according to your business requirements.  In this lab, you will add a new status to report that you are reviewing a given alert.  Click the **Create** button.
-
-  ![](images/avdflab300img009.png)
+- There are two default Alert status values, Alert Status and Description.  These values are used to maintain a status for each alert that is created in Audit Vault.  You can then manage alerts according to your business requirements.  In this lab, you will add a new status to report that you are reviewing a given alert.  Click the **Create** button.
   
 - Add a new **Alert Status** and enter the following information
+
 ```
 	**Status Value**:	REVIEWING
 	**Description**: 	Alert being reviewed
 ```
 - Click the **Save** button.
  
-  ![](images/avdflab300img010.png)
+ 	![](images/avdflab300img010.png)
 
-- You will now create a new alert in Audit Vault.  This alert is to report when a new Oracle DB User account has been created.  Click the **Audit Policy > Alerts** sub tab.  Click the **Create** button.
+
+- You will now create a new alert in Audit Vault.  This alert is to report when a new Oracle DB User account has been created.  Find the **Alerts Definitions** tab.  Click the **Create** button.
 
   ![](images/avdflab300img011.png)
   
@@ -75,9 +75,9 @@ Oracle Audit Vault and Database Firewall provides security personnel with the ab
 	Duration (min)		0
 	Group By (field)		<Default>
 	Description			Alert when a user is created
-	Condition			EVENT_NAME='CREATE USER'
-	Notification Template:	<Select the ‘Alert Notification Template’>
-	Distribution List:		<Leave Blank>
+	Condition			:EVENT_NAME='CREATE USER'
+	Notification Template:	<‘Alert Notification Template’>
+	Distribution List:		<No Distribution List>
 ```
 
   ![](images/avdflab300img012.png)
@@ -88,19 +88,19 @@ Oracle Audit Vault and Database Firewall provides security personnel with the ab
 
   ![](images/avdflab300img013.png)
   
-- Go back to your open folder for **Audit – Lab Exercise 03** and execute the script to create some new users in the pdb1 database by clicking on the **Step 2 – Create Test for CREATE USER to Generate Alert.sh** icon as shown below.
+- Go back to your open folder for **Audit – Lab Exercise 03** and execute the script to create some new users in the pdb1 database by clicking on the **Step_2_–_Create_Test_for_CREATE_USER_to_Generate_Alert.sh** icon as shown below.
 
   ![](images/avdflab300img014.png)
   
-- Click the icon, **create_user_for_alert.out** to view the results of the executed scripts
+- Click the icon, **Step_2_-_Create_Test_for_CREATE_USER_to_Generate_Alert.out** to view the results of the executed scripts
 
   ![](images/avdflab300img015.png)
   
-- In the Audit Vault Server, go to the **Home page** and click the arrow in the upper right hand corner of the Alerts panel, as shown below.
+- Back to Audit Vault Server on Firefox, go to the **Home page** and click the arrow in the upper right hand corner of the **Recently Raised Alerts** panel, as shown below.
 
   ![](images/avdflab300img016.png)
 
-- Alternatively, you may go to the Reports page and select the section Alert Reports.
+- Alternatively, you may go to the **Reports** page and select **All Alerts** under the section Alert Reports.
 
   ![](images/avdflab300img017.png)
 
@@ -117,7 +117,7 @@ Oracle Audit Vault and Database Firewall provides security personnel with the ab
   
 - Click the **Report View** button to return to the Alert.  Examine the other sections.  Note how you can change the status of the Alert, make notes, send a notification right from this screen, etc.  If you were able to configure email in this lab environment, the Alert could have been mailed to you automatically when it was generated.
 
-- Create three more alerts.  Repeat the steps above to create another alert for the **DROP USER** command and another alert that will provide notification when a DBA user account attempts to directly access data outside of the intended application user account.  Finally, you will examine use of the threshold setting via a **FAILED LOGIN** alert.
+- Create three more alerts.  Repeat the steps above to create another alert for the **DROP USER** command and another alert that will provide notification when a DBA user account attempts to directly access data outside of the intended application user account.  Finally, you will examine use of the threshold setting via a **FAILED LOGIN** alert. To get there go to **Policy** tab then **Alert Definitions** and then **Create**
 	
 - Enter the following information for the **DROP_USER** Alert. 
 ```
@@ -129,13 +129,13 @@ Oracle Audit Vault and Database Firewall provides security personnel with the ab
 	Group By (field):	<Default>
 	Description:		Alert when a user is dropped
 	Condition:		:EVENT_NAME='DROP USER'
-	Notification Template:	<Select the ‘Alert Notification Template’>
-	Distribution List:	<Leave Blank>
+	Notification Template:	<‘Alert Notification Template’>
+	Distribution List:	<No Distribution List>
 ``` 
 
 - Enter the following information for the **EMPLOYEE_SELECT_NON_APP** Alert. 
 ```	
-	Name: 			EMPLOYEE_SELECT_NON_APP 
+	Name: 			EMPLOYEE_SELECT_NON_APP
 	Secured Target Type:	Oracle Database
 	Severity: 		Critical
 	Threshold (times):	1
@@ -143,8 +143,8 @@ Oracle Audit Vault and Database Firewall provides security personnel with the ab
 	Group By (field):	<Default>
 	Description:		Alert when a DBA user account attempts to directly access data 
 	Condition:		(:EVENT_NAME='SELECT' OR :EVENT_NAME='UPDATE') AND :USER_NAME LIKE '%DBA%'
-	Notification Template:	<Select the ‘Alert Notification Template’>
-	Distribution List:	<Leave Blank>
+	Notification Template:	<‘Alert Notification Template’>
+	Distribution List:	<No Distribution List>
 ```
 
 - Enter the following information for the **FAILED_LOGIN** Alert.  
@@ -157,8 +157,8 @@ Oracle Audit Vault and Database Firewall provides security personnel with the ab
 	Group By (field):	<Default>
 	Description:		Alert when a user attempts to log in unsuccessfullymultiple times 
 	Condition:		:command_class = 'LOGON' and :event_status = 'FAILURE'
-	Notification Template:	<Select the ‘Alert Notification Template’>
-	Distribution List:	<Leave Blank>
+	Notification Template:	<‘Alert Notification Template’>
+	Distribution List:	<No Distribution List>
 ```
 
 - Click **Add to List** to add the notification action and profile then click **Save**. 
@@ -169,7 +169,7 @@ Oracle Audit Vault and Database Firewall provides security personnel with the ab
 
   ![](images/avdflab300img021.png)
   
-- Click the icons, **drop_user_for_alert.out** and **query_database_for_alert.out** to view the results of the executed scripts.  
+- Click the icons, **Step_3_–_Create_Test_DROP_USER_to_Generate_Alert.out**, **Step_4_–_Create_Test_to_SELECT_to_Generate_Alert.out** and **Step_5_–_Create_Test_for_FAILED_LOGINS.out** to view the results of the executed scripts.  
   
   ![](images/avdflab300img022.png)
   
@@ -177,7 +177,7 @@ Oracle Audit Vault and Database Firewall provides security personnel with the ab
 
   ![](images/avdflab300img023.png)
 
-- Look at the **Alert Reports**.  
+- Look at the **Activity Reports** under the **Reports** tab 
 
   ![](images/avdflab300img024.png)
   
@@ -196,3 +196,5 @@ Oracle Audit Vault and Database Firewall provides security personnel with the ab
 **This completes the lab!**
 
 - [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
+
+- [Next Lab](/../400)

@@ -3,7 +3,7 @@
 
 ## Lab 200: REDUCE TIME TO COMPLIANCE USING ORACLE AUDIT VAULT REPORTING
 
-#### Overview
+### Overview
 
 - In this lab exercise, you will accomplish the following:
      - Generate a variety of reports available in Audit Vault including:
@@ -13,7 +13,7 @@
           - Entitlement Snapshot
           - Compliance Reports
     
-- Once you determine what you need to audit, you will have a better understanding of which reports are needed to demonstrate compliance to the various requirements.  In this exercise, you will see how to generate useful reports to these Database Audit Requirements.
+- Once you determine what you need to audit, you will have a better understanding of which reports are needed to demonstrate compliance to the various requirements.  In this exercise, you will see how to generate useful reports to these Database Audit Requirements.dfs
 
   ![](images/avdflab200img001.png)
 
@@ -24,8 +24,10 @@
 - Login as the AV Auditor using the username/password of: **avauditor/Oracle123+**.  Click the Login button to continue.
 
   ![](images/avdflab200img002.png)
+
+
   
-## Data Access Reports
+### Data Access Reports
 
 - Click the **Reports** tab and select the **Data Access** report within the **Activity Reports** section (expand that section).  View the report by clicking on the **Data Access** link and verify that you see audit records that were collected on today’s date. (Uncheck **Event Time is in the Last 24 hours** to see further back)
 
@@ -51,7 +53,7 @@
 
   ![](images/avdflab200img008.png)
 
-## Secured target startup and shutdown report
+### Secured target startup and shutdown report
 
 - Return to the **Activity Reports** page under the **Reports** tab.  Select **Startup and Shutdown** report.  It lists STARTUP and SHUTDOWN operations on a database.  Drill into one of these records: 
 
@@ -59,7 +61,7 @@
 
   ![](images/avdflab200img011.png)
   
-## Entitlement snapshots & reports
+### Entitlement snapshots & reports
 
 - Go back to the **Reports** tab and select **Entitlement Changes**.  This report shows all User Entitlement activity for a specific period of time:
 
@@ -77,7 +79,7 @@
 
   ![](images/avdflab200img015.png)
   
-## Compliance Reports
+### Compliance Reports
 
 - Click the **Compliance Reports** tab.  The reports shown here are intended to help you meet your compliance reporting requirements as quickly as possible, across PCI, Sarbanes-Oxley, HIPAA (healthcare-related) and other areas. We will look at the **Payment Card Industry (PCI) Reports**. To select the databases you are interested in generating reports for press **Go**
 
@@ -114,7 +116,7 @@
 
   ![](images/avdflab200img021.png)
    
-## Scheculed Reports
+### Scheculed Reports
 - Browse to **Compliance Reports** tab and select the report **Database Schema Changes** under the PCI section. We are going to time schedule the report and create a PDF version that could then be sent to people who require it. Click the **Calendar** icon.
 
   ![](images/avdflab200img024.png)
@@ -139,6 +141,8 @@
 
   ![](images/avdflab200img029.png)
   
+### Understanding Attestation 
+
 - You will now create a PDF report immediately to see the attestation process at work.  Go back to the PCI section under **Compliance Reports** tab and select the report **Entitlements Changes**. Click the **calendar** icon.
 
   ![](images/avdflab200img030.png)
@@ -184,7 +188,7 @@ In the **Attestation** section, move the **AVAUDITOR** user to the right hand pa
 
 - Quickly review other reports and the audit data they collect. Take a look at some of the reports.  It is important to point out that these reports will eventually (after the next set of lab exercises) include data collected from all sources, including Database Auditing and Firewall.
 
- #### Conclusion
+ ### Conclusion
 
 - Generated a variety of reports available in the Audit Vault Server.
      - Data Access Reports
@@ -195,3 +199,5 @@ In the **Attestation** section, move the **AVAUDITOR** user to the right hand pa
 **This completes the lab!**
 
 - [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
+- [Next Lab](/../300)
+

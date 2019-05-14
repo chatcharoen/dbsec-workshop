@@ -26,7 +26,7 @@ Developing a policy consists of these main steps:
      - Develop and deploy a Firewall policy
      - Modify and re-deploy the Firewall policy
      - Verify that policy is enforced and ensure that unseen traffic is blocked
-### Setup and Preparation
+### Prerequisites 
 
 - Completion of **LAB EXERCISE 01 – ORACLE DATABASE FIREWALL SECURED TARGETS TO MONITOR AND PROTECT DATABASES**
 
@@ -46,17 +46,18 @@ The Oracle Database Firewall system must understand the normal way that client a
 
   ![](images/avdflab500img003.png)
 
-- Navigate to the Policy page and select **Policy / Firewall Policy**.  Then click the **Create Policy** button:
+- Navigate to the **Policy** page and select **Database Firewall Policy**.  Then click the **Create Policy** button:
 
   ![](images/avdflab500img004.png)
 
-- In the screen that appears, fill in the appropriate information, and then click the **Create** button.
+- In the screen that appears, fill in the appropriate information
 
 ```
 	Database Type:      Oracle Database
 	Policy Name:        1 – Block Unseen Statements
 	Description:        This will block any statements not previously seen by the Firewall.
 ```
+- Click the **Create** button.
 
   ![](images/avdflab500img005.png)
 
@@ -68,7 +69,7 @@ The Oracle Database Firewall system must understand the normal way that client a
 
   ![](images/avdflab500img007.png)
   
-- Then, select your Secured Target **DBSec** and then **Apply**:
+- Then, select your Secured Target **DBSecOracle** and then **Apply**:
 
   ![](images/avdflab500img008.png)
   
@@ -121,19 +122,19 @@ The Oracle Database Firewall system must understand the normal way that client a
 
 - You will see a message that your Policy has been published successfully.  Click **Firewall Policies** to return to the list of Policies.
 
-- You can now test the new Policy. First, see what happens before you apply it.  Click the icon labeled **Step 02 – Run Statements Before Applying Policy.sh**.  
+- You can now test the new Policy. First, see what happens before you apply it.  Click the icon labeled **Step_02_–_Run_Statements_Before_Applying_Policy.sh**.  
 
   ![](images/avdflab500img017.png)
   
-- Then open the output file **Statements Executed Before Policy.out**:
+- Then open the output file **Step_02_–_Run_Statements_Before_Applying_Policy.out**:
 
   ![](images/avdflab500img018.png)
 
-- Notice that all of your statements executed normally:
+- Notice that all of your statements executed normally and successfully:
 
   ![](images/avdflab500img019.png)
   
-- Now assign your Policy to your Secured Target.  In the Audit Vault Server console, click the **Secured Targets** tab.  In the Targets page, click the name of the secured target you want – **DBSec**
+- Now assign your Policy to your Secured Target.  In the Audit Vault Server console, click the **Secured Targets** tab.  In the Targets page, click the name of the secured target you want – **DBSecOracle**
 
   ![](images/avdflab500img020.png)
   
@@ -149,11 +150,11 @@ The Oracle Database Firewall system must understand the normal way that client a
 
   ![](images/avdflab500img023.png)
   
-- Now go back to your Database image.  Click the icon labeled **Step 04 – Run Statements After Applying Policy 1 – Block Unseen.sh**.  
+- Now go back to your Database image.  Click the icon labeled **Step_04_–_Run_Statements_After_Applying_Policy_1_–_Block_Unseen.sh**.  
 
   ![](images/avdflab500img024.png)
   
-- Then open the output file **Statements Executed After Policy 1.out**
+- Then open the output file **Step_04_–_Run_Statements_After_Applying_Policy_1_–_Block_Unseen.out**
 
   ![](images/avdflab500img025.png)
   
@@ -161,17 +162,13 @@ The Oracle Database Firewall system must understand the normal way that client a
 
   ![](images/avdflab500img026.png)
   
-- You will now refine the baseline policy to make an exception allowing SQL traffic from some administrator users.  Remember that you cannot edit a deployed Policy, so you must first copy the existing policy. Click **Step 05 – Modify the Firewall Policy** icon and log into the Audit Vault Server as **avauditor/Oracle123+**.  Alternatively, just return to your earlier session.  Open the Policy page and then Firewall Policy:
-
-  ![](images/avdflab500img027.png)
-
+- You will now refine the baseline policy to make an exception allowing SQL traffic from some administrator users.  Remember that you cannot edit a deployed Policy, so you must first copy the existing policy. 
+- Click **Step 05 – Modify the Firewall Policy** icon and log into the Audit Vault Server as **avauditor/Oracle123+**.  Alternatively, just return to your earlier session.  Open the Policy page and then Firewall Policy:
 - Open the policy that you just tested:
 
   ![](images/avdflab500img028.png)
   
 - Click the **Copy** button in the upper right-hand corner:
-
-  ![](images/avdflab500img029.png)
  
 - This will bring up the Copy Policy dialog box.
   
@@ -196,19 +193,18 @@ The Oracle Database Firewall system must understand the normal way that client a
 
 - Click the **Create New Set** button.
 
-  ![](images/avdflab500img034.png)
-
 - Enter the following information:
 ```
 	New Set Name:  DBAs
 	First Member:  sys
 ```
 - Then, click the **Create Set** button.
+ 
+  ![](images/avdflab500img034.png)
 
-  ![](images/avdflab500img035.png)
   
 - Now you are going to add a couple of additional users.  Click the **Add DB User** button.  Do this twice, adding system and **DBA_DEBRA**.
-
+  ![](images/avdflab500img035.png)
   ![](images/avdflab500img036.png)
   
 - When you are done, your screen should look like this:
@@ -228,8 +224,8 @@ The Oracle Database Firewall system must understand the normal way that client a
 	Exception Rule:  Allow DBAs
 	DBA User Set:  Include / DBAs
 	Policy Controls:
-		Action:  Pass
-		Logging Level:  Unique
+		Action:           Pass
+		Logging Level:    Unique
 		Threat Severity:  Insignificant
 ```
 - Then, click the **Create** button.
@@ -240,7 +236,7 @@ The Oracle Database Firewall system must understand the normal way that client a
 
  ![](images/avdflab500img041.png)
  
-- Conclude this lab by testing your new Policy.  First change the Policy associated with the Secured Target.
+- Conclude this lab by testing your new Policy. **(Secured Targets > DBSECOracle > Firewall Policy)** First change the Policy associated with the Secured Target.
 
  ![](images/avdflab500img042.png)
 

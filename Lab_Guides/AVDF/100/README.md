@@ -3,7 +3,7 @@
 
 ## Lab 100: MANAGING AN AUDIT POLICY
 
-#### Overview
+### Overview
 
 - Demonstrate traditional native Oracle database auditing and the audit settings configured for this environment.
   - Create a table, configure auditing on that table then confirm that the audit records are being generated successfully
@@ -11,7 +11,7 @@
   - Configure the PDB1 database with Secure Configuration ‘Best Practice’ Audit Policy
   - Execute an automated workload generation SQL Script to test the audit policies and confirm that the audit data is being collected by Audit Vault.
 
-## **Step 1:**
+### **Setting Up**
     
 - After the Start_Infrastructure.sh script finishes, open the Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
 
@@ -282,7 +282,7 @@
       User altered.
 
 
- #### Conclusion
+ ### Conclusion
 
 - In this lab exercise, you have: 
   - Demonstrated native Oracle database auditing and the audit settings configured for this environment.

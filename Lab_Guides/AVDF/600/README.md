@@ -69,3 +69,4 @@ Look through these reports.  Reports that are grouped by IP address and Target w
 **This completes the lab!**
 
 - [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
+- [Continue to the Next Lab(700)](/../700)

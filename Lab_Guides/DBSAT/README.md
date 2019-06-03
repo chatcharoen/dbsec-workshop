@@ -149,7 +149,7 @@ Once you have unzipped the tool you can see the commands available for dbsat dis
  - Change the following variables to:
 
         DB_HOSTNAME = dbsec.oracledemo.com
-        DB_SERVICE_NAME = pdb1
+        DB_SERVICE_NAME = pdb1.oracledemo.com
  
  - Save the file and go back to the shell.
 

@@ -48,7 +48,7 @@
 
 - Set your migrate keystore variables to look like this
 
-       Configuration File: /app/oracle/dbsec/product/18.0.0/dbhome_1/network/admin
+       Configuration File: /app/oracle/dbsec/product/19.0.0/dbhome_1/network/admin
        Wallet Location: /app/oracle/dbsec/admin/cdb/wallet
        Wallet Password: Oracle123
        Password or Connect String: null 

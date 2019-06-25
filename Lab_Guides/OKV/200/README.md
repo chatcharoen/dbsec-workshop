@@ -1,7 +1,5 @@
 # Database Security Workshop: Oracle Key Vault
 
-## <font color="red"> ** THIS LAB IS NOT READY ** </font>
-
 #### Overview
 
 -In this lab exercise, you will accomplish the following:

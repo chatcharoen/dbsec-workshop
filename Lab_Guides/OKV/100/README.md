@@ -110,6 +110,10 @@
 
 - Click the pencil icon to get to the details on the Master Key
 
+- Scroll down to the Advanced section and you should see ORACLE.TDE.HSM.MK.<ID>
+ 
+ *Note* You will see '06' before your MKID. This is an internal identifier for Oracle Key Vault. 
+
   ![](images/230.png)
 
 - You accomplished the following in this lab

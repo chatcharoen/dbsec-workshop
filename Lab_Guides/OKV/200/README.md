@@ -25,7 +25,7 @@
 - Choose **OS_ORACLE** as the Host Credentials
 - Set the **OKV Library Path** to
 
-        /app/oracle/dbsec/product/okvutil/bin
+        /app/oracle/dbsec/product/okvclient/bin
         
 - Set the **OKV Wallet Group** to 
  

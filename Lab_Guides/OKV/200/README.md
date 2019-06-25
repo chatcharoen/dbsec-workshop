@@ -14,13 +14,14 @@
 - Login to EM as SYSMAN / Oracle123
 - Navigate to the database cdb - container database
 
-- You may be prompted to set the identifier
-
-    ![](images/208.png)
-
 - Login to cdb as SYS
 
 - Click the Security Tab then click Transparent Data Encryption
+
+- You may be prompted to set the identifier
+
+    ![](images/208.png)
+    
 - Under **Keystore and Master Keys** click **More** and choose **OKV Integration Setup**
 - Choose **OS_ORACLE** as the Host Credentials
 - Set the **OKV Library Path** to

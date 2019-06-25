@@ -103,7 +103,12 @@
 
   ![](images/229.png)
 
-- Return to the KV ui and note the MKID's are the same
+- Return to the KV UI 
+- Click Wallets & Keys tab
+- Click All Items
+- Identify the Master Key based on the output from 03_Query_MKID.sh and the MASTERKEYID_BASE64 column
+
+- Click the pencil icon to get to the details on the Master Key
 
   ![](images/230.png)
 

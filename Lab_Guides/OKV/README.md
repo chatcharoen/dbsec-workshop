@@ -39,7 +39,7 @@ The full-stack, security-hardened Oracle Key Vault software appliance uses Oracl
 
 [LAB EXERCISE 100: TDE KEY ESCROW](100/README.md)
 
-<font color="red"> NOT READY -- </font> [LAB EXERCISE 200: TDE ONLINE MASTER KEY](200/README.md)
+[LAB EXERCISE 200: TDE ONLINE MASTER KEY](200/README.md)
 
 
 

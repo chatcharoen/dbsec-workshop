@@ -62,6 +62,10 @@ Access the lab exercise folders to begin.  On the desktop, navigate to the Datab
          
 - Click Rule Sets and Create a new Rule Set
 
+- Name the Rule Set "HR Application Rules" 
+
+- Set the Rule Set to Static, Enabled and click Next
+
     ![](images/210.png)
 
 - Click ***Next*** and you will notice you can configure error handling and auditing options

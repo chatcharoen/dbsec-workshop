@@ -73,5 +73,8 @@ Data masking allows organizations to generate realistic and fully functional dat
 [LAB EXERCISE 300 – MASKING SENSITIVE APPLICATION DATA
 ](300%2FREADME.md)
 
+--- 
+
+[Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
 
 

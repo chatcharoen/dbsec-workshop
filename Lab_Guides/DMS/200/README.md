@@ -102,7 +102,10 @@ In this lab, you used Oracle Data Masking and Subsetting to perform the followin
 - Created a new Sensitive Column Type and applied it to certain columns
 - Manually identified a Sensitive Column 
 
-
-
-
 **This completes this Lab!**
+
+--- 
+
+[DMS Landing Page](../README.md)
+
+[Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)

@@ -194,5 +194,10 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
 **This completes the lab!**
 
-- [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
-- [Continue to the Next Lab(500)](/../500)
+---
+
+[Next Lab](../500/README.md)
+
+[AVDF Landing Page](../README.md)
+
+[Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)

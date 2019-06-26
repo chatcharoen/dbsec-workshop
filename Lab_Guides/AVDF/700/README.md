@@ -160,4 +160,8 @@ One thing to note is that in this lab exercise, you performed just a few typical
 
 **This completes the lab!**
 
-- [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
+---
+
+[AVDF Landing Page](../README.md)
+
+[Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)

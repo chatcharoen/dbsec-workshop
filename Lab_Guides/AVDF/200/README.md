@@ -198,5 +198,11 @@ In the **Attestation** section, move the **AVAUDITOR** user to the right hand pa
 
 **This completes the lab!**
 
-- [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
-- [Next Lab](../300)
+---
+
+[Next Lab](../300/README.md)
+
+[AVDF Landing Page](../README.md)
+
+[Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
+

@@ -262,5 +262,10 @@ You accomplished the following in this lab exercise:
 
 **This completes the lab!**
 
-- [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
-- [Continue to the Next Lab(600)](/../600)
+--- 
+
+[Next Lab](../600/README.md)
+
+[AVDF Landing Page](../README.md)
+
+[Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)

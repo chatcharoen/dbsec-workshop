@@ -95,4 +95,8 @@ In this lab, you have used privilege analysis to identify used and unused privil
 
 **This completes this Lab!**
 
-- [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
+--- 
+
+[Privilege Analysis Landing Page](../README.md)
+
+[Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)

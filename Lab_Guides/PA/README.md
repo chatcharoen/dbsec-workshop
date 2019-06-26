@@ -12,4 +12,8 @@ Privilege analysis captures privileges used by database users and applications a
 
 ## Labs
 
-[LAB EXERCISE 100 – USING PRIVILEGED ANALYSIS TO DETERMINE LEAST PRIVILEGE ACCESS](100%2FREADME.md)
+[LAB EXERCISE 100 – Using Privilege Analysis to Determine Least Privilege Access](100%2FREADME.md)
+
+--- 
+
+[Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)

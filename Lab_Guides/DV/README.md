@@ -56,15 +56,16 @@ The proliferation of regulations and privacy laws around the globe requires flex
 
 ## Labs
 
-[LAB EXERCISE 01 - PROTECTING SENSITIVE DATA FROM PRIVILEGED USER ACCESS USING ORACLE DATABASE VAULT REALMS
-](100%2FREADME.md)
+[LAB 100 - Oracle Database Vault: Protecting Sensitive Data with Realms](100%2FREADME.md)
 
-[LAB EXERCISE 02 - Oracle Database Vault Multi-Factor Authorization
+[LAB 200 - Oracle Database Vault: Multi-Factor Authorization
 ](200%2FREADME.md)
 
+[LAB 300 - Oracle Database Vault: 19c Ops Control
+](300%2FREADME.md)
 
-**This completes the Lab!**
+--- 
 
-- [Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
+[Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)
 
 

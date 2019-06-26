@@ -98,3 +98,9 @@ In this lab, you will use Oracle Database 19c and the Oracle Database Vault 19c 
 In this lab, you used Database Vault 19c Ops Control to protect application data in pluggable databases from container-level administrators.
 
 **This completes this Lab!**
+
+--- 
+
+[Database Vault Landing Page](../README.md)
+
+[Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)

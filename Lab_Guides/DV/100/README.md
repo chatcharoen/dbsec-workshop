@@ -135,3 +135,9 @@ Access the lab exercise folders to begin.  On the desktop, navigate to the Datab
 In this lab, you used Database Vault to create a Realm (a layer of protection against DML, DDL, DCL) around the EMPLOYEESEARCH schema and objects. 
 
 **This completes this Lab!**
+
+--- 
+
+[Database Vault Landing Page](../README.md)
+
+[Database Security Workshop Landing Page](https://github.com/kwazulu/dbsec-workshop/blob/master/README.md)

@@ -5,7 +5,7 @@
 -In this lab exercise, you will accomplish the following:
  - Define a default wallet for an endpoint.
  - Upload an existing wallet into Key Vault.
- - Reviewed the contents of the wallet and Key Vault. 
+ - Review the contents of the wallet and Key Vault. 
 
 ### LAB EXERCISE 100: TDE KEY ESCROW
 
@@ -77,17 +77,17 @@
 
   ![](images/224.png)
 
-- Upload the contents of the Wallet into the Key Vault by returning to the Oracle_Key_Vault_Lab_Exercise_01 folder and executing the 04b_upl.sh script. 
+- As you saw in an earlier step, our virtual wallet in OKV contains only a default template file. Our next step is to upload the contents of the local Wallet (on the db host) into the Key Vault by returning to the Oracle_Key_Vault_Lab_Exercise_01 folder and executing the 04b_upl.sh script. 
 
   ![](images/220.png)
 
   ![](images/221.png)
 
-  When prompted for passwords, enter Oracle123 for both the source wallet password and the Oracle Key Vault endpoint password. Once that is completed, the results are as follows:
+  When prompted for passwords, enter Oracle123 for both the source wallet password and the Oracle Key Vault endpoint password. If you do not get prompted for the Endpoint Password, this is ok. Once that is completed, the results are as follows:
 
   ![](images/222.png)
 
-- To see that the wallet has been uploaded, return to the Key Vault console and select the Keys & Wallets tab at the top of the page. Check the wallet and click the Details icon.  Scroll down and note the MKIDs for the available TDE Master Keys. 
+- To see that the local wallet contents have been uploaded, return to the Key Vault console and select the Keys & Wallets tab at the top of the page. Check the wallet and click the Details icon.  Scroll down and note the MKIDs for the available TDE Master Keys. 
 
   ![](images/227.png)
 
@@ -95,11 +95,9 @@
 
 - Go back to the KV lab folder containing the scripts and double click the 03_Query_MKID.sh file
 
-  ![](images/2.png)
+  ![](images/228.png)
 
 - Review the script output and note the MKID used to encrypt our EMPLOYEESEARCH_DATA tablespace
-
-  ![](images/228.png)
 
   ![](images/229.png)
 
@@ -110,16 +108,14 @@
 
 - Click the pencil icon to get to the details on the Master Key
 
-- Scroll down to the Advanced section and you should see ORACLE.TDE.HSM.MK.ID#
- 
- *Note* You will see '06' before your MKID. This is an internal identifier for Oracle Key Vault. 
 
   ![](images/230.png)
 
+**Conslusion**
 - You accomplished the following in this lab
- - Identified the default wallet for our DBSEC endpoint in OKV
- - Uploaded the wallet contents from the local wallet on the DB host to the virtual wallet in KV
- - Matched the MKIDs of the local wallet with those now available in OKV
+  - Identified the default wallet for our DBSEC endpoint in OKV
+  - Uploaded the wallet contents from the local wallet on the DB host to the virtual wallet in KV
+  - Matched the MKIDs of the local wallet with those now available in OKV
 
 
 **This completes the Lab!**

@@ -22,7 +22,7 @@ The full-stack, security-hardened Oracle Key Vault software appliance uses Oracl
 
 - For these lab exercises, the following infrastructure components will be used.
   - Database: Database (pdb1) 
-  - Key Vault 12..2 Server 
+  - Key Vault 18c Server 
 
 - Here is a summary of the users used in these labs.
     - KVAUDITOR / Oracle123+
@@ -32,7 +32,7 @@ The full-stack, security-hardened Oracle Key Vault software appliance uses Oracl
     - root / Oracle123
 
 - If accessing via VNC
-  - :2 (5702) - oracle / Oracle123
+  - :2 (5902) - oracle / Oracle123
 
 
 ## Labs

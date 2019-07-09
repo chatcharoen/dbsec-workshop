@@ -1,10 +1,11 @@
-# Database Security Workshop: Advanced Security - Transparent Data Encryption
-
+# Database Security Workshop: Advanced Security - Data Redaction
 ## Introduction
 
 This one of several labs which are part of **Oracle Database Security Workshop.** This workshop will walk you through the process configuring, validating and using all of Oracle's Database Security products
 
-Oracle Advanced Security comprises two security features to protect sensitive database data. The first feature is Transparent Data Encryption (TDE) which encrypts data "at rest." Encryption is done using a key that must be available to a database that either reads or writes encrypted data. The encryption is performed inside the data files that store the Oracle Database data. It remains encrypted until it is retrieved from disk for use in an application. This is true for any other use of the data files—exporting tables, backing up data files, and so on—the data included in the export file or on backup disks or tapes will remain encrypted until used in a database with a matching encryption key.
+Oracle Advanced Security comprises two security features to protect sensitive database data. The first feature is Transparent Data Encryption (TDE) which encrypts data "at rest", the second is Data Redaction. Oracle Data Redaction enables you to mask (redact) data that is returned from queries issued by applications. Oracle Database applies the redaction at runtime, when users access the data (that is, at query-execution time). This solution works well in a production system. During the time that the data is being redacted, all of the data processing is performed normally, and the back-end referential integrity constraints are preserved.
+
+Data Redaction can help you to comply with industry regulations such as Payment Card Industry Data Security Standard (PCI DSS) and the Sarbanes-Oxley Act.
 
 ***To log issues***, click here to go to the [github oracle](https://github.com/oracle/learning-library/issues/new) repository issue submission form.
 
@@ -79,11 +80,11 @@ In this lab exercise, you will accomplish the following:
 
   ![](images/110.png)
 
-- On the Database Targets page, drill down to PDB1
+- On the Database Targets page, drill down to cdb_PDB1 and click it.
 
   ![](images/111a.png)  
 
-- Select the menu option Security then Data Redaction.
+- On the cdb_PDB1 information page, select the menu option Security then Data Redaction.
 
      ![](images/111.png)    
 
@@ -103,7 +104,7 @@ In this lab exercise, you will accomplish the following:
 
      ![](images/115.png) 
 
-- For the Policy Name field, enter REDACT_EMP_DATA. Review that the Policy Expression is ‘1=1’.  This Redaction Policy Expression defaults to 1=1 (TRUE), meaning to always redact.
+- For the Policy Name field, enter REDACT_EMP_DATA. Confirm that the Policy Expression is ‘1=1’.  This Redaction Policy Expression defaults to 1=1 (TRUE), meaning to always redact.
 
      ![](images/116.png)
 
@@ -115,7 +116,7 @@ In this lab exercise, you will accomplish the following:
 
      ![](images/119.png) 
 
-- After adding the NINO column to the Data Redaction Policy, click the Add button to add SSN, SIN, and CORPORATE_CARD with the parameters you see below.  
+- After adding the NINO column to the Data Redaction Policy, click the Add button to add SIN, SSN and CORPORATE_CARD with the parameters you see below.  
 
         Sensitive Column Type: SOCIAL_INSURANCE_NUMBER
         Expression Name: Default Expression
@@ -145,15 +146,13 @@ In this lab exercise, you will accomplish the following:
      
     ![](images/121.png)
 
-- You should see the following 4 object columns
+- You should see the following 4 object columns. Click OK once you have confirmed all four columns have been configured.
 
     ![](images/122.png)
 
-- Navigate back to the HR Application in your browser and look at a few of the employee records and notice how they are being redacted. They should look something like the screenshots below. If they do not look like this, you may have an error in your Redaction config.
+- Navigate back to the HR Application in your browser and look at a few of the employee records and notice how they are being redacted. They should look something like the screenshots below. If they do not look like this, you may have an error in your Redaction configuration.
 
      ![](images/126.png)
-    
-     ![](images/127.png)
     
      ![](images/128.png)
     

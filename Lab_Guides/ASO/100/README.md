@@ -21,9 +21,9 @@
   
 - In the Oracle_Advanced_Security_Lab_Exersice_01 foler, click the 01_Search_Strings_Plain_Text.sh to verify if there is unencrypted data in the the datafile. We are able to view the sensitive data in the datafile. It will look similar to the screenshot
 
-<img src="https://user-images.githubusercontent.com/40471909/56759206-7217d380-6766-11e9-8531-033e79dbdcc7.png" width="500">
+  ![](images/008a.png)
 
-<img src="https://user-images.githubusercontent.com/40471909/56759188-6b895c00-6766-11e9-8a7e-244e3842f83e.png" width="700">
+  ![](images/008b.png)
 
 - Now open the 01_Encrypt_Sensitive_Information browser shortcut.
 
@@ -85,7 +85,7 @@
 
   ![](images/026.png) 
 
-- On the Tablespace page, choose EMPLOYEESEARCH_DATA as the tablespace to take offline in order to convert
+- On the Tablespace page, choose EMPLOYEESEARCH_DATA as the tablespace to encrypt. Click OK.
 
   ![](images/027.png)
 

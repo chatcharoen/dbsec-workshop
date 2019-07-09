@@ -8,10 +8,10 @@
 - In this lab exercise, you will accomplish the following:
      - Validate the status of the encryption keys using Oracle Enterprise    Manager  Cloud Control
      - OFFLINE the EMPLOYEESEARCH_DATA tablespace
-     - Migrate the tablespace to an encrypted tablespace 
+     - Convert the existing tablespace to an encrypted tablespace 
      - Verify that encryption has taken place
     
-- After the Start_OAS_Infrastructure.sh script finishes (see the steps at the end of the section B), open the Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
+- After the Start_OAS_Infrastructure.sh script finishes (see the steps at the end of the section B), open the Database_Security_Labs folder on the Oracle Linux Desktop, and navigate to the Oracle_Advanced_Security folder.
 
   ![](images/007.png)
 
@@ -55,7 +55,7 @@
 
   ![](images/017.png)
 
-- Scroll down to Encrypted Objects and see what we have
+- Scroll down and expand Encrypted Objects. Observe there are currently no encrypted objects in the PDB
 
   ![](images/018.png)
 
@@ -85,7 +85,7 @@
 
   ![](images/026.png) 
 
-- Choose EMPLOYEESEARCH_DATA as the offline tablespace to convert, click OK
+- On the Tablespace page, choose EMPLOYEESEARCH_DATA as the tablespace to take offline in order to convert
 
   ![](images/027.png)
 

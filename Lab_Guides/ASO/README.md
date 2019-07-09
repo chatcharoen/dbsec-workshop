@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This is the first of several labs which are part of **Oracle Database Security Workshop.** This workshop will walk you through the process configuring, validating and using all of Oracle's Database Securtity products
+This is the first of several labs which are part of **Oracle Database Security Workshop.** This workshop will walk you through the process of configuring, validating and using all of Oracle's Database Securtity products
 
-Oracle Advanced Security comprises two security features to protect sensitive database data. The first feature is Transparent Data Encryption (TDE) which encrypts data "at rest." Encryption is done using a key that must be available to a database that either reads or writes encrypted data. The encryption is performed inside the data files that store the Oracle Database data. It remains encrypted until it is retrieved from disk for use in an application. This is true for any other use of the data files—exporting tables, backing up data files, and so on—the data included in the export file or on backup disks or tapes will remain encrypted until used in a database with a matching encryption key.
+Oracle Advanced Security comprises two security features to protect sensitive data in your databases. The first feature is Transparent Data Encryption (TDE) which encrypts data "at rest". Encryption is done using a key that must be available to a database that either reads or writes encrypted data. The encryption is performed inside the data files that store the Oracle Database data. It remains encrypted until it is retrieved from disk for use in an application. This is true for any other use of the data files — exporting tables, backing up data files, and so on — the data included in the export file or on backup disks or tapes will remain encrypted until used in a database with a matching encryption key.
 
 ***To log issues***, click here to go to the [github oracle](https://github.com/oracle/learning-library/issues/new) repository issue submission form.
 
@@ -31,13 +31,13 @@ Oracle Advanced Security comprises two security features to protect sensitive da
 
   ![](images/004.png)
 
-- In the OAS_-_Getting_The_Environment_Ready folder, select Start_Infrastructure.sh.  This script will start the entire necessary infrastructure used in these lab exercises. In these lab exercises, use the Display button to view the contents of the scripts before executing.  This will allow you to review the steps, commands and scripts used in these exercises.  When executing scripts, use the Run in Terminal button.
+- In the OAS_-_Getting_The_Environment_Ready folder, select Start_Infrastructure.sh.  This script will start all the infrastructure necessary to complete the ASO lab exercises. In these lab exercises, use the Display button to view the contents of the scripts before executing.  This will allow you to review the steps, commands and scripts being used.  When executing scripts, use the Run in Terminal button.
 
   ![](images/005.png)
 
   ![](images/006.png)
 
-- Please be patient as the infrastructure may take a little time to start.  Once the infrastructure has started, you are ready to move forward with the exercises.
+- Please be patient as the infrastructure may take some time to start.  Once the infrastructure has started, you are ready to move forward with the exercises.
 
 ## Labs
 

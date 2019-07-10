@@ -11,18 +11,32 @@
 
 - Open Enterprise Manager in Firefox
 
+    ![](images/200a.png)
+
 - Login to EM as SYSMAN / Oracle123
+
+    ![](images/200b.png)
+
 - Navigate to the database cdb - container database
 
-- Login to cdb as SYS
+    ![](images/200c.png)
 
-- Click the Security Tab then click Transparent Data Encryption
+- On the CDB information page, click the Security dropdown then click Transparent Data Encryption
+
+    ![](images/200d.png)
+
+- Using the existing saved credentials, login to cdb as SYS
+
+    ![](images/200e.png)
 
 - You may be prompted to set the identifier
 
     ![](images/208.png)
     
 - Under **Keystore and Master Keys** click **More** and choose **OKV Integration Setup**
+
+    ![](images/200f.png)
+
 - Choose **OS_ORACLE** as the Host Credentials
 - Set the **OKV Library Path** to
 
@@ -40,31 +54,41 @@
    ![](images/210.png)
 
 - Test the Integration
+    - You should see a "Test successful" message
+    - Click OK to acknowledge successful test
+    - Click OK to close the integration setup screen
 
-- Click Migrate
+- In the Keystore and Master Keys section of the page, click More, then click Migrate
 
-    ![](images/214.png)
+    ![](images/200g.png)
     
-- If necessary, select OS_ORACLE as your Named Credential
+- This will open the Migrate Keystore screen
+        - If necessary, select OS_ORACLE as your Named Credential
+
+    ![](images/200h.png)
+    ![](images/200i.png)
 
 - Set your migrate keystore variables to look like this
 
        Configuration File: /app/oracle/dbsec/product/19.0.0/dbhome_1/network/admin
        Wallet Location: /app/oracle/dbsec/admin/cdb/wallet
        Wallet Password: Oracle123
-       Password or Connect String: null 
+       Password or Connect String: null (type the string "null" in the space provided)
        Local Library Location: /opt/oracle/extapi/64/hsm/oracle/1.0.0
 
     ![](images/218.png)       
     ![](images/220.png)
- 
-- If you are prompted to login, login as *SYS*
-- If the browser moves you to **pdb1** navigate back to **cdb**
+
+- Once you have confirmed you settings match settings detailed above, click OK to complete the migration.
+
+- Once the migration is completed, you may get prompted to login to the cdb again. If so, login as *SYS*
+        - If the browser has moved you to **pdb1** navigate back to **cdb**
+
 - You should see the Keystore say:
 
         OKV - OKV
 
-- Perform a key rotation by clicking *Rekey*
+- Perform a key rotation by clicking *Rekey* in the Master Keys section of the page
 
         Password or Connect String: null
         Key Description: Test rekey
@@ -80,14 +104,15 @@
 - From the terminal, perform the following commands
 
         cd $ORACLE_BASE/admin/cdb/wallet
-        mkdir old.wallets
-        mv * old.wallets
+        mkdir old_wallets
+        mv *.* old_wallets
 
 - Restart the database
+    - you may see some errors opening the wallets when you run the start script; in this lab environment, this is expected and can be ignored (as long as the sql query in the next step is successful)
 
-        $HOME/scripts/stop_cdb.sh
-        
-        $HOME/scripts/start_cdb.sh
+            $HOME/scripts/stop_cdb.sh
+    
+            $HOME/scripts/start_cdb.sh
         
 - Login to the database and issue the following queries
 

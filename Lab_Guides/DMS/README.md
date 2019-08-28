@@ -39,18 +39,18 @@ Data masking allows organizations to generate realistic and fully functional dat
   - root / Oracle123
 
 ###	If accessing via VNC
- - :2 (5702) - oracle / Oracle123
- - :1 (5701) - root / Oracle123
+ - :2 (5902) - oracle / Oracle123
+ - :1 (5901) - root / Oracle123
 
 ### LAB SETUP
 
-- For a good navigational experience, you may want to access Enterprise Manager Cloud Control from your own LOCAL browser.  The URL is https://<your ip>:7803/em with the username: sysman and the password: Oracle123.  
+- For a good navigational experience, you may want to access Enterprise Manager Cloud Control from your own LOCAL browser.  The URL is https://<your ip>:7803/em with the username: sysman and the password: Oracle123. This will not work if you are connected to the Array/SSL VPN. 
 
 - This database has a cdb instance and pluggable database instance pdb1.  You are going to create a masking job for pdb1 as if it were a development database.  There is a schema named EMPLOYEESEARCH_DEV which owns copies of all of the HR schema's objects.
 
 - On the Oracle Linux Desktop, navigate to the DB_Security_Labs folder, double-click and open the contents.
 
-- Select the folder, Oracle_EM_-_Data_Masking.
+- Select the folder, Oracle_Data_Masking.
 
 - Select the folder, DM_-_Getting_the_Environment_Ready.  
 

@@ -56,7 +56,7 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
 - Next, you need to be aware of an important configuration option of the Oracle Database Firewall.  Navigate to the **System > Public Keys** section by clicking on the Public Keys menu option in the left navigation.
 
-  This Public Key is to be used if you have enabled Oracle Advanced Security to encrypt network traffic to prevent interception and exposure.  In order for to decrypt database traffic using database interrogation, you must provide the Database Firewall public key to the Oracle Database that is using Oracle Native Network Encryption.
+  This Public Key is to be used if you have enabled Oracle Advanced Security to encrypt network traffic to prevent interception and exposure.  In order to decrypt database traffic using database interrogation, you must provide the Database Firewall public key to the Oracle Database that is using Oracle Native Network Encryption.
 
   To use this key, an entry in the sqlnet.ora file would make a reference to a file on the server containing a copy of the key data.  
 

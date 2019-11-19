@@ -190,7 +190,7 @@ The Oracle Database Firewall system works by analyzing the meaning of the SQL st
 
  #### Conclusion
 
-- In this lab exercise you reviewed the proxy port configuration of the Database Firewall. You also chcked the Enforcement Point configuration, tested a database connection via the proxy port, changed the Firewall policy being enforced for the Secured Target and finally you ran some sample application traffic which will be used in the whitelist for the following labs.
+- In this lab exercise you reviewed the proxy port configuration of the Database Firewall. You also checked the Enforcement Point configuration, tested a database connection via the proxy port, changed the Firewall policy being enforced for the Secured Target and finally you ran some sample application traffic which will be used in the whitelist for the following labs.
 
 **This completes the lab!**
 

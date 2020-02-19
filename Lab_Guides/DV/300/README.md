@@ -9,6 +9,8 @@
 
 In this lab, you will use Oracle Database 19c and the Oracle Database Vault 19c new feature of Operations Control. Ops Control, for short, allows users to keep container-level administrators (users prefixed with C##) out of pluggable database data. The container administrators can access the pluggable database but cannot query application data. 
 
+--- If you are proceeding from Lab 200, make sure to DISABLE the Realm on the EMPLOYEESEARCH schema prior to performing this lab.
+
 - Open a Terminal and start SQL*Plus without logging in as any user
 
     ```bash 

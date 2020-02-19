@@ -155,8 +155,8 @@ Oracle Audit Vault and Database Firewall provides security personnel with the ab
 	Threshold (times):	5
 	Duration (min):		1
 	Group By (field):	<Default>
-	Description:		Alert when a user attempts to log in unsuccessfullymultiple times 
-	Condition:		:command_class = 'LOGON' and :event_status = 'FAILURE'
+	Description:		Alert when a user attempts to log in unsuccessfully multiple times 
+	Condition:		:command_class = 'LOGIN' and :event_status = 'FAILURE'
 	Notification Template:	<‘Alert Notification Template’>
 	Distribution List:	<No Distribution List>
 ```
